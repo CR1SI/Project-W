@@ -4,18 +4,21 @@ extends State
 @onready var walk: walk_state = $"../walk"
 @onready var idle: idle_state = $"../idle"
 
-@export var dash_speed: float = 1000.0
-@export var dash_duration: float = 0.3
+@export var dash_speed: float = 1000.0 #this has to always be higher than the player_speed otherwise it will slow down instead. 
+@export var dash_duration: float = 0.3 
 
-var timer: float = 0.0
+var timer: float = 0.0 #makeshift timer, you could use a timer node.
 
 
 func Enter() -> void:
+	
+	#checking what direction to dodge while in idle
 	var dash_direction = player.direction
 	if dash_direction == Vector2.ZERO:
-		dash_direction = player.last_direction #must inplment
+		dash_direction = player.last_direction 
 		pass
 	
+	#checking where to dodge based on current walking vector
 	if dash_direction != Vector2.ZERO: 
 		player.velocity = dash_direction.normalized() * dash_speed
 		timer = dash_duration
@@ -23,16 +26,19 @@ func Enter() -> void:
 		pass
 
 func Exit() -> void:
-	player.velocity = Vector2.ZERO 
+	player.velocity = Vector2.ZERO #when we exit we want set velocity to zero otherwise we maintain that speed.
 	pass
 
 func Process(_delta: float) -> State:
-	timer -= _delta
+	
+	timer -= _delta #_delta is essentially each frame. so it can work as good precise timer but not a lot of flexibility.
+	#if timer reaches 0 and we are moving go to walk otherwise go to idle. 
 	if timer <= 0.0:
 		if player.direction != Vector2.ZERO: 
 			return walk
 		else: 
 			return idle
+	
 	return null
 
 func Physics(_delta: float) -> State: 
