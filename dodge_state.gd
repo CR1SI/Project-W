@@ -4,8 +4,10 @@ extends State
 @onready var walk: walk_state = $"../walk"
 @onready var idle: idle_state = $"../idle"
 
+
 @export var dash_speed: float = 1000.0 #this has to always be higher than the player_speed otherwise it will slow down instead. 
 @export var dash_duration: float = 0.3 
+
 
 var timer: float = 0.0 #makeshift timer, you could use a timer node.
 
@@ -13,10 +15,7 @@ var timer: float = 0.0 #makeshift timer, you could use a timer node.
 func Enter() -> void:
 	
 	#checking what direction to dodge while in idle
-	var dash_direction = player.direction
-	if dash_direction == Vector2.ZERO:
-		dash_direction = player.last_direction 
-		pass
+	var dash_direction = player.mouse_position-player.position
 	
 	#checking where to dodge based on current walking vector
 	if dash_direction != Vector2.ZERO: 

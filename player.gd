@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
+var mouse_position = null
+
 @onready var state_machine: StateMachine = $StateMachine
 var direction: Vector2 = Vector2.ZERO
 var last_direction: Vector2 = Vector2.ZERO 
@@ -17,6 +19,7 @@ func _process(_delta: float) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	mouse_position = get_global_mouse_position() #keeps track of mouse position
 	#check documentation
 	move_and_slide()
 
