@@ -14,6 +14,7 @@ var timer: float = 0.0 #makeshift timer, you could use a timer node.
 
 func Enter() -> void:
 	
+	
 	#checking what direction to dodge while in idle
 	var dash_direction = player.mouse_position-player.position
 	

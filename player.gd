@@ -5,7 +5,6 @@ var mouse_position = null
 
 @onready var state_machine: StateMachine = $StateMachine
 var direction: Vector2 = Vector2.ZERO
-var last_direction: Vector2 = Vector2.ZERO 
 
 func _ready() -> void:
 	state_machine.Initialize(self) #initialized statemachine, with self->(player) node
@@ -22,6 +21,3 @@ func _physics_process(delta: float) -> void:
 	mouse_position = get_global_mouse_position() #keeps track of mouse position
 	#check documentation
 	move_and_slide()
-
-func upd_last_direction(dir: Vector2) -> void: 
-	pass

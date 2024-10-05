@@ -17,7 +17,6 @@ func Process(_delta: float) -> State:
 		return idle
 	
 	player.velocity = (player.direction).normalized() * player_speed #.normalized allows for the diagnoal velocity to be equal to the horizontal and vertical. 
-	player.last_direction = player.direction #we are setting the last_direction here to later use it for dodge. however we will change it to dodge where the mouse is.
 	return null
 
 func Physics(_delta: float) -> State: 
