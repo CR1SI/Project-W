@@ -27,3 +27,9 @@ script = ExtResource("5_suwq0")
 
 [node name="dodge" type="Node" parent="StateMachine"]
 script = ExtResource("6_bx5m2")
+
+[node name="Timer" type="Timer" parent="StateMachine/dodge"]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="StateMachine/dodge/Timer" to="StateMachine/dodge" method="_on_timer_timeout"]

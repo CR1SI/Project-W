@@ -8,22 +8,24 @@ extends State
 @export var dash_speed: float = 1000.0 #this has to always be higher than the player_speed otherwise it will slow down instead. 
 @export var dash_duration: float = 0.3 
 
+var can_dash: bool = true
 
 var timer: float = 0.0 #makeshift timer, you could use a timer node.
 
 
 func Enter() -> void:
-	
-	
-	#checking what direction to dodge while in idle
-	var dash_direction = player.mouse_position-player.position
-	
-	#checking where to dodge based on current walking vector
-	if dash_direction != Vector2.ZERO: 
-		player.velocity = dash_direction.normalized() * dash_speed
-		timer = dash_duration
-	else:
-		pass
+	if can_dash:
+		can_dash = false
+		$Timer.start()
+		#checking what direction to dodge while in idle
+		var dash_direction = player.mouse_position-player.position
+		
+		#checking where to dodge based on current walking vector
+		if dash_direction != Vector2.ZERO: 
+			player.velocity = dash_direction.normalized() * dash_speed
+			timer = dash_duration
+		else:
+			pass
 
 func Exit() -> void:
 	player.velocity = Vector2.ZERO #when we exit we want set velocity to zero otherwise we maintain that speed.
@@ -46,3 +48,7 @@ func Physics(_delta: float) -> State:
 
 func Handle_Input(_event: InputEvent) -> State: 
 	return null
+
+
+func _on_timer_timeout():
+	can_dash = true
