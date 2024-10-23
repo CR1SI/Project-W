@@ -24,6 +24,6 @@ func Physics(_delta: float) -> State:
 	return null
 
 func Handle_Input(_event: InputEvent) -> State:
-	if Input.is_action_pressed("dodge"): 
+	if Input.is_action_pressed("dodge") and dodge.can_dash: 
 		return dodge
 	return null

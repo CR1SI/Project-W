@@ -4,8 +4,6 @@ extends State
 @onready var walk: walk_state = $"../walk"
 @onready var dodge: dodge_state = $"../dodge"
 
-
-
 func Enter() -> void:
 	#we would call idle animation here
 	pass
@@ -25,6 +23,6 @@ func Physics(_delta: float) -> State:
 	return null
 
 func Handle_Input(_event: InputEvent) -> State:
-	if Input.is_action_pressed("dodge"): #when dodge is pressed we dodge.
+	if Input.is_action_pressed("dodge") and dodge.can_dash: #when dodge is pressed we dodge.
 		return dodge 
 	return null

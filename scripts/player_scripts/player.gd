@@ -17,7 +17,7 @@ func _process(_delta: float) -> void:
 	
 	pass
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	mouse_position = get_global_mouse_position() #keeps track of mouse position
 	#check documentation
 	move_and_slide()
