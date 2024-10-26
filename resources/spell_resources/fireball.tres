@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=2 format=3 uid="uid://dbkmquix3hw74"]
+
+[ext_resource type="Script" path="res://scripts/custom_resources/spell_base.gd" id="1_3fqav"]
+
+[resource]
+script = ExtResource("1_3fqav")
+spell_cost = 30
+spell_type = 2
+dmg = 50
+spell_speed = 400
+can_combine = true
