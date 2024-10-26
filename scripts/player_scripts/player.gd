@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
+@export var stats: Stats
+
 var mouse_position = null
 
 @onready var state_machine: StateMachine = $StateMachine
