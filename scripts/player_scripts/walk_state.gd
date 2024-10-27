@@ -6,6 +6,7 @@ extends State
 @onready var melee: melee_state = $"../melee"
 @onready var casting: casting_state = $"../casting"
 
+@onready var spell_manager: SpellManager = $"../../SpellManager"
 
 func Enter() -> void:
 	pass
@@ -26,4 +27,11 @@ func Physics(_delta: float) -> State:
 func Handle_Input(_event: InputEvent) -> State:
 	if Input.is_action_pressed("dodge") and dodge.can_dash: 
 		return dodge
+	
+	if _event is InputEventKey:
+		if Input.is_action_just_pressed("spell1"): 
+			spell_manager.select_spell(spell_manager.SpellType.FIREBALL)
+			print(spell_manager.selected_spell) #to see if it is the correct spell!
+	elif Input.is_action_just_pressed("cast") and spell_manager.selected_spell > -1: 
+		return casting
 	return null
