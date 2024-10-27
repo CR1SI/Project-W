@@ -15,7 +15,7 @@ func Enter() -> void:
 	cast_done = false
 	player.velocity = Vector2.ZERO
 	if spell_manager.selected_spell > -1:
-		await get_tree().create_timer(3.0).timeout
+		await get_tree().create_timer(spell_manager.spell_scenes[spell_manager.selected_spell].instantiate().resource.cast_time).timeout
 		spell_manager.cast_spell(spell_manager.selected_spell)
 		cast_done = true
 		Exit()
@@ -23,6 +23,7 @@ func Enter() -> void:
 		pass
 
 func Exit() -> void:
+	@warning_ignore("int_as_enum_without_cast", "int_as_enum_without_match")
 	spell_manager.selected_spell = -1
 	pass
 
