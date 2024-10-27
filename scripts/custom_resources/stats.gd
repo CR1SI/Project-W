@@ -7,4 +7,6 @@ extends Resource
 @export var starting_mana : int
 @export var max_mana : int
 
+
 @export var speed : float
+@export var acceleration : int

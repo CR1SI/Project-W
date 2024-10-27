@@ -3,8 +3,9 @@ extends State
 
 @onready var idle: idle_state = $"../idle"
 @onready var dodge: dodge_state = $"../dodge"
+@onready var melee: melee_state = $"../melee"
+@onready var casting: casting_state = $"../casting"
 
-@export var acceleration: float = 50.0
 
 func Enter() -> void:
 	pass
@@ -16,7 +17,7 @@ func Process(_delta: float) -> State:
 	if player.direction == Vector2.ZERO: #if we stop walking/no direction we return idle.
 		return idle
 	
-	player.velocity = player.velocity.lerp((player.direction).normalized() * player.stats.speed, acceleration * _delta) #.normalized allows for the diagnoal velocity to be equal to the horizontal and vertical. 
+	player.velocity = player.velocity.lerp((player.direction).normalized() * player.stats.speed, player.stats.acceleration * _delta) #.normalized allows for the diagnoal velocity to be equal to the horizontal and vertical. 
 	return null
 
 func Physics(_delta: float) -> State: 

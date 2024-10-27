@@ -3,6 +3,9 @@ extends State
 
 @onready var walk: walk_state = $"../walk"
 @onready var idle: idle_state = $"../idle"
+@onready var melee: melee_state = $"../melee"
+@onready var casting: casting_state = $"../casting"
+
 
 @export var dash_speed: float = 1000.0 #this has to always be higher than the player_speed otherwise it will slow down instead. 
 @export var dash_duration: float = 0.3 

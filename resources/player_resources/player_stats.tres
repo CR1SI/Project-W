@@ -10,3 +10,4 @@ strength = 10
 starting_mana = 150
 max_mana = 150
 speed = 500.0
+acceleration = 50
