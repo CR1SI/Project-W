@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_3fqav")
 spell_cost = 30
-cast_time = 3.0
+cooldown = 2.0
 spell_type = 2
 dmg = 50
 spell_speed = 400

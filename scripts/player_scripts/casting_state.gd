@@ -12,12 +12,9 @@ var cast_done: bool = false
 
 func Enter() -> void:
 	#play animation without allowing for movement. if player moves, cancel cast.
-	cast_done = false
 	player.velocity = Vector2.ZERO
-	if spell_manager.selected_spell > -1:
-		await get_tree().create_timer(spell_manager.spell_scenes[spell_manager.selected_spell].instantiate().resource.cast_time).timeout
+	if spell_manager.selected_spell > -1 and spell_manager.spell_fired == false:
 		spell_manager.cast_spell(spell_manager.selected_spell)
-		cast_done = true
 		Exit()
 	else:
 		pass
@@ -25,6 +22,7 @@ func Enter() -> void:
 func Exit() -> void:
 	@warning_ignore("int_as_enum_without_cast", "int_as_enum_without_match")
 	spell_manager.selected_spell = -1
+	cast_done = true
 	pass
 
 func Process(_delta: float) -> State:
