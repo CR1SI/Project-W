@@ -1,0 +1,20 @@
+extends Resource
+class_name Spell
+
+enum Elements { 
+	WATER, 
+	WIND,
+	FIRE,
+	EARTH,
+	LIGHT,
+	DARKNESS
+}
+
+@export var spell_cost: int
+@export var cast_time: float
+
+@export var spell_type: Elements
+@export var dmg: int
+@export var spell_speed: int
+
+@export var can_combine: bool

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Stats" load_steps=2 format=3 uid="uid://by3b4x2u2lhpd"]
+
+[ext_resource type="Script" path="res://scripts/custom_resources/stats.gd" id="1_qhvbk"]
+
+[resource]
+script = ExtResource("1_qhvbk")
+max_health = 100
+defense = 5
+strength = 10
+starting_mana = 150
+max_mana = 150
+speed = 500.0
+acceleration = 50
