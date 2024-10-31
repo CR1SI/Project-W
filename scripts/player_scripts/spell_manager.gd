@@ -21,6 +21,9 @@ func cast_spell(spell: SpellType):
 		spell_instance.position = player.position
 		add_child(spell_instance)
 		spell_fired = true
+		if spell_fired and selected_spell > -1:  #cooldown upong spell fired
+			await get_tree().create_timer(spell_scenes[selected_spell].instantiate().resource.cooldown).timeout
+			spell_fired = false
 
 func select_spell(spell_index: int): 
 	match spell_index: 
@@ -28,6 +31,4 @@ func select_spell(spell_index: int):
 			selected_spell = SpellType.FIREBALL
 
 func _process(delta: float) -> void:
-	if spell_fired and selected_spell > -1: 
-		await get_tree().create_timer(spell_scenes[selected_spell].instantiate().resource.cooldown).timeout
-		spell_fired = false
+	pass
