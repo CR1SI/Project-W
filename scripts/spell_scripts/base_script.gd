@@ -6,7 +6,6 @@ extends Area2D
 var direction: Vector2 = Vector2.ZERO
 var spell_fired: bool = false
 
-
 func _ready():
 	add_to_group("spells")
 	pass
