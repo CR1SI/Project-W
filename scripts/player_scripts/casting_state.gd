@@ -14,7 +14,7 @@ func Enter() -> void:
 	#play animation without allowing for movement. if player moves, cancel cast.
 	player.velocity = Vector2.ZERO
 	if spell_manager.selected_spell > -1 and spell_manager.spell_fired == false:
-		spell_manager.cast_spell(spell_manager.selected_spell)
+		spell_manager.cast_spell(spell_manager.selected_spell, player.position)
 		Exit()
 	else:
 		pass

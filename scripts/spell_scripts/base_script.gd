@@ -6,7 +6,9 @@ extends Area2D
 var direction: Vector2 = Vector2.ZERO
 var spell_fired: bool = false
 
+
 func _ready():
+	add_to_group("spells")
 	pass
 
 func _process(delta: float) -> void:
@@ -17,6 +19,5 @@ func fire_spell():
 	direction = (get_global_mouse_position() - global_position).normalized()
 	spell_fired = true
 
-func deal_damage(dmg: int): 
-	#deal dmg stuff here
+func deal_damage(_dmg: int): 	#deal dmg stuff here
 	pass
