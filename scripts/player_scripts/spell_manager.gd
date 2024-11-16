@@ -2,6 +2,9 @@ class_name SpellManager
 extends Node
 
 @onready var player: Player = $".."
+@onready var target_radius: Sprite2D = $"../target_radius"
+
+var is_targeting: bool = false
 
 enum SpellType { 
 	FIREBALL
@@ -21,20 +24,58 @@ func cast_spell(spell: SpellType, position: Vector2):
 	if spell in spell_scenes: 
 		var spell_scene = spell_scenes[spell]
 		var spell_instance = spell_scene.instantiate()
-		spell_instance.position = position
 		
-		add_child(spell_instance)
-		spell_fired = true
-		
+		if spell_instance.resource.requires_targeting: 
+			start_targeting(spell_instance)
+		else:
+			spell_instance.position = position
+			add_child(spell_instance)
+			spell_fired = true
 		#check for cooldown!
-		if spell_fired and selected_spell > -1:  
-			await get_tree().create_timer(spell_scenes[selected_spell].instantiate().resource.cooldown).timeout
-			spell_fired = false
+			if spell_fired and selected_spell > -1:  
+				await get_tree().create_timer(spell_scenes[selected_spell].instantiate().resource.cooldown).timeout
+				spell_fired = false
 
 func select_spell(spell_index: int): 
 	match spell_index: 
 		0: 
 			selected_spell = SpellType.FIREBALL
+	
+	if selected_spell > -1 and spell_scenes[selected_spell].instantiate().resource.requires_targeting:
+		start_targeting(spell_scenes[selected_spell].instantiate())
+
+
+#spell targeting logic
+func start_targeting(spell_instance): 
+	is_targeting = true
+	target_radius.visible = true
+	print("targeting")
+	
+	await wait_for_target(spell_instance)
+
+func wait_for_target(spell_instance): 
+	print ("waiting")
+	while is_targeting: 
+		await get_tree().process_frame
+	var target_position = target_radius.global_position
+	var spawn_position = target_position + Vector2(0,-100)
+	spell_instance.position = spawn_position
+	
+	add_child(spell_instance)
+	spell_instance.fire_spell()
+	spell_fired = true
+	
+	if spell_fired and selected_spell > -1:  
+		await get_tree().create_timer(spell_scenes[selected_spell].instantiate().resource.cooldown).timeout
+		spell_fired = false
+
+func stop_targeting(): 
+	print("targeting stopped")
+	is_targeting = false
+	target_radius.visible = false
+	
+	var target_position = target_radius.global_position
+	cast_spell(selected_spell, target_position)
 
 #func _on_spell_collision(spell_a, spell_b):
 	## Logic to combine spells upon collision

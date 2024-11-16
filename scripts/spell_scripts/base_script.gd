@@ -15,7 +15,10 @@ func _process(delta: float) -> void:
 		position += direction * resource.spell_speed * delta
 
 func fire_spell():
-	direction = (get_global_mouse_position() - global_position).normalized()
+	if resource.requires_targeting:
+		direction = (get_global_mouse_position() - global_position).normalized()
+	else: 
+		direction = (get_global_mouse_position() - position).normalized()
 	spell_fired = true
 
 func deal_damage(_dmg: int): 	#deal dmg stuff here

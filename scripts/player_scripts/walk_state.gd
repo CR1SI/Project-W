@@ -19,6 +19,7 @@ func Process(_delta: float) -> State:
 		return idle
 	
 	player.velocity = player.velocity.lerp((player.direction).normalized() * player.stats.speed, player.stats.acceleration * _delta) #.normalized allows for the diagnoal velocity to be equal to the horizontal and vertical. 
+	player.last_direction = player.direction
 	return null
 
 func Physics(_delta: float) -> State: 

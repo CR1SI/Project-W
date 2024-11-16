@@ -18,3 +18,5 @@ enum Elements {
 @export var spell_speed: int
 
 @export var can_combine: bool
+
+@export var requires_targeting: bool = false

@@ -3,12 +3,16 @@ extends CharacterBody2D
 
 @export var stats: Stats
 
+@onready var target_radius: Sprite2D = $target_radius
+
 var mouse_position = null
 
 @onready var state_machine: StateMachine = $StateMachine
 var direction: Vector2 = Vector2.ZERO
+var last_direction: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
+	target_radius.visible = false
 	state_machine.Initialize(self) #initialized statemachine, with self->(player) node
 	pass
 
@@ -19,5 +23,6 @@ func _process(_delta: float) -> void:
 	pass
 
 func _physics_process(_delta: float) -> void:
-	mouse_position = get_global_mouse_position() #keeps track of mouse position
+	mouse_position = get_global_mouse_position() #keeps track of mouse position 
+	target_radius.global_position = mouse_position
 	move_and_slide() #check documentation
