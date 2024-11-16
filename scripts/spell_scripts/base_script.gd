@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 
 func fire_spell():
 	if resource.requires_targeting:
-		direction = (get_global_mouse_position() - global_position).normalized()
+		direction = Vector2.ZERO
 	else: 
 		direction = (get_global_mouse_position() - position).normalized()
 	spell_fired = true

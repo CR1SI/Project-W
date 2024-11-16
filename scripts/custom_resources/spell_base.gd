@@ -12,6 +12,7 @@ enum Elements {
 
 @export var spell_cost: int
 @export var cooldown: float
+@export var spell_duration: float
 
 @export var spell_type: Elements
 @export var dmg: int
