@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bss4qfewblgss"]
+[gd_scene load_steps=4 format=3 uid="uid://bss4qfewblgss"]
 
 [ext_resource type="Script" path="res://scripts/spell_scripts/fireball.gd" id="1_5bcb8"]
-[ext_resource type="Texture2D" uid="uid://ddgcu4p38cq11" path="res://icon.svg" id="1_u7lcq"]
 [ext_resource type="Resource" uid="uid://dbkmquix3hw74" path="res://resources/spell_resources/fireball.tres" id="2_tx7j8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bkvek"]
@@ -12,12 +11,15 @@ position = Vector2(566.727, 320.472)
 script = ExtResource("1_5bcb8")
 resource = ExtResource("2_tx7j8")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.919281, 4.47616e-06, 1.15514e-06, 1)
-self_modulate = Color(1, 0, 0, 1)
-position = Vector2(-0.726931, 2.52777)
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-0.726929, 2.52777)
 scale = Vector2(0.517758, 0.517758)
-texture = ExtResource("1_u7lcq")
+amount = 100
+emission_shape = 1
+emission_sphere_radius = 48.83
+direction = Vector2(1, 1)
+gravity = Vector2(-10, 10)
+color = Color(1, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.273071, 3.52777)
