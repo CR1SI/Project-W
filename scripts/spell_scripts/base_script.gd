@@ -13,6 +13,9 @@ func _ready():
 func _process(delta: float) -> void:
 	if spell_fired:
 		position += direction * resource.spell_speed * delta
+		await get_tree().create_timer(resource.spell_duration).timeout
+		queue_free()
+	
 
 func fire_spell():
 	if resource.requires_targeting:

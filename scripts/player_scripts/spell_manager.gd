@@ -7,11 +7,13 @@ extends Node
 var is_targeting: bool = false
 
 enum SpellType { 
-	FIREBALL
+	FIREBALL,
+	WATERFALL
 }
 
 var spell_scenes = { 
-	SpellType.FIREBALL : preload("res://scenes/spells/fireball.tscn")
+	SpellType.FIREBALL : preload("res://scenes/spells/fireball.tscn"),
+	SpellType.WATERFALL : preload("res://scenes/spells/water_fall.tscn")
 }
 
 var selected_spell: SpellType = -1
@@ -37,13 +39,15 @@ func select_spell(spell_index: int):
 	match spell_index: 
 		0: 
 			selected_spell = SpellType.FIREBALL
+		1:
+			selected_spell = SpellType.WATERFALL
 	
 	if selected_spell > -1 and spell_scenes[selected_spell].instantiate().resource.requires_targeting:
 		start_targeting(spell_scenes[selected_spell].instantiate())
 
 
 #spell targeting logic
-func start_targeting(spell_instance): 
+func start_targeting(_spell_instance): 
 	is_targeting = true
 	target_radius.visible = true
 	print("targeting")
