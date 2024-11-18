@@ -22,3 +22,5 @@ enum Elements {
 @export var can_combine: bool
 
 @export var requires_targeting: bool = false
+
+var is_on_cooldown: bool = false

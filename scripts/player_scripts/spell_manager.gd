@@ -19,30 +19,34 @@ var spell_scenes = {
 var selected_spell: SpellType = -1
 var spell_fired: bool = false
 
-func _process(_delta: float) -> void:
-	#this is the only cooldown checker we have right now to 
-	#make sure we can visualize something...
-	#as noted, the cooldown for 1 attack is also the cooldown for all 
-	#current attacks as of right now! 
-	#we need to fix that, make sure each attack uses their own cooldown!
-	if spell_fired: 
-		$"../ColorRect".visible = false
-	else: 
-		$"../ColorRect".visible = true
-	pass
+var cooldowns = {} #to track cooldowns!
+
+func _ready(): 
+	for spell in spell_scenes.keys(): 
+		cooldowns[spell] = false
 
 func cast_spell(spell: SpellType, position: Vector2): 
 	if spell in spell_scenes: 
+		#check if on cooldown!
+		if cooldowns[spell]: 
+			print("spell on cooldown")
+			return
+		
 		var spell_scene = spell_scenes[spell]
 		var spell_instance = spell_scene.instantiate()
 		
 		spell_instance.position = position
 		add_child(spell_instance)
-		spell_fired = true
-		#check for cooldown!
-		if spell_fired and selected_spell > -1:  
-			await get_tree().create_timer(spell_scenes[selected_spell].instantiate().resource.cooldown).timeout
-			spell_fired = false
+		
+		start_cooldown(spell)
+
+func start_cooldown(spell: SpellType): 
+	cooldowns[spell] = true
+	var spell_resource = spell_scenes[spell].instantiate().resource
+	var cool_timer = get_tree().create_timer(spell_resource.cooldown)
+	await cool_timer.timeout
+	cooldowns[spell] = false
+	print("cooldown over")
 
 func select_spell(spell_index: int): 
 	match spell_index: 
@@ -59,11 +63,9 @@ func select_spell(spell_index: int):
 func start_targeting(_spell_instance): 
 	is_targeting = true
 	target_radius.visible = true
-	print("targeting")
 
 
 func stop_targeting(): 
-	print("targeting stopped")
 	is_targeting = false
 	target_radius.visible = false
 	var target_position = target_radius.global_position

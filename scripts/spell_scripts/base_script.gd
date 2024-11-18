@@ -18,10 +18,12 @@ func _process(delta: float) -> void:
 	
 
 func fire_spell():
+	
 	if resource.requires_targeting:
 		direction = Vector2.ZERO
 	else: 
 		direction = (get_global_mouse_position() - position).normalized()
+	
 	spell_fired = true
 
 func deal_damage(_dmg: int): 	#deal dmg stuff here
