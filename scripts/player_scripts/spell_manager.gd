@@ -2,7 +2,9 @@ class_name SpellManager
 extends Node
 
 @onready var player: Player = $".."
-@onready var target_radius: Sprite2D = $"../target_radius"
+
+var target = preload("res://textures/spell_textures/target.png") #100x100
+var default_aim = preload("res://textures/spell_textures/aim.png") #16x16
 
 var is_targeting: bool = false
 
@@ -62,14 +64,13 @@ func select_spell(spell_index: int):
 #spell targeting logic
 func start_targeting(_spell_instance): 
 	is_targeting = true
-	target_radius.visible = true
-
+	Input.set_custom_mouse_cursor(target, Input.CURSOR_ARROW, Vector2(50,50))
+	#(resource, shape, offset)
 
 func stop_targeting(): 
 	is_targeting = false
-	target_radius.visible = false
-	var target_position = target_radius.global_position
-	cast_spell(selected_spell, target_position)
+	Input.set_custom_mouse_cursor(default_aim)
+	cast_spell(selected_spell, player.mouse_position)
 
 #func _on_spell_collision(spell_a, spell_b):
 	## Logic to combine spells upon collision

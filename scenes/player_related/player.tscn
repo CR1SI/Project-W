@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dwmqx0jpb8jtp"]
+[gd_scene load_steps=11 format=3 uid="uid://dwmqx0jpb8jtp"]
 
 [ext_resource type="Script" path="res://scripts/player_scripts/player.gd" id="1_gx3we"]
 [ext_resource type="Resource" uid="uid://by3b4x2u2lhpd" path="res://resources/player_resources/player_stats.tres" id="2_auslv"]
 [ext_resource type="Texture2D" uid="uid://ddgcu4p38cq11" path="res://icon.svg" id="2_pdwa1"]
 [ext_resource type="Script" path="res://scripts/player_scripts/state_machine.gd" id="3_cotpx"]
-[ext_resource type="Texture2D" uid="uid://6ae4ceogfpgg" path="res://textures/spell_textures/target.png" id="4_dxbji"]
 [ext_resource type="Script" path="res://scripts/player_scripts/idle_state.gd" id="4_g61g5"]
 [ext_resource type="Script" path="res://scripts/player_scripts/walk_state.gd" id="5_j0oda"]
 [ext_resource type="Script" path="res://scripts/player_scripts/dodge_state.gd" id="6_x8ems"]
@@ -21,12 +20,6 @@ stats = ExtResource("2_auslv")
 position = Vector2(-0.999996, -6)
 scale = Vector2(0.28125, 0.757813)
 texture = ExtResource("2_pdwa1")
-
-[node name="target_radius" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(150, -3)
-scale = Vector2(0.356, 0.356)
-texture = ExtResource("4_dxbji")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_cotpx")

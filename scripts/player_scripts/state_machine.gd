@@ -8,6 +8,7 @@ var current_state: State
 #called when node is first added to scene
 func _ready(): 
 	process_mode = Node.PROCESS_MODE_DISABLED
+	
 	pass
 
 #used to handle state transition and processing
