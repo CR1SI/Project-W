@@ -20,6 +20,15 @@ var selected_spell: SpellType = -1
 var spell_fired: bool = false
 
 func _process(_delta: float) -> void:
+	#this is the only cooldown checker we have right now to 
+	#make sure we can visualize something...
+	#as noted, the cooldown for 1 attack is also the cooldown for all 
+	#current attacks as of right now! 
+	#we need to fix that, make sure each attack uses their own cooldown!
+	if spell_fired: 
+		$"../ColorRect".visible = false
+	else: 
+		$"../ColorRect".visible = true
 	pass
 
 func cast_spell(spell: SpellType, position: Vector2): 

@@ -12,7 +12,6 @@ var direction: Vector2 = Vector2.ZERO
 var last_direction: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
-	target_radius.visible = false
 	state_machine.Initialize(self) #initialized statemachine, with self->(player) node
 	pass
 

@@ -10,6 +10,7 @@ enum Elements {
 	DARKNESS
 }
 
+
 @export var spell_cost: int
 @export var cooldown: float
 @export var spell_duration: float
