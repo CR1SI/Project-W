@@ -28,6 +28,10 @@ var spell_scenes = {
 	SpellType.WATERFALL : preload("res://scenes/spells/water_fall.tscn")
 }
 
+var spell_combinations = { 
+	"Fireball_WaterFall" : SpellCombo.SMOKESCREEN
+}
+
 var selected_spell: SpellType = -1
 var spell_fired: bool = false
 
@@ -97,31 +101,28 @@ func stop_targeting():
 func _on_collided(spell1, spell2): 
 	print("collided spell1:",spell1, "with: ," , spell2)
 	
-	var combination = [spell1.get_instance_id(), spell2.get_instance_id()]
+	var combination = [spell1.get_name(), spell2.get_name()]
 	combination.sort()
-	var key = str(combination)
+	var key = String(combination[0]) + "_" + String(combination[1])
 	
 	if key in processed_combinations: 
 		return
 	
 	processed_combinations[key] = true
-	handle_spell_interaction(spell1,spell2)
+	if key in spell_combinations:
+		combine_spells(spell1,spell2,spell_combinations[key])
+		reset_combinations(key)
 
-func handle_spell_interaction(spell1,spell2): 
-	combine_spells(spell1,spell2)
-
-func combine_spells(spell1,spell2):
+func combine_spells(spell1,spell2, combo: SpellCombo):
 	# await to play combining animation!
-	var one = spell1
-	var two = spell2
-	var twoP = spell2.get_position()
-	spell1.queue_free()
-	spell2.queue_free()
 	
-	if one is Fireball or one is Waterfall and two is Fireball or two is Waterfall: 
-		cast_combo(SpellCombo.SMOKESCREEN, twoP)
+	var position = (spell1.global_position + spell2.global_position) / 2
+	spell1.call_deferred("queue_free")
+	spell2.call_deferred("queue_free")
 	
-	print("combining spells")
+	cast_combo(combo,position)
 
-func reset_combinations(): #if needed
-	processed_combinations.clear()
+
+func reset_combinations(key: String): #if needed
+	if key in processed_combinations:
+		processed_combinations.erase(key)

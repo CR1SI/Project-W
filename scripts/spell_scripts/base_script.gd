@@ -32,5 +32,5 @@ func deal_damage(_dmg: int): 	#deal dmg stuff here
 	pass
 
 func _on_area_entered(area: Area2D):
-	if area is base_script: 
+	if area is base_script and resource.can_combine: 
 		SignalBus.emit_signal("spell_collided", self, area)
