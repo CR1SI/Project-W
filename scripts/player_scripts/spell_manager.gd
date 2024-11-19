@@ -37,6 +37,7 @@ func cast_spell(spell: SpellType, position: Vector2):
 		var spell_scene = spell_scenes[spell]
 		var spell_instance = spell_scene.instantiate()
 		
+		
 		spell_instance.position = position
 		add_child(spell_instance)
 		
@@ -60,7 +61,6 @@ func select_spell(spell_index: int):
 	if selected_spell > -1 and spell_scenes[selected_spell].instantiate().resource.requires_targeting:
 		start_targeting(spell_scenes[selected_spell].instantiate())
 
-
 #spell targeting logic
 func start_targeting(_spell_instance): 
 	is_targeting = true
@@ -71,18 +71,3 @@ func stop_targeting():
 	is_targeting = false
 	Input.set_custom_mouse_cursor(default_aim)
 	cast_spell(selected_spell, player.mouse_position)
-
-#func _on_spell_collision(spell_a, spell_b):
-	## Logic to combine spells upon collision
-	#var combined_spell_type = get_combined_spell_type(spell_a, spell_b)
-	#if combined_spell_type:
-		## Remove the old spells and cast a new combined spell
-		#spell_a.queue_free()
-		#spell_b.queue_free()
-		#cast_spell(combined_spell_type, spell_a.position)
-#
-#func get_combined_spell_type(spell_a, spell_b):
-	## combination rules here and return the new type if any
-	#if spell_a.resource.type == SpellType.FIREBALL and spell_b.resource.type == SpellType.FIREBALL:
-		#return SpellType.FIREBALL # Example, could be a new spell type like FIREBALL_COMBO
-	#return null
