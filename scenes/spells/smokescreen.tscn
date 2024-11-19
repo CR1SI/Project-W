@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bq5d8ew6yqen1"]
+
+[ext_resource type="Script" path="res://scripts/spell_scripts/smokescreen.gd" id="1_vb0a6"]
+[ext_resource type="Resource" uid="uid://crdp7y4f6u6c1" path="res://resources/spell_resources/smokescreen.tres" id="2_5ihgv"]
+[ext_resource type="Texture2D" uid="uid://ddgcu4p38cq11" path="res://icon.svg" id="2_5l31u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g0v5r"]
+radius = 156.115
+
+[node name="smokescreen" type="Area2D"]
+script = ExtResource("1_vb0a6")
+resource = ExtResource("2_5ihgv")
+id = "smokescreen"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.490196, 0.490196, 0.478431, 0.486275)
+position = Vector2(-0.499998, -4.5)
+scale = Vector2(1.67969, 1.83594)
+texture = ExtResource("2_5l31u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g0v5r")

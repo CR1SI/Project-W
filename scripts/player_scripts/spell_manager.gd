@@ -15,6 +15,14 @@ enum SpellType {
 	WATERFALL
 }
 
+enum SpellCombo { 
+	SMOKESCREEN
+}
+
+var combo_scenes = { 
+	SpellCombo.SMOKESCREEN : preload("res://scenes/spells/smokescreen.tscn")
+}
+
 var spell_scenes = { 
 	SpellType.FIREBALL : preload("res://scenes/spells/fireball.tscn"),
 	SpellType.WATERFALL : preload("res://scenes/spells/water_fall.tscn")
@@ -45,6 +53,16 @@ func cast_spell(spell: SpellType, position: Vector2):
 		add_child(spell_instance)
 		
 		start_cooldown(spell)
+
+func cast_combo(combo: SpellCombo, position: Vector2): 
+	if combo in combo_scenes: 
+		
+		var combo_scene = combo_scenes[combo]
+		var spell_instance = combo_scene.instantiate()
+		
+		spell_instance.position = position
+		add_child(spell_instance)
+		
 
 
 func start_cooldown(spell: SpellType): 
@@ -94,8 +112,14 @@ func handle_spell_interaction(spell1,spell2):
 
 func combine_spells(spell1,spell2):
 	# await to play combining animation!
+	var one = spell1
+	var two = spell2
+	var twoP = spell2.get_position()
 	spell1.queue_free()
 	spell2.queue_free()
+	
+	if one is Fireball or one is Waterfall and two is Fireball or two is Waterfall: 
+		cast_combo(SpellCombo.SMOKESCREEN, twoP)
 	
 	print("combining spells")
 
