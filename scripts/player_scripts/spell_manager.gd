@@ -3,6 +3,8 @@ extends Node
 
 @onready var player: Player = $".."
 
+var processed_combinations: Dictionary = {}
+
 var target = preload("res://textures/spell_textures/target.png") #100x100
 var default_aim = preload("res://textures/spell_textures/aim.png") #16x16
 
@@ -23,7 +25,9 @@ var spell_fired: bool = false
 
 var cooldowns = {} #to track cooldowns!
 
-func _ready(): 
+func _ready():
+	SignalBus.connect("spell_collided", Callable(self, "_on_collided"))
+	
 	for spell in spell_scenes.keys(): 
 		cooldowns[spell] = false
 
@@ -71,3 +75,29 @@ func stop_targeting():
 	is_targeting = false
 	Input.set_custom_mouse_cursor(default_aim)
 	cast_spell(selected_spell, player.mouse_position)
+
+func _on_collided(spell1, spell2): 
+	print("collided spell1:",spell1, "with: ," , spell2)
+	
+	var combination = [spell1.get_instance_id(), spell2.get_instance_id()]
+	combination.sort()
+	var key = str(combination)
+	
+	if key in processed_combinations: 
+		return
+	
+	processed_combinations[key] = true
+	handle_spell_interaction(spell1,spell2)
+
+func handle_spell_interaction(spell1,spell2): 
+	combine_spells(spell1,spell2)
+
+func combine_spells(spell1,spell2):
+	# await to play combining animation!
+	spell1.queue_free()
+	spell2.queue_free()
+	
+	print("combining spells")
+
+func reset_combinations(): #if needed
+	processed_combinations.clear()

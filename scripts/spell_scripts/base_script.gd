@@ -2,12 +2,15 @@ class_name base_script
 extends Area2D
 
 @export var resource: Spell
+@export var id: String = ""
 
 var direction: Vector2 = Vector2.ZERO
 var spell_fired: bool = false
 
 func _ready():
 	add_to_group("spells")
+	connect("area_entered", Callable(self, "_on_area_entered"))
+	fire_spell()
 	pass
 
 func _process(delta: float) -> void:
@@ -27,3 +30,7 @@ func fire_spell():
 
 func deal_damage(_dmg: int): 	#deal dmg stuff here
 	pass
+
+func _on_area_entered(area: Area2D):
+	if area is base_script: 
+		SignalBus.emit_signal("spell_collided", self, area)
