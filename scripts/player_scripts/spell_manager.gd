@@ -37,11 +37,11 @@ func cast_spell(spell: SpellType, position: Vector2):
 		var spell_scene = spell_scenes[spell]
 		var spell_instance = spell_scene.instantiate()
 		
-		
 		spell_instance.position = position
 		add_child(spell_instance)
 		
 		start_cooldown(spell)
+
 
 func start_cooldown(spell: SpellType): 
 	cooldowns[spell] = true

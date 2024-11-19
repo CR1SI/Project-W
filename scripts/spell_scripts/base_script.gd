@@ -16,7 +16,6 @@ func _process(delta: float) -> void:
 		await get_tree().create_timer(resource.spell_duration).timeout
 		queue_free()
 
-
 func fire_spell():
 	
 	if resource.requires_targeting:
