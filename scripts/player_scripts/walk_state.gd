@@ -19,6 +19,7 @@ func Process(_delta: float) -> State:
 		return idle
 	
 	player.velocity = player.velocity.lerp((player.direction).normalized() * player.stats.speed, player.stats.acceleration * _delta) #.normalized allows for the diagnoal velocity to be equal to the horizontal and vertical. 
+	player.last_direction = player.direction
 	return null
 
 func Physics(_delta: float) -> State: 
@@ -32,6 +33,12 @@ func Handle_Input(_event: InputEvent) -> State:
 		if Input.is_action_just_pressed("spell1"): 
 			spell_manager.select_spell(spell_manager.SpellType.FIREBALL)
 			print(spell_manager.selected_spell) #to see if it is the correct spell!
+		if Input.is_action_just_pressed("spell2"): 
+			spell_manager.select_spell(spell_manager.SpellType.WATERFALL)
+			print(spell_manager.selected_spell) #to see if it is the correct spell!
 	elif Input.is_action_just_pressed("cast") and spell_manager.selected_spell > -1 and spell_manager.spell_fired == false: 
-		return casting
+		if spell_manager.is_targeting: 
+			spell_manager.stop_targeting()
+		else:
+			return casting
 	return null

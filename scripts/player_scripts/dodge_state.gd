@@ -20,7 +20,7 @@ func Enter() -> void:
 		can_dash = false
 		$Timer.start()
 		#checking what direction to dodge while in idle
-		var dash_direction = player.mouse_position-player.position
+		var dash_direction = player.last_direction
 		
 		#checking where to dodge based on current walking vector
 		if dash_direction != Vector2.ZERO: 
