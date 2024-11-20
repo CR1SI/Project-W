@@ -12,7 +12,8 @@ var is_targeting: bool = false
 
 enum SpellType { 
 	FIREBALL,
-	WATERFALL
+	WATERFALL,
+	CYCLONE
 }
 
 enum SpellCombo { 
@@ -25,11 +26,13 @@ var combo_scenes = {
 
 var spell_scenes = { 
 	SpellType.FIREBALL : preload("res://scenes/spells/fireball.tscn"),
-	SpellType.WATERFALL : preload("res://scenes/spells/water_fall.tscn")
+	SpellType.WATERFALL : preload("res://scenes/spells/water_fall.tscn"),
+	SpellType.CYCLONE : preload("res://scenes/spells/cyclone.tscn")
 }
 
 var spell_combinations = { 
-	"Fireball_WaterFall" : SpellCombo.SMOKESCREEN
+	"Fireball_WaterFall" : SpellCombo.SMOKESCREEN,
+	"WaterFall_Fireball" : SpellCombo.SMOKESCREEN
 }
 
 var selected_spell: SpellType = -1
@@ -83,6 +86,8 @@ func select_spell(spell_index: int):
 			selected_spell = SpellType.FIREBALL
 		1:
 			selected_spell = SpellType.WATERFALL
+		2:
+			selected_spell = SpellType.CYCLONE
 	
 	if selected_spell > -1 and spell_scenes[selected_spell].instantiate().resource.requires_targeting:
 		start_targeting(spell_scenes[selected_spell].instantiate())

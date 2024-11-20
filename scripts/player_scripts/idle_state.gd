@@ -38,6 +38,9 @@ func Handle_Input(_event: InputEvent) -> State:
 		if Input.is_action_just_pressed("spell2"): 
 			spell_manager.select_spell(spell_manager.SpellType.WATERFALL)
 			print(spell_manager.selected_spell) #to see if it is the correct spell!
+		if Input.is_action_just_pressed("spell3"): 
+			spell_manager.select_spell(spell_manager.SpellType.CYCLONE)
+			print(spell_manager.selected_spell) #to see if it is the correct spell!
 	elif Input.is_action_just_pressed("cast") and spell_manager.selected_spell > -1 and spell_manager.spell_fired == false: 
 		if spell_manager.is_targeting: 
 			spell_manager.stop_targeting()
