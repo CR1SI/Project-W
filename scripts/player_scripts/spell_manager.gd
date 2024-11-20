@@ -65,7 +65,7 @@ func cast_combo(combo: SpellCombo, position: Vector2):
 		var spell_instance = combo_scene.instantiate()
 		
 		spell_instance.position = position
-		add_child(spell_instance)
+		call_deferred("add_child",spell_instance)
 		
 
 
