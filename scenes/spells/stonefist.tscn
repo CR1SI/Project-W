@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://b74lkqriwscuv"]
+
+[ext_resource type="Script" path="res://scripts/spell_scripts/stonefist.gd" id="1_y2q5p"]
+[ext_resource type="Resource" uid="uid://n13xyd1b2gm5" path="res://resources/spell_resources/stonefist.tres" id="2_18p33"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x4ull"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 18.71
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -20.43
+radial_accel_max = 77.96
+color = Color(0.631373, 0.360784, 0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gu27k"]
+radius = 41.0122
+
+[node name="stonefist" type="Area2D"]
+position = Vector2(576, 335)
+script = ExtResource("1_y2q5p")
+resource = ExtResource("2_18p33")
+id = "stonefist"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_x4ull")
+lifetime = 2.0
+speed_scale = 2.0
+explosiveness = 0.59
+randomness = 1.0
+trail_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gu27k")

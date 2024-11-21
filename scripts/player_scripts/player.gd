@@ -5,6 +5,8 @@ extends CharacterBody2D
 
 var mouse_position = null
 
+@onready var spell_manager = $SpellManager
+
 @onready var state_machine: StateMachine = $StateMachine
 var direction: Vector2 = Vector2.ZERO
 var last_direction: Vector2 = Vector2.ZERO

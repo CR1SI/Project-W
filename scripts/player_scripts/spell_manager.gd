@@ -13,7 +13,8 @@ var is_targeting: bool = false
 enum SpellType { 
 	FIREBALL,
 	WATERFALL,
-	CYCLONE
+	CYCLONE, 
+	STONEFIST
 }
 
 enum SpellCombo { 
@@ -27,7 +28,8 @@ var combo_scenes = {
 var spell_scenes = { 
 	SpellType.FIREBALL : preload("res://scenes/spells/fireball.tscn"),
 	SpellType.WATERFALL : preload("res://scenes/spells/water_fall.tscn"),
-	SpellType.CYCLONE : preload("res://scenes/spells/cyclone.tscn")
+	SpellType.CYCLONE : preload("res://scenes/spells/cyclone.tscn"),
+	SpellType.STONEFIST : preload("res://scenes/spells/stonefist.tscn")
 }
 
 var spell_combinations = { 
@@ -88,9 +90,13 @@ func select_spell(spell_index: int):
 			selected_spell = SpellType.WATERFALL
 		2:
 			selected_spell = SpellType.CYCLONE
+		3: 
+			selected_spell = SpellType.STONEFIST
 	
 	if selected_spell > -1 and spell_scenes[selected_spell].instantiate().resource.requires_targeting:
 		start_targeting(spell_scenes[selected_spell].instantiate())
+	elif selected_spell > -1 and not spell_scenes[selected_spell].instantiate().resource.requires_targeting:
+		stop_targeting()
 
 #spell targeting logic
 func start_targeting(_spell_instance): 
@@ -101,7 +107,10 @@ func start_targeting(_spell_instance):
 func stop_targeting(): 
 	is_targeting = false
 	Input.set_custom_mouse_cursor(default_aim)
-	cast_spell(selected_spell, player.mouse_position)
+	if spell_scenes[selected_spell].instantiate().resource.requires_targeting:
+		cast_spell(selected_spell, player.mouse_position)
+	else: 
+		return
 
 func _on_collided(spell1, spell2): 
 	print("collided spell1:",spell1, "with: ," , spell2)

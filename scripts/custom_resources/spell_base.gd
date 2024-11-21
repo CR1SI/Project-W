@@ -22,5 +22,6 @@ enum Elements {
 @export var is_combination: bool
 
 @export var requires_targeting: bool = false
+@export var on_player: bool = false
 
 var is_on_cooldown: bool = false

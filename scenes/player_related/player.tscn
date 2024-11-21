@@ -17,7 +17,7 @@ script = ExtResource("1_gx3we")
 stats = ExtResource("2_auslv")
 
 [node name="character" type="Sprite2D" parent="."]
-position = Vector2(-0.999996, -6)
+position = Vector2(-1, -6)
 scale = Vector2(0.28125, 0.757813)
 texture = ExtResource("2_pdwa1")
 
