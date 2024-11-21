@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_v1xjq")
+icon = "res://textures/spell_textures_placeholders/vecteezy_smoke-concept-design_9375129.png"
 spell_cost = 20
 cooldown = 4.0
 spell_duration = 5.0

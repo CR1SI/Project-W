@@ -21,7 +21,7 @@ SignalBus="*res://scripts/autoloads/signalBus.gd"
 [display]
 
 window/stretch/mode="canvas_items"
-mouse_cursor/custom_image="res://textures/spell_textures/aim.png"
+mouse_cursor/custom_image="res://textures/spell_textures_placeholders/aim.png"
 mouse_cursor/custom_image_hotspot=Vector2(8, 8)
 
 [global_group]

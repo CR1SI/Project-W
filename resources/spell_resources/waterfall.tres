@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_p5wby")
+icon = "res://textures/spell_textures_placeholders/png-clipart-water-filter-glass-drinking-water-mineral-water-drink-water-food-tumbler-thumbnail.png"
 spell_cost = 40
 cooldown = 7.0
 spell_duration = 4.0
@@ -11,4 +12,5 @@ spell_type = 0
 dmg = 15
 spell_speed = 0
 can_combine = true
+is_combination = false
 requires_targeting = true

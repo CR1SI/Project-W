@@ -5,8 +5,8 @@ extends Node
 
 var processed_combinations: Dictionary = {}
 
-var target = preload("res://textures/spell_textures/target.png") #100x100
-var default_aim = preload("res://textures/spell_textures/aim.png") #16x16
+var target = preload("res://textures/spell_textures_placeholders/target.png") #100x100
+var default_aim = preload("res://textures/spell_textures_placeholders/aim.png") #16x16
 
 var is_targeting: bool = false
 

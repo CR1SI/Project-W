@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_3fqav")
+icon = "res://textures/spell_textures_placeholders/fireball-png-pic-25.png"
 spell_cost = 30
 cooldown = 5.0
 spell_duration = 5.0
@@ -11,4 +12,5 @@ spell_type = 2
 dmg = 50
 spell_speed = 400
 can_combine = true
+is_combination = false
 requires_targeting = false
