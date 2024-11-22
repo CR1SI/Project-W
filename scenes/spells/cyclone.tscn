@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://540ylbsrlmak"]
+[gd_scene load_steps=12 format=3 uid="uid://540ylbsrlmak"]
 
 [ext_resource type="Script" path="res://scripts/spell_scripts/cyclone.gd" id="1_gilg7"]
 [ext_resource type="Resource" uid="uid://by6xx0a5e4j3r" path="res://resources/spell_resources/cyclone.tres" id="2_cq32r"]
+[ext_resource type="Texture2D" uid="uid://kjjqorp11ja3" path="res://textures/spell_textures_placeholders/618.jpg" id="3_pwha1"]
 
 [sub_resource type="Gradient" id="Gradient_hf0ek"]
 offsets = PackedFloat32Array(0.155738, 0.532787, 1)
@@ -53,6 +54,7 @@ position = Vector2(363, 231)
 script = ExtResource("1_gilg7")
 resource = ExtResource("2_cq32r")
 id = "cyclone"
+icon = ExtResource("3_pwha1")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 amount = 5000
