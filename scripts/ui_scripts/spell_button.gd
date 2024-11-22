@@ -5,7 +5,7 @@ extends TextureButton
 @onready var timer = $Timer
 @onready var progress_bar = $TextureProgressBar
 @onready var key = $key
-
+@onready var spell_holder: Control = $"../.."
 
 var change_key = "":
 	set(value): 
@@ -18,6 +18,10 @@ var change_key = "":
 		
 		shortcut.events = [input_key]
 
+var input_spell = 0:
+	set(value):
+		input_spell = value
+
 func _ready(): 
 	change_key = "1"
 	progress_bar.max_value = timer.wait_time
@@ -27,15 +31,24 @@ func _ready():
 func _process(_delta): 
 	time.text = "%3.1f" % timer.time_left
 	progress_bar.value = timer.time_left
+	
 
 
 func _on_pressed():
-	timer.start()
+	SignalBus.connect("spell_fired", Callable(self, "start_cooldown"))
+	spell_holder.spell_manager.select_spell(input_spell)
 	disabled = true
-	set_process(true)
-
 
 func _on_timer_timeout():
 	disabled = false
 	time.text = ""
 	set_process(false)
+
+
+func start_cooldown(cooldown):
+	SignalBus.disconnect("spell_fired", Callable(self, "start_cooldown"))
+	timer.wait_time = cooldown
+	progress_bar.max_value = timer.wait_time
+	timer.start()
+	disabled = true
+	set_process(true)

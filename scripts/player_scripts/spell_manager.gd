@@ -3,6 +3,7 @@ extends Node
 
 @onready var player: Player = $".."
 
+
 var processed_combinations: Dictionary = {}
 
 var target = preload("res://textures/spell_textures_placeholders/target.png") #100x100
@@ -77,6 +78,7 @@ func cast_combo(combo: SpellCombo, position: Vector2):
 func start_cooldown(spell: SpellType): 
 	cooldowns[spell] = true
 	var spell_resource = spell_scenes[spell].instantiate().resource
+	SignalBus.emit_signal("spell_fired", spell_resource.cooldown)
 	var cool_timer = get_tree().create_timer(spell_resource.cooldown)
 	await cool_timer.timeout
 	cooldowns[spell] = false
@@ -84,13 +86,13 @@ func start_cooldown(spell: SpellType):
 
 func select_spell(spell_index: int): 
 	match spell_index: 
-		0: 
+		1: 
 			selected_spell = SpellType.FIREBALL
-		1:
-			selected_spell = SpellType.WATERFALL
 		2:
+			selected_spell = SpellType.WATERFALL
+		3:
 			selected_spell = SpellType.CYCLONE
-		3: 
+		4: 
 			selected_spell = SpellType.STONEFIST
 	
 	if selected_spell > -1 and spell_scenes[selected_spell].instantiate().resource.requires_targeting:
