@@ -4,13 +4,13 @@
 
 [resource]
 script = ExtResource("1_v1xjq")
-icon = "res://textures/spell_textures_placeholders/vecteezy_smoke-concept-design_9375129.png"
 spell_cost = 20
 cooldown = 4.0
 spell_duration = 5.0
 spell_type = 1
 dmg = 10
-spell_speed = 60
+spell_speed = 100
 can_combine = true
 is_combination = false
 requires_targeting = false
+on_player = false

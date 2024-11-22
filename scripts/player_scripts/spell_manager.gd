@@ -11,7 +11,7 @@ var default_aim = preload("res://textures/spell_textures_placeholders/aim.png") 
 
 var is_targeting: bool = false
 
-enum SpellType { 
+enum SpellType {
 	FIREBALL,
 	WATERFALL,
 	CYCLONE, 
@@ -42,6 +42,19 @@ var selected_spell: SpellType = -1
 var spell_fired: bool = false
 
 var cooldowns = {} #to track cooldowns!
+
+var active_spells: Array = []
+func populate_actives(): 
+	active_spells.clear()
+	for s in range(SpellType.size()): 
+		if spell_scenes.has(s): 
+			print("has")
+			var scene = spell_scenes[s]
+			if scene: 
+				print("scene")
+				var instance = scene.instantiate()
+				active_spells.append(instance)
+
 
 func _ready():
 	SignalBus.connect("spell_collided", Callable(self, "_on_collided"))
