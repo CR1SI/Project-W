@@ -34,6 +34,5 @@ func Handle_Input(_event: InputEvent) -> State:
 			spell_manager.stop_targeting()
 		else:
 			return casting
-		
 	
 	return null

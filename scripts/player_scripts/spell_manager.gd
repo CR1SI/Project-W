@@ -38,6 +38,13 @@ var spell_combinations = {
 	"WaterFall_Fireball" : SpellCombo.SMOKESCREEN
 }
 
+var active_bar = {
+	0 : spell_scenes[SpellType.CYCLONE],
+	1 : spell_scenes[SpellType.FIREBALL],
+	2 : spell_scenes[SpellType.WATERFALL],
+	3 : spell_scenes[SpellType.STONEFIST]
+}
+
 var selected_spell: SpellType = -1
 var spell_fired: bool = false
 
@@ -46,12 +53,10 @@ var cooldowns = {} #to track cooldowns!
 var active_spells: Array = []
 func populate_actives(): 
 	active_spells.clear()
-	for s in range(SpellType.size()): 
-		if spell_scenes.has(s): 
-			print("has")
-			var scene = spell_scenes[s]
+	for s in range(active_bar.size()): 
+		if active_bar.has(s): 
+			var scene = active_bar[s]
 			if scene: 
-				print("scene")
 				var instance = scene.instantiate()
 				active_spells.append(instance)
 
@@ -63,13 +68,13 @@ func _ready():
 		cooldowns[spell] = false
 
 func cast_spell(spell: SpellType, position: Vector2): 
-	if spell in spell_scenes: 
+	if spell in active_bar: 
 		#check if on cooldown!
 		if cooldowns[spell]: 
 			print("spell on cooldown")
 			return
 		
-		var spell_scene = spell_scenes[spell]
+		var spell_scene = active_bar[spell]
 		var spell_instance = spell_scene.instantiate()
 		
 		spell_instance.position = position
@@ -100,17 +105,17 @@ func start_cooldown(spell: SpellType):
 func select_spell(spell_index: int): 
 	match spell_index: 
 		1: 
-			selected_spell = SpellType.FIREBALL
+			selected_spell = active_bar.find_key(active_bar[0])
 		2:
-			selected_spell = SpellType.WATERFALL
+			selected_spell = active_bar.find_key(active_bar[1])
 		3:
-			selected_spell = SpellType.CYCLONE
+			selected_spell = active_bar.find_key(active_bar[2])
 		4: 
-			selected_spell = SpellType.STONEFIST
+			selected_spell = active_bar.find_key(active_bar[3])
 	
-	if selected_spell > -1 and spell_scenes[selected_spell].instantiate().resource.requires_targeting:
-		start_targeting(spell_scenes[selected_spell].instantiate())
-	elif selected_spell > -1 and not spell_scenes[selected_spell].instantiate().resource.requires_targeting:
+	if selected_spell > -1 and active_bar[selected_spell].instantiate().resource.requires_targeting:
+		start_targeting(active_bar[selected_spell].instantiate())
+	elif selected_spell > -1 and not active_bar[selected_spell].instantiate().resource.requires_targeting:
 		stop_targeting()
 
 #spell targeting logic
@@ -122,7 +127,7 @@ func start_targeting(_spell_instance):
 func stop_targeting(): 
 	is_targeting = false
 	Input.set_custom_mouse_cursor(default_aim)
-	if spell_scenes[selected_spell].instantiate().resource.requires_targeting:
+	if active_bar[selected_spell].instantiate().resource.requires_targeting:
 		cast_spell(selected_spell, player.mouse_position)
 	else: 
 		return
