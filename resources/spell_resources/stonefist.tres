@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=2 format=3 uid="uid://n13xyd1b2gm5"]
+
+[ext_resource type="Script" path="res://scripts/custom_resources/spell_base.gd" id="1_fe5pv"]
+
+[resource]
+script = ExtResource("1_fe5pv")
+spell_cost = 40
+cooldown = 3.0
+spell_duration = 1.0
+spell_type = 3
+dmg = 25
+spell_speed = 0
+can_combine = true
+is_combination = false
+requires_targeting = false
+on_player = true

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xjpoqfc4m6o6"
-path="res://.godot/imported/vecteezy_smoke-concept-design_9375129.png-2e28aeb3b143ecb6518e7cabaf21e4d3.ctex"
+uid="uid://drrk7ywydo0o"
+path="res://.godot/imported/pngtree-close-up-of-big-stone-isolated-big-rock-png-image_10211347.png-af1fa8b395d64809e8f68faa3edeaefd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/spell_textures/vecteezy_smoke-concept-design_9375129.png"
-dest_files=["res://.godot/imported/vecteezy_smoke-concept-design_9375129.png-2e28aeb3b143ecb6518e7cabaf21e4d3.ctex"]
+source_file="res://textures/spell_textures_placeholders/pngtree-close-up-of-big-stone-isolated-big-rock-png-image_10211347.png"
+dest_files=["res://.godot/imported/pngtree-close-up-of-big-stone-isolated-big-rock-png-image_10211347.png-af1fa8b395d64809e8f68faa3edeaefd.ctex"]
 
 [params]
 

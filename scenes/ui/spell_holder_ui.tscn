@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://xhsfqx6rmoy2"]
+
+[ext_resource type="Script" path="res://scripts/ui_scripts/h_box_container.gd" id="1_ymi5a"]
+[ext_resource type="PackedScene" uid="uid://bs45opge0mw0p" path="res://scenes/ui/spell_button.tscn" id="2_ls2vo"]
+
+[node name="spell_holder_ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_ymi5a")
+
+[node name="SpellButton" parent="HBoxContainer" instance=ExtResource("2_ls2vo")]
+layout_mode = 2
+
+[node name="SpellButton2" parent="HBoxContainer" instance=ExtResource("2_ls2vo")]
+layout_mode = 2
+
+[node name="SpellButton3" parent="HBoxContainer" instance=ExtResource("2_ls2vo")]
+layout_mode = 2
+
+[node name="SpellButton4" parent="HBoxContainer" instance=ExtResource("2_ls2vo")]
+layout_mode = 2

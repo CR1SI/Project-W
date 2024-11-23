@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dwmqx0jpb8jtp"]
+[gd_scene load_steps=11 format=3 uid="uid://dwmqx0jpb8jtp"]
 
 [ext_resource type="Script" path="res://scripts/player_scripts/player.gd" id="1_gx3we"]
 [ext_resource type="Resource" uid="uid://by3b4x2u2lhpd" path="res://resources/player_resources/player_stats.tres" id="2_auslv"]
@@ -10,8 +10,6 @@
 [ext_resource type="Script" path="res://scripts/player_scripts/melee_state.gd" id="8_4do3f"]
 [ext_resource type="Script" path="res://scripts/player_scripts/casting_state.gd" id="9_g4w6t"]
 [ext_resource type="Script" path="res://scripts/player_scripts/spell_manager.gd" id="10_ccjsy"]
-[ext_resource type="PackedScene" uid="uid://xhsfqx6rmoy2" path="res://scenes/ui/spell_holder_ui.tscn" id="11_0088b"]
-[ext_resource type="PackedScene" uid="uid://b235li67dsqed" path="res://scenes/ui/ui.tscn" id="11_od58c"]
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(472, 246)
@@ -19,7 +17,7 @@ script = ExtResource("1_gx3we")
 stats = ExtResource("2_auslv")
 
 [node name="character" type="Sprite2D" parent="."]
-position = Vector2(-1, -6)
+position = Vector2(-0.999996, -6)
 scale = Vector2(0.28125, 0.757813)
 texture = ExtResource("2_pdwa1")
 
@@ -47,15 +45,5 @@ script = ExtResource("9_g4w6t")
 
 [node name="SpellManager" type="Node" parent="."]
 script = ExtResource("10_ccjsy")
-
-[node name="UI" parent="." instance=ExtResource("11_od58c")]
-
-[node name="spell_holder_ui" parent="UI" instance=ExtResource("11_0088b")]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-grow_vertical = 0
-size_flags_vertical = 8
 
 [connection signal="timeout" from="StateMachine/dodge/Timer" to="StateMachine/dodge" method="_on_timer_timeout"]

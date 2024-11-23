@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqo5d3sgqvwnf"]
+[gd_scene load_steps=5 format=3 uid="uid://cqo5d3sgqvwnf"]
 
 [ext_resource type="Script" path="res://scripts/spell_scripts/water_fall.gd" id="1_iwlgq"]
 [ext_resource type="Resource" uid="uid://bcg6x8wwpor3" path="res://resources/spell_resources/waterfall.tres" id="2_q37r3"]
+[ext_resource type="Texture2D" uid="uid://dfiq53jlanf1l" path="res://textures/spell_textures_placeholders/2683624.jpg" id="3_1bk0a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_875v8"]
 radius = 50.04
@@ -11,6 +12,7 @@ position = Vector2(472, 288)
 script = ExtResource("1_iwlgq")
 resource = ExtResource("2_q37r3")
 id = "waterfall"
+icon = ExtResource("3_1bk0a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_875v8")

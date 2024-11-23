@@ -3,17 +3,19 @@ extends Node
 
 @onready var player: Player = $".."
 
+
 var processed_combinations: Dictionary = {}
 
-var target = preload("res://textures/spell_textures/target.png") #100x100
-var default_aim = preload("res://textures/spell_textures/aim.png") #16x16
+var target = preload("res://textures/spell_textures_placeholders/target.png") #100x100
+var default_aim = preload("res://textures/spell_textures_placeholders/aim.png") #16x16
 
 var is_targeting: bool = false
 
-enum SpellType { 
+enum SpellType {
 	FIREBALL,
 	WATERFALL,
-	CYCLONE
+	CYCLONE, 
+	STONEFIST
 }
 
 enum SpellCombo { 
@@ -27,7 +29,8 @@ var combo_scenes = {
 var spell_scenes = { 
 	SpellType.FIREBALL : preload("res://scenes/spells/fireball.tscn"),
 	SpellType.WATERFALL : preload("res://scenes/spells/water_fall.tscn"),
-	SpellType.CYCLONE : preload("res://scenes/spells/cyclone.tscn")
+	SpellType.CYCLONE : preload("res://scenes/spells/cyclone.tscn"),
+	SpellType.STONEFIST : preload("res://scenes/spells/stonefist.tscn")
 }
 
 var spell_combinations = { 
@@ -39,6 +42,19 @@ var selected_spell: SpellType = -1
 var spell_fired: bool = false
 
 var cooldowns = {} #to track cooldowns!
+
+var active_spells: Array = []
+func populate_actives(): 
+	active_spells.clear()
+	for s in range(SpellType.size()): 
+		if spell_scenes.has(s): 
+			print("has")
+			var scene = spell_scenes[s]
+			if scene: 
+				print("scene")
+				var instance = scene.instantiate()
+				active_spells.append(instance)
+
 
 func _ready():
 	SignalBus.connect("spell_collided", Callable(self, "_on_collided"))
@@ -75,6 +91,7 @@ func cast_combo(combo: SpellCombo, position: Vector2):
 func start_cooldown(spell: SpellType): 
 	cooldowns[spell] = true
 	var spell_resource = spell_scenes[spell].instantiate().resource
+	SignalBus.emit_signal("spell_fired", spell_resource.cooldown)
 	var cool_timer = get_tree().create_timer(spell_resource.cooldown)
 	await cool_timer.timeout
 	cooldowns[spell] = false
@@ -82,15 +99,19 @@ func start_cooldown(spell: SpellType):
 
 func select_spell(spell_index: int): 
 	match spell_index: 
-		0: 
+		1: 
 			selected_spell = SpellType.FIREBALL
-		1:
-			selected_spell = SpellType.WATERFALL
 		2:
+			selected_spell = SpellType.WATERFALL
+		3:
 			selected_spell = SpellType.CYCLONE
+		4: 
+			selected_spell = SpellType.STONEFIST
 	
 	if selected_spell > -1 and spell_scenes[selected_spell].instantiate().resource.requires_targeting:
 		start_targeting(spell_scenes[selected_spell].instantiate())
+	elif selected_spell > -1 and not spell_scenes[selected_spell].instantiate().resource.requires_targeting:
+		stop_targeting()
 
 #spell targeting logic
 func start_targeting(_spell_instance): 
@@ -101,7 +122,10 @@ func start_targeting(_spell_instance):
 func stop_targeting(): 
 	is_targeting = false
 	Input.set_custom_mouse_cursor(default_aim)
-	cast_spell(selected_spell, player.mouse_position)
+	if spell_scenes[selected_spell].instantiate().resource.requires_targeting:
+		cast_spell(selected_spell, player.mouse_position)
+	else: 
+		return
 
 func _on_collided(spell1, spell2): 
 	print("collided spell1:",spell1, "with: ," , spell2)
