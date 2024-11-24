@@ -60,7 +60,6 @@ func populate_actives():
 				var instance = scene.instantiate()
 				active_spells.append(instance)
 
-
 func _ready():
 	SignalBus.connect("spell_collided", Callable(self, "_on_collided"))
 	
@@ -95,7 +94,7 @@ func cast_combo(combo: SpellCombo, position: Vector2):
 
 func start_cooldown(spell: SpellType): 
 	cooldowns[spell] = true
-	var spell_resource = spell_scenes[spell].instantiate().resource
+	var spell_resource = active_bar[spell].instantiate().resource
 	SignalBus.emit_signal("spell_fired", spell_resource.cooldown)
 	var cool_timer = get_tree().create_timer(spell_resource.cooldown)
 	await cool_timer.timeout
@@ -149,13 +148,11 @@ func _on_collided(spell1, spell2):
 
 func combine_spells(spell1,spell2, combo: SpellCombo):
 	# await to play combining animation!
-	
 	var position = (spell1.global_position + spell2.global_position) / 2
 	spell1.call_deferred("queue_free")
 	spell2.call_deferred("queue_free")
 	
 	cast_combo(combo,position)
-
 
 func reset_combinations(key: String): #if needed
 	if key in processed_combinations:

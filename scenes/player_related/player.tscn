@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://xhsfqx6rmoy2" path="res://scenes/ui/spell_holder_ui.tscn" id="11_0088b"]
 [ext_resource type="PackedScene" uid="uid://b235li67dsqed" path="res://scenes/ui/ui.tscn" id="11_od58c"]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(472, 246)
 script = ExtResource("1_gx3we")
 stats = ExtResource("2_auslv")

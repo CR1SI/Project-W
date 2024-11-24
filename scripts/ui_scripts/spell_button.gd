@@ -33,7 +33,6 @@ func _process(_delta):
 	progress_bar.value = timer.time_left
 	
 
-
 func _on_pressed():
 	SignalBus.connect("spell_fired", Callable(self, "start_cooldown"))
 	h.spell_manager.select_spell(input_spell)
