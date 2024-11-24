@@ -27,7 +27,7 @@ scale = Vector2(0.178, 0.178)
 step = 0.05
 fill_mode = 5
 texture_progress = ExtResource("2_pky25")
-tint_progress = Color(1, 1, 1, 0.376471)
+tint_progress = Color(1, 1, 1, 0.501961)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
