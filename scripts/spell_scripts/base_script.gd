@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 
 func fire_spell():
 	
-	if resource.requires_targeting:
+	if resource.requires_targeting or resource.on_player:
 		direction = Vector2.ZERO
 	else: 
 		direction = (get_global_mouse_position() - position).normalized()

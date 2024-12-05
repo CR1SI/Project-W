@@ -15,7 +15,9 @@ enum SpellType {
 	FIREBALL,
 	WATERFALL,
 	CYCLONE, 
-	STONEFIST
+	STONEFIST, 
+	LIGHTBEAM,
+	SHADOWBOLT
 }
 
 enum SpellCombo { 
@@ -30,7 +32,9 @@ var spell_scenes = {
 	SpellType.FIREBALL : preload("res://scenes/spells/fireball.tscn"),
 	SpellType.WATERFALL : preload("res://scenes/spells/water_fall.tscn"),
 	SpellType.CYCLONE : preload("res://scenes/spells/cyclone.tscn"),
-	SpellType.STONEFIST : preload("res://scenes/spells/stonefist.tscn")
+	SpellType.STONEFIST : preload("res://scenes/spells/stonefist.tscn"),
+	SpellType.LIGHTBEAM : preload("res://scenes/spells/lightbeam.tscn"),
+	SpellType.SHADOWBOLT : preload("res://scenes/spells/shadowbolt.tscn")
 }
 
 var spell_combinations = { 
@@ -42,7 +46,7 @@ var active_bar = {
 	0 : spell_scenes[SpellType.CYCLONE],
 	1 : spell_scenes[SpellType.FIREBALL],
 	2 : spell_scenes[SpellType.WATERFALL],
-	3 : spell_scenes[SpellType.STONEFIST]
+	3 : spell_scenes[SpellType.SHADOWBOLT]
 }
 
 var selected_spell: SpellType = -1
@@ -125,7 +129,7 @@ func start_targeting(_spell_instance):
 
 func stop_targeting(): 
 	is_targeting = false
-	Input.set_custom_mouse_cursor(default_aim)
+	Input.set_custom_mouse_cursor(default_aim, Input.CURSOR_ARROW, Vector2(8,8))
 	if active_bar[selected_spell].instantiate().resource.requires_targeting:
 		cast_spell(selected_spell, player.mouse_position)
 	else: 
