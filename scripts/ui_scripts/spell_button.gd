@@ -35,6 +35,7 @@ func _process(_delta):
 
 func _on_pressed():
 	SignalBus.connect("spell_fired", Callable(self, "start_cooldown"))
+	print(input_spell)
 	h.spell_manager.select_spell(input_spell)
 	disabled = true
 
