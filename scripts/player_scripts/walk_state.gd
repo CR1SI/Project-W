@@ -10,10 +10,7 @@ extends State
 @onready var animation: AnimationPlayer = $"../../AnimationPlayer"
 
 func Enter() -> void:
-	if Input.is_action_just_pressed("right"): 
-		animation.play("walk_right")
-	elif Input.is_action_just_pressed("left"): 
-		animation.play("walk_left")
+	player.UpdateAnimation("walk")
 	pass
 
 func Exit() -> void:
@@ -25,6 +22,9 @@ func Process(_delta: float) -> State:
 	
 	player.velocity = player.velocity.lerp((player.direction).normalized() * player.stats.speed, player.stats.acceleration * _delta) #.normalized allows for the diagnoal velocity to be equal to the horizontal and vertical. 
 	player.last_direction = player.direction
+	
+	if player.setDirection():
+		player.UpdateAnimation("walk")
 	return null
 
 func Physics(_delta: float) -> State: 

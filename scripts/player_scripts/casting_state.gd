@@ -11,6 +11,7 @@ extends State
 var cast_done: bool = false
 
 func Enter() -> void:
+	player.UpdateAnimation("casting")
 	#play animation without allowing for movement. if player moves, cancel cast.
 	player.velocity = Vector2.ZERO
 	
@@ -33,6 +34,9 @@ func Exit() -> void:
 func Process(_delta: float) -> State:
 	if cast_done: 
 		return idle
+	
+	if player.setDirection():
+		player.UpdateAnimation("casting")
 	return self
 
 func Physics(_delta: float) -> State: 

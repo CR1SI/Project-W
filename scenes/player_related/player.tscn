@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dwmqx0jpb8jtp"]
+[gd_scene load_steps=20 format=3 uid="uid://dwmqx0jpb8jtp"]
 
 [ext_resource type="Script" path="res://scripts/player_scripts/player.gd" id="1_gx3we"]
 [ext_resource type="Resource" uid="uid://by3b4x2u2lhpd" path="res://resources/player_resources/player_stats.tres" id="2_auslv"]
@@ -12,35 +12,6 @@
 [ext_resource type="Script" path="res://scripts/player_scripts/spell_manager.gd" id="10_ccjsy"]
 [ext_resource type="PackedScene" uid="uid://xhsfqx6rmoy2" path="res://scenes/ui/spell_holder_ui.tscn" id="11_0088b"]
 [ext_resource type="PackedScene" uid="uid://b235li67dsqed" path="res://scenes/ui/ui.tscn" id="11_od58c"]
-
-[sub_resource type="Animation" id="Animation_n2p20"]
-resource_name = "walk_right"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_fo8gx"]
 length = 0.001
@@ -67,6 +38,23 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_41tof"]
+resource_name = "idle"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
 }
 
 [sub_resource type="Animation" id="Animation_qlej1"]
@@ -98,9 +86,9 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_41tof"]
-resource_name = "idle"
-length = 0.1
+[sub_resource type="Animation" id="Animation_n2p20"]
+resource_name = "walk_right"
+length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -109,18 +97,38 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [2]
+"values": [true]
 }
+
+[sub_resource type="Animation" id="Animation_c51ni"]
+resource_name = "walk_up"
+
+[sub_resource type="Animation" id="Animation_46gwl"]
+resource_name = "walk_down"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_phel6"]
 _data = {
 "RESET": SubResource("Animation_fo8gx"),
 "idle": SubResource("Animation_41tof"),
+"walk_down": SubResource("Animation_46gwl"),
 "walk_left": SubResource("Animation_qlej1"),
-"walk_right": SubResource("Animation_n2p20")
+"walk_right": SubResource("Animation_n2p20"),
+"walk_up": SubResource("Animation_c51ni")
 }
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]

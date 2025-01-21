@@ -11,7 +11,7 @@ extends State
 
 
 func Enter() -> void:
-	animation_player.play("idle")
+	player.UpdateAnimation("idle")
 	pass
 
 func Exit() -> void: 
@@ -23,6 +23,8 @@ func Process(_delta: float) -> State:
 	
 	player.velocity = Vector2.ZERO #constantly set velocity to zero because we are not moving
 	
+	if player.setDirection():
+		player.UpdateAnimation("idle")
 	return null
 
 func Physics(_delta: float) -> State: 

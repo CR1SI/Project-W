@@ -16,6 +16,7 @@ var timer: float = 0.0 #makeshift timer, you could use a timer node.
 
 
 func Enter() -> void:
+	player.UpdateAnimation("dodge")
 	if can_dash:
 		can_dash = false
 		$Timer.start()
@@ -43,6 +44,8 @@ func Process(_delta: float) -> State:
 		else: 
 			return idle
 	
+	if player.setDirection():
+		player.UpdateAnimation("dodge")
 	return null
 
 func Physics(_delta: float) -> State: 
