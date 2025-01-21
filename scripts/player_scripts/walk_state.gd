@@ -7,8 +7,13 @@ extends State
 @onready var casting: casting_state = $"../casting"
 
 @onready var spell_manager: SpellManager = $"../../SpellManager"
+@onready var animation: AnimationPlayer = $"../../AnimationPlayer"
 
 func Enter() -> void:
+	if Input.is_action_just_pressed("right"): 
+		animation.play("walk_right")
+	elif Input.is_action_just_pressed("left"): 
+		animation.play("walk_left")
 	pass
 
 func Exit() -> void:

@@ -7,10 +7,11 @@ extends State
 @onready var casting: casting_state = $"../casting"
 
 @onready var spell_manager: SpellManager = $"../../SpellManager"
+@onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
 
 
 func Enter() -> void:
-	#we would call idle animation here
+	animation_player.play("idle")
 	pass
 
 func Exit() -> void: 
