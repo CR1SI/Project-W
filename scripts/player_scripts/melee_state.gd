@@ -7,7 +7,7 @@ extends State
 @onready var melee: melee_state = $"../melee"
 
 func Enter() -> void:
-	player.UpdateAnimation("melee") 
+	#player.UpdateAnimation("melee") 
 	pass
 
 func Exit() -> void: 

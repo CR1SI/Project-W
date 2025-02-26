@@ -49,7 +49,7 @@ var active_bar = {
 	3 : spell_scenes[SpellType.SHADOWBOLT]
 }
 
-var selected_spell: SpellType
+var selected_spell: SpellType = -1
 var spell_fired: bool = false
 
 var cooldowns = {} #to track cooldowns!
