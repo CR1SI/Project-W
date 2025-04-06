@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://xhsfqx6rmoy2"]
 
-[ext_resource type="Script" path="res://scripts/ui_scripts/h_box_container.gd" id="1_ymi5a"]
+[ext_resource type="Script" uid="uid://bjtxrvxn5nqq1" path="res://scripts/ui_scripts/h_box_container.gd" id="1_ymi5a"]
 [ext_resource type="PackedScene" uid="uid://bs45opge0mw0p" path="res://scenes/ui/spell_button.tscn" id="2_ls2vo"]
 
 [node name="spell_holder_ui" type="Control"]

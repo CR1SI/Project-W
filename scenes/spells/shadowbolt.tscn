@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bw082rxwkm6dm"]
 
-[ext_resource type="Script" path="res://scripts/spell_scripts/shadowbolt.gd" id="1_7wjri"]
+[ext_resource type="Script" uid="uid://dqgfspvnr2t7q" path="res://scripts/spell_scripts/shadowbolt.gd" id="1_7wjri"]
 [ext_resource type="Resource" uid="uid://dcggdfm5246xj" path="res://resources/spell_resources/shadowbolt.tres" id="2_aqmhr"]
 [ext_resource type="Texture2D" uid="uid://4apeo5pbrn8" path="res://textures/spell_textures_placeholders/3525662.jpg" id="3_gyl25"]
 

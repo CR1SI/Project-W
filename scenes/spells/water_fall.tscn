@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cqo5d3sgqvwnf"]
 
-[ext_resource type="Script" path="res://scripts/spell_scripts/water_fall.gd" id="1_iwlgq"]
+[ext_resource type="Script" uid="uid://3ul5qh680wn1" path="res://scripts/spell_scripts/water_fall.gd" id="1_iwlgq"]
 [ext_resource type="Resource" uid="uid://bcg6x8wwpor3" path="res://resources/spell_resources/waterfall.tres" id="2_q37r3"]
 [ext_resource type="Texture2D" uid="uid://dfiq53jlanf1l" path="res://textures/spell_textures_placeholders/2683624.jpg" id="3_1bk0a"]
 
