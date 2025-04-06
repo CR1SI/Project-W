@@ -48,9 +48,9 @@ id = "smokescreen"
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.215686)
 amount = 3000
-process_material = SubResource("ParticleProcessMaterial_rmotd")
 texture = ExtResource("3_hwdjt")
 speed_scale = 0.8
+process_material = SubResource("ParticleProcessMaterial_rmotd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g0v5r")
