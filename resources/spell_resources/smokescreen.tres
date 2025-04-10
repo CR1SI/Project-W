@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Spell" load_steps=2 format=3 uid="uid://crdp7y4f6u6c1"]
 
-[ext_resource type="Script" path="res://scripts/custom_resources/spell_base.gd" id="1_igrcy"]
+[ext_resource type="Script" uid="uid://cverkfrb5pg7" path="res://scripts/custom_resources/spell_base.gd" id="1_igrcy"]
 
 [resource]
 script = ExtResource("1_igrcy")
@@ -13,3 +13,4 @@ spell_speed = 0
 can_combine = false
 is_combination = true
 requires_targeting = false
+on_player = false

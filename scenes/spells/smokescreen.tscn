@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bq5d8ew6yqen1"]
 
-[ext_resource type="Script" path="res://scripts/spell_scripts/smokescreen.gd" id="1_vb0a6"]
+[ext_resource type="Script" uid="uid://dqaitgmuh5c11" path="res://scripts/spell_scripts/smokescreen.gd" id="1_vb0a6"]
 [ext_resource type="Resource" uid="uid://crdp7y4f6u6c1" path="res://resources/spell_resources/smokescreen.tres" id="2_5ihgv"]
 [ext_resource type="Texture2D" uid="uid://xjpoqfc4m6o6" path="res://textures/spell_textures_placeholders/vecteezy_smoke-concept-design_9375129.png" id="3_hwdjt"]
 
@@ -48,9 +48,9 @@ id = "smokescreen"
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.215686)
 amount = 3000
-process_material = SubResource("ParticleProcessMaterial_rmotd")
 texture = ExtResource("3_hwdjt")
 speed_scale = 0.8
+process_material = SubResource("ParticleProcessMaterial_rmotd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g0v5r")

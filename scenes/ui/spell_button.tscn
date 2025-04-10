@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ddgcu4p38cq11" path="res://icon.svg" id="1_u4ix0"]
 [ext_resource type="Texture2D" uid="uid://c4a4dyegbrhjm" path="res://textures/spell_textures_placeholders/images.png" id="2_pky25"]
-[ext_resource type="Script" path="res://scripts/ui_scripts/spell_button.gd" id="2_to7lq"]
+[ext_resource type="Script" uid="uid://c8h8hs4xexleg" path="res://scripts/ui_scripts/spell_button.gd" id="2_to7lq"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_qmqjf"]
 

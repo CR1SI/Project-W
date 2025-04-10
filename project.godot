@@ -12,18 +12,23 @@ config_version=5
 
 config/name="Project_W"
 run/main_scene="res://test_scene.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 SignalBus="*res://scripts/autoloads/signalBus.gd"
+Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 
 [display]
 
 window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="res://textures/spell_textures_placeholders/aim.png"
 mouse_cursor/custom_image_hotspot=Vector2(8, 8)
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/SignalVisualizer/plugin.cfg", "res://addons/globalize-plugins/plugin.cfg")
 
 [global_group]
 

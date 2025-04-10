@@ -1,15 +1,15 @@
 [gd_scene load_steps=20 format=3 uid="uid://dwmqx0jpb8jtp"]
 
-[ext_resource type="Script" path="res://scripts/player_scripts/player.gd" id="1_gx3we"]
+[ext_resource type="Script" uid="uid://csu3b8rb1tx7h" path="res://scripts/player_scripts/player.gd" id="1_gx3we"]
 [ext_resource type="Resource" uid="uid://by3b4x2u2lhpd" path="res://resources/player_resources/player_stats.tres" id="2_auslv"]
-[ext_resource type="Script" path="res://scripts/player_scripts/state_machine.gd" id="3_cotpx"]
+[ext_resource type="Script" uid="uid://51vpx1ybsg1d" path="res://scripts/player_scripts/state_machine.gd" id="3_cotpx"]
 [ext_resource type="Texture2D" uid="uid://bn0xeccgb55ba" path="res://textures/player_textures/spritesheet.png" id="3_tt22p"]
-[ext_resource type="Script" path="res://scripts/player_scripts/idle_state.gd" id="4_g61g5"]
-[ext_resource type="Script" path="res://scripts/player_scripts/walk_state.gd" id="5_j0oda"]
-[ext_resource type="Script" path="res://scripts/player_scripts/dodge_state.gd" id="6_x8ems"]
-[ext_resource type="Script" path="res://scripts/player_scripts/melee_state.gd" id="8_4do3f"]
-[ext_resource type="Script" path="res://scripts/player_scripts/casting_state.gd" id="9_g4w6t"]
-[ext_resource type="Script" path="res://scripts/player_scripts/spell_manager.gd" id="10_ccjsy"]
+[ext_resource type="Script" uid="uid://bmygkmsqvh3dd" path="res://scripts/player_scripts/idle_state.gd" id="4_g61g5"]
+[ext_resource type="Script" uid="uid://bkyjehgx70sl" path="res://scripts/player_scripts/walk_state.gd" id="5_j0oda"]
+[ext_resource type="Script" uid="uid://b5ci2i5fh1mns" path="res://scripts/player_scripts/dodge_state.gd" id="6_x8ems"]
+[ext_resource type="Script" uid="uid://dsis5qci4upi8" path="res://scripts/player_scripts/melee_state.gd" id="8_4do3f"]
+[ext_resource type="Script" uid="uid://b2recdn3a5on4" path="res://scripts/player_scripts/casting_state.gd" id="9_g4w6t"]
+[ext_resource type="Script" uid="uid://bswmb7ja21w0f" path="res://scripts/player_scripts/spell_manager.gd" id="10_ccjsy"]
 [ext_resource type="PackedScene" uid="uid://xhsfqx6rmoy2" path="res://scenes/ui/spell_holder_ui.tscn" id="11_0088b"]
 [ext_resource type="PackedScene" uid="uid://b235li67dsqed" path="res://scenes/ui/ui.tscn" id="11_od58c"]
 
@@ -62,7 +62,7 @@ resource_name = "walk_down"
 
 [sub_resource type="Animation" id="Animation_qlej1"]
 resource_name = "walk_left"
-length = 0.4
+length = 0.5
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -91,7 +91,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_n2p20"]
 resource_name = "walk_right"
-length = 0.4
+length = 0.5
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -123,12 +123,12 @@ resource_name = "walk_up"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_phel6"]
 _data = {
-"RESET": SubResource("Animation_fo8gx"),
-"idle": SubResource("Animation_41tof"),
-"walk_down": SubResource("Animation_46gwl"),
-"walk_left": SubResource("Animation_qlej1"),
-"walk_right": SubResource("Animation_n2p20"),
-"walk_up": SubResource("Animation_c51ni")
+&"RESET": SubResource("Animation_fo8gx"),
+&"idle": SubResource("Animation_41tof"),
+&"walk_down": SubResource("Animation_46gwl"),
+&"walk_left": SubResource("Animation_qlej1"),
+&"walk_right": SubResource("Animation_n2p20"),
+&"walk_up": SubResource("Animation_c51ni")
 }
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
@@ -146,7 +146,7 @@ region_rect = Rect2(0, 0, 3497, 1945)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../character")
 libraries = {
-"": SubResource("AnimationLibrary_phel6")
+&"": SubResource("AnimationLibrary_phel6")
 }
 
 [node name="StateMachine" type="Node" parent="."]
@@ -162,7 +162,7 @@ script = ExtResource("5_j0oda")
 script = ExtResource("6_x8ems")
 
 [node name="Timer" type="Timer" parent="StateMachine/dodge"]
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
 
 [node name="melee" type="Node" parent="StateMachine"]

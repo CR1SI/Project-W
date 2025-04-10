@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://540ylbsrlmak"]
 
-[ext_resource type="Script" path="res://scripts/spell_scripts/cyclone.gd" id="1_gilg7"]
+[ext_resource type="Script" uid="uid://cfbhrsi64xk5t" path="res://scripts/spell_scripts/cyclone.gd" id="1_gilg7"]
 [ext_resource type="Resource" uid="uid://by6xx0a5e4j3r" path="res://resources/spell_resources/cyclone.tres" id="2_cq32r"]
 [ext_resource type="Texture2D" uid="uid://kjjqorp11ja3" path="res://textures/spell_textures_placeholders/618.jpg" id="3_pwha1"]
 
@@ -12,8 +12,7 @@ colors = PackedColorArray(0, 0, 0, 1, 0.64, 0.64, 0.64, 1, 1, 1, 1, 1)
 gradient = SubResource("Gradient_hf0ek")
 
 [sub_resource type="Curve" id="Curve_3fvwl"]
-min_value = -2.0
-max_value = 2.0
+_limits = [-2.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(1, 0.42736), 0.0, 0.0, 0, 0]
 point_count = 2
 
