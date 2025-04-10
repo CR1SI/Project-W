@@ -3,7 +3,6 @@ extends Node
 
 @onready var player: Player = $".."
 
-
 var processed_combinations: Dictionary = {}
 
 var target = preload("res://textures/spell_textures_placeholders/target.png") #100x100
