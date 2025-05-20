@@ -3,7 +3,6 @@ extends Area2D
 
 @export var resource: Spell
 @export var id: String = ""
-@export var icon: Texture2D
 
 var direction: Vector2 = Vector2.ZERO
 var spell_fired: bool = false

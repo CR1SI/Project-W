@@ -25,3 +25,5 @@ enum Elements {
 @export var on_player: bool = false
 
 var is_on_cooldown: bool = false
+
+@export var icon: Texture2D

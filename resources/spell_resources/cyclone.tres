@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=2 format=3 uid="uid://by6xx0a5e4j3r"]
+[gd_resource type="Resource" script_class="Spell" load_steps=3 format=3 uid="uid://by6xx0a5e4j3r"]
 
+[ext_resource type="Texture2D" uid="uid://kjjqorp11ja3" path="res://textures/spell_textures_placeholders/618.jpg" id="1_a8iib"]
 [ext_resource type="Script" uid="uid://cverkfrb5pg7" path="res://scripts/custom_resources/spell_base.gd" id="1_v1xjq"]
 
 [resource]
@@ -14,3 +15,4 @@ can_combine = true
 is_combination = false
 requires_targeting = false
 on_player = false
+icon = ExtResource("1_a8iib")

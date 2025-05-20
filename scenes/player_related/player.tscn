@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dwmqx0jpb8jtp"]
+[gd_scene load_steps=19 format=3 uid="uid://dwmqx0jpb8jtp"]
 
 [ext_resource type="Script" uid="uid://csu3b8rb1tx7h" path="res://scripts/player_scripts/player.gd" id="1_gx3we"]
 [ext_resource type="Resource" uid="uid://by3b4x2u2lhpd" path="res://resources/player_resources/player_stats.tres" id="2_auslv"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://dsis5qci4upi8" path="res://scripts/player_scripts/melee_state.gd" id="8_4do3f"]
 [ext_resource type="Script" uid="uid://b2recdn3a5on4" path="res://scripts/player_scripts/casting_state.gd" id="9_g4w6t"]
 [ext_resource type="Script" uid="uid://bswmb7ja21w0f" path="res://scripts/player_scripts/spell_manager.gd" id="10_ccjsy"]
+[ext_resource type="PackedScene" uid="uid://cr8uoru3v1ro7" path="res://scenes/ui/spell_hot_bar.tscn" id="11_cabau"]
 
 [sub_resource type="Animation" id="Animation_fo8gx"]
 length = 0.001
@@ -171,5 +172,11 @@ script = ExtResource("9_g4w6t")
 
 [node name="SpellManager" type="Node" parent="."]
 script = ExtResource("10_ccjsy")
+
+[node name="spellHotBar" parent="." instance=ExtResource("11_cabau")]
+offset_left = 24.0
+offset_top = 279.0
+offset_right = 24.0
+offset_bottom = 279.0
 
 [connection signal="timeout" from="StateMachine/dodge/Timer" to="StateMachine/dodge" method="_on_timer_timeout"]

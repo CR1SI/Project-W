@@ -45,7 +45,7 @@ var active_bar = {
 	0 : spell_scenes[SpellType.CYCLONE],
 	1 : spell_scenes[SpellType.FIREBALL],
 	2 : spell_scenes[SpellType.WATERFALL],
-	3 : spell_scenes[SpellType.SHADOWBOLT]
+	3 : spell_scenes[SpellType.STONEFIST]
 }
 
 var selected_spell: SpellType = -1
@@ -53,19 +53,8 @@ var spell_fired: bool = false
 
 var cooldowns = {} #to track cooldowns!
 
-var active_spells: Array = []
-func populate_actives(): 
-	active_spells.clear()
-	for s in range(active_bar.size()): 
-		if active_bar.has(s): 
-			var scene = active_bar[s]
-			if scene: 
-				var instance = scene.instantiate()
-				active_spells.append(instance)
-
 func _ready():
 	SignalBus.connect("spell_collided", Callable(self, "_on_collided"))
-	
 	for spell in spell_scenes.keys(): 
 		cooldowns[spell] = false
 
@@ -98,7 +87,7 @@ func cast_combo(combo: SpellCombo, position: Vector2):
 func start_cooldown(spell: SpellType): 
 	cooldowns[spell] = true
 	var spell_resource = active_bar[spell].instantiate().resource
-	SignalBus.emit_signal("spell_fired", spell_resource.cooldown)
+	SignalBus.emit_signal("spell_fired", spell_resource.cooldown, active_bar.find_key(active_bar[spell]))
 	var cool_timer = get_tree().create_timer(spell_resource.cooldown)
 	await cool_timer.timeout
 	cooldowns[spell] = false

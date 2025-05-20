@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bss4qfewblgss"]
+[gd_scene load_steps=5 format=3 uid="uid://bss4qfewblgss"]
 
 [ext_resource type="Script" uid="uid://cy1ftuit8155c" path="res://scripts/spell_scripts/fireball.gd" id="1_5bcb8"]
 [ext_resource type="Resource" uid="uid://dbkmquix3hw74" path="res://resources/spell_resources/fireball.tres" id="2_tx7j8"]
-[ext_resource type="Texture2D" uid="uid://cpn3rn6hkqxxo" path="res://textures/spell_textures_placeholders/fire-flames-black-background.png" id="3_8gwkd"]
 [ext_resource type="Texture2D" uid="uid://ddgcu4p38cq11" path="res://icon.svg" id="3_qkvsg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bkvek"]
@@ -13,7 +12,6 @@ position = Vector2(566.727, 320.472)
 script = ExtResource("1_5bcb8")
 resource = ExtResource("2_tx7j8")
 id = "fireball"
-icon = ExtResource("3_8gwkd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.273071, 3.52777)

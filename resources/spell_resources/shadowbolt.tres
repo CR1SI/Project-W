@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=2 format=3 uid="uid://dcggdfm5246xj"]
+[gd_resource type="Resource" script_class="Spell" load_steps=3 format=3 uid="uid://dcggdfm5246xj"]
 
 [ext_resource type="Script" uid="uid://cverkfrb5pg7" path="res://scripts/custom_resources/spell_base.gd" id="1_bblle"]
+[ext_resource type="Texture2D" uid="uid://4apeo5pbrn8" path="res://textures/spell_textures_placeholders/3525662.jpg" id="1_v0qoc"]
 
 [resource]
 script = ExtResource("1_bblle")
@@ -14,3 +15,4 @@ can_combine = true
 is_combination = false
 requires_targeting = false
 on_player = true
+icon = ExtResource("1_v0qoc")

@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b74lkqriwscuv"]
+[gd_scene load_steps=5 format=3 uid="uid://b74lkqriwscuv"]
 
 [ext_resource type="Script" uid="uid://re0d0wnleai6" path="res://scripts/spell_scripts/stonefist.gd" id="1_y2q5p"]
 [ext_resource type="Resource" uid="uid://n13xyd1b2gm5" path="res://resources/spell_resources/stonefist.tres" id="2_18p33"]
-[ext_resource type="Texture2D" uid="uid://drrk7ywydo0o" path="res://textures/spell_textures_placeholders/pngtree-close-up-of-big-stone-isolated-big-rock-png-image_10211347.png" id="3_gp6ea"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x4ull"]
 particle_flag_disable_z = true
@@ -21,7 +20,6 @@ position = Vector2(576, 335)
 script = ExtResource("1_y2q5p")
 resource = ExtResource("2_18p33")
 id = "stonefist"
-icon = ExtResource("3_gp6ea")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 amount = 1000

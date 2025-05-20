@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=2 format=3 uid="uid://dbkmquix3hw74"]
+[gd_resource type="Resource" script_class="Spell" load_steps=3 format=3 uid="uid://dbkmquix3hw74"]
 
+[ext_resource type="Texture2D" uid="uid://cpn3rn6hkqxxo" path="res://textures/spell_textures_placeholders/fire-flames-black-background.png" id="1_1ng8x"]
 [ext_resource type="Script" uid="uid://cverkfrb5pg7" path="res://scripts/custom_resources/spell_base.gd" id="1_3fqav"]
 
 [resource]
@@ -14,3 +15,4 @@ can_combine = true
 is_combination = false
 requires_targeting = false
 on_player = false
+icon = ExtResource("1_1ng8x")
