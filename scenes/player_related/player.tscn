@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://csu3b8rb1tx7h" path="res://scripts/player_scripts/player.gd" id="1_gx3we"]
 [ext_resource type="Resource" uid="uid://by3b4x2u2lhpd" path="res://resources/player_resources/player_stats.tres" id="2_auslv"]
 [ext_resource type="Script" uid="uid://51vpx1ybsg1d" path="res://scripts/player_scripts/state_machine.gd" id="3_cotpx"]
-[ext_resource type="Texture2D" uid="uid://bn0xeccgb55ba" path="res://textures/player_textures/spritesheet.png" id="3_tt22p"]
+[ext_resource type="Texture2D" uid="uid://ddgcu4p38cq11" path="res://icon.svg" id="3_foac7"]
 [ext_resource type="Script" uid="uid://bmygkmsqvh3dd" path="res://scripts/player_scripts/idle_state.gd" id="4_g61g5"]
 [ext_resource type="Script" uid="uid://bkyjehgx70sl" path="res://scripts/player_scripts/walk_state.gd" id="5_j0oda"]
 [ext_resource type="Script" uid="uid://b5ci2i5fh1mns" path="res://scripts/player_scripts/dodge_state.gd" id="6_x8ems"]
@@ -134,8 +134,9 @@ script = ExtResource("1_gx3we")
 stats = ExtResource("2_auslv")
 
 [node name="character" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_tt22p")
+position = Vector2(52.375, 59.8)
+scale = Vector2(4.29, 1.03438)
+texture = ExtResource("3_foac7")
 flip_h = true
 hframes = 5
 region_rect = Rect2(0, 0, 3497, 1945)
