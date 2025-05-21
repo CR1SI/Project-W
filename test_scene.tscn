@@ -9,7 +9,7 @@
 position = Vector2(324, 338)
 
 [node name="spellHotBar" parent="." instance=ExtResource("2_ia1lp")]
-offset_left = 1022.0
+offset_left = 976.0
 offset_top = 330.0
-offset_right = 1022.0
+offset_right = 976.0
 offset_bottom = 330.0

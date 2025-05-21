@@ -17,16 +17,6 @@ func _ready():
 func _process(delta: float) -> void:
 	ChangeState(current_state.Process(delta)) #these allow us to connect these functions to the ones in each state.(same functions)
 	
-		#to test
-	if Input.is_action_just_pressed("spell1"):
-		spell_manager.select_spell(1)
-	if Input.is_action_just_pressed("spell2"):
-		spell_manager.select_spell(2)
-	if Input.is_action_just_pressed("spell3"):
-		spell_manager.select_spell(3)
-	if Input.is_action_just_pressed("spell4"):
-		spell_manager.select_spell(4)
-		
 	pass
 
 #physics process

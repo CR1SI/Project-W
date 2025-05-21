@@ -55,6 +55,7 @@ var cooldowns = {} #to track cooldowns!
 
 func _ready():
 	SignalBus.connect("spell_collided", Callable(self, "_on_collided"))
+	SignalBus.connect("spell_selected", Callable(self, "select_spell"))
 	for spell in spell_scenes.keys(): 
 		cooldowns[spell] = false
 
