@@ -43,7 +43,6 @@ func _on_spell_fired(time: float, num: int): #this will be used for nicer cooldo
 				self_modulate = Color(1,1,1)
 		
 
-
 func _on_pressed() -> void: #sends signal to spell manager to select spell function
 	var spellNum: int
 	
