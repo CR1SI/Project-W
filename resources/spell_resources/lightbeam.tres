@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Spell" load_steps=3 format=3 uid="uid://ce5i64sl5wg71"]
 
 [ext_resource type="Script" uid="uid://cverkfrb5pg7" path="res://scripts/custom_resources/spell_base.gd" id="1_faqga"]
-[ext_resource type="Texture2D" uid="uid://b2vfn3cj45g0g" path="res://textures/spell_textures_placeholders/png-clipart-light-laser-sword-lightsaber-arms-thumbnail.png" id="1_lba22"]
+[ext_resource type="Texture2D" uid="uid://1u71fx6wma17" path="res://textures/spell_textures_placeholders/laser-sparks.png" id="1_lba22"]
 
 [resource]
 script = ExtResource("1_faqga")

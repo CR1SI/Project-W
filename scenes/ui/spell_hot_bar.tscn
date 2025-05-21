@@ -38,11 +38,7 @@ events = [SubResource("InputEventKey_j260r")]
 
 [node name="spellHotBar" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 script = ExtResource("1_wjbi8")
 
 [node name="GridContainer" type="GridContainer" parent="."]
@@ -65,8 +61,13 @@ layout_mode = 2
 color = Color(1, 1, 1, 0)
 
 [node name="Spell1" parent="GridContainer" instance=ExtResource("2_qqlmp")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 shortcut = SubResource("Shortcut_qqlmp")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
 script = ExtResource("1_pw0qh")
 
 [node name="space2" type="ColorRect" parent="GridContainer"]
@@ -74,8 +75,13 @@ layout_mode = 2
 color = Color(1, 1, 1, 0)
 
 [node name="Spell2" parent="GridContainer" instance=ExtResource("2_qqlmp")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 shortcut = SubResource("Shortcut_omt2m")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
 script = ExtResource("1_pw0qh")
 
 [node name="space3" type="ColorRect" parent="GridContainer"]
@@ -83,8 +89,13 @@ layout_mode = 2
 color = Color(1, 1, 1, 0)
 
 [node name="Spell3" parent="GridContainer" instance=ExtResource("2_qqlmp")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 shortcut = SubResource("Shortcut_o72c3")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
 script = ExtResource("1_pw0qh")
 
 [node name="space4" type="ColorRect" parent="GridContainer"]
@@ -92,8 +103,13 @@ layout_mode = 2
 color = Color(1, 1, 1, 0)
 
 [node name="Spell4" parent="GridContainer" instance=ExtResource("2_qqlmp")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 shortcut = SubResource("Shortcut_xvlp3")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
 script = ExtResource("1_pw0qh")
 
 [node name="space5" type="ColorRect" parent="GridContainer"]

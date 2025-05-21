@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Spell" load_steps=3 format=3 uid="uid://bcg6x8wwpor3"]
 
-[ext_resource type="Texture2D" uid="uid://dfiq53jlanf1l" path="res://textures/spell_textures_placeholders/2683624.jpg" id="1_cxqgm"]
+[ext_resource type="Texture2D" uid="uid://bqx55pgyxvq6u" path="res://textures/spell_textures_placeholders/waterfall.png" id="1_cxqgm"]
 [ext_resource type="Script" uid="uid://cverkfrb5pg7" path="res://scripts/custom_resources/spell_base.gd" id="1_p5wby"]
 
 [resource]

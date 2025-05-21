@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://ch5dj2oqs6h8t"]
+[gd_scene load_steps=3 format=3 uid="uid://ch5dj2oqs6h8t"]
 
 [ext_resource type="PackedScene" uid="uid://dwmqx0jpb8jtp" path="res://scenes/player_related/player.tscn" id="1_ngrog"]
+[ext_resource type="PackedScene" uid="uid://cr8uoru3v1ro7" path="res://scenes/ui/spell_hot_bar.tscn" id="2_ia1lp"]
 
 [node name="test_scene" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_ngrog")]
 position = Vector2(324, 338)
+
+[node name="spellHotBar" parent="." instance=ExtResource("2_ia1lp")]
+offset_left = 1022.0
+offset_top = 330.0
+offset_right = 1022.0
+offset_bottom = 330.0
