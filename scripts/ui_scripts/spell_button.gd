@@ -4,16 +4,20 @@ extends Button
 @onready var spell_manager: SpellManager = $/root/test_scene/Player/SpellManager
 @export var spell: Spell
 
+
 func _ready() -> void:
 	SignalBus.connect("spell_fired", Callable(self,"_on_spell_fired"))
 	
+	
+
+func _process(delta: float) -> void:
 	@warning_ignore("shadowed_variable_base_class")
 	var name: String = self.name
 	var num: int = int(name[5])
 	spell = spell_manager.active_bar[(num-1)].instantiate().resource
 	
-	icon = spell.icon
 	text = name[5]
+	icon = spell.icon
 
 func _on_spell_fired(time: float, num: int): #this will be used for nicer cooldown visualization later
 	match num:

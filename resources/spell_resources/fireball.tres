@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_3fqav")
-spell_cost = 30
+mana_cost = 10
 cooldown = 5.0
 spell_duration = 5.0
 debuff = 1

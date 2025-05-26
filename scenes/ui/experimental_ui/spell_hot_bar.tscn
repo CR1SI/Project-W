@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c54035p3webyd" path="res://scripts/ui_scripts/spell_button.gd" id="1_pw0qh"]
 [ext_resource type="Script" uid="uid://k4tj5w7ro10l" path="res://scripts/ui_scripts/spell_hot_bar.gd" id="1_wjbi8"]
-[ext_resource type="PackedScene" uid="uid://bwu1j87ffu2th" path="res://scenes/ui/spell_1.tscn" id="2_qqlmp"]
+[ext_resource type="PackedScene" uid="uid://bwu1j87ffu2th" path="res://scenes/ui/experimental_ui/Button.tscn" id="2_qqlmp"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_wjbi8"]
 device = -1

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_bblle")
-spell_cost = 60
+mana_cost = 25
 cooldown = 4.0
 spell_duration = 2.0
 debuff = 5

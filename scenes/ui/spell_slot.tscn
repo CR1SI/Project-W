@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7ijhdg400igm"]
+
+[ext_resource type="PackedScene" uid="uid://hdpcv10kdxbh" path="res://scenes/ui/slot.tscn" id="1_j62a3"]
+[ext_resource type="Script" uid="uid://cgmxnpbuj2yvl" path="res://scripts/ui_scripts/spell_slot.gd" id="2_k6xwi"]
+
+[node name="spell_slot" instance=ExtResource("1_j62a3")]
+script = ExtResource("2_k6xwi")
+
+[node name="debug" parent="TextureRect" index="0"]
+theme_override_colors/font_color = Color(1, 0, 0, 1)
