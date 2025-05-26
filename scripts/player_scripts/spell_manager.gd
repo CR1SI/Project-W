@@ -42,9 +42,9 @@ var spell_combinations = {
 }
 
 var active_bar = {
-	0 : spell_scenes[SpellType.LIGHTBEAM],
+	0 : spell_scenes[SpellType.STONEFIST],
 	1 : spell_scenes[SpellType.FIREBALL],
-	2 : spell_scenes[SpellType.WATERFALL],
+	2 : spell_scenes[SpellType.CYCLONE],
 	3 : spell_scenes[SpellType.SHADOWBOLT]
 }
 

@@ -6,7 +6,6 @@
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_icx04"]
 
 [node name="lightbeam" type="Area2D"]
-position = Vector2(312, 283)
 script = ExtResource("1_nm7tc")
 resource = ExtResource("2_3ecwm")
 id = "lightbeam"

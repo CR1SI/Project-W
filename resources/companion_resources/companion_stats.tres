@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Stats" load_steps=2 format=3 uid="uid://bhimp7ikt4owm"]
+
+[ext_resource type="Script" uid="uid://baklv785hsmfm" path="res://scripts/custom_resources/stats.gd" id="1_0eppw"]
+
+[resource]
+script = ExtResource("1_0eppw")
+max_health = 50
+defense = 5
+strength = 10
+starting_mana = 0
+max_mana = 0
+speed = 200.0
+acceleration = 50
+is_companion = true
+companion = 0
+metadata/_custom_type_script = "uid://baklv785hsmfm"

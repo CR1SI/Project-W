@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dwmqx0jpb8jtp"]
+[gd_scene load_steps=20 format=3 uid="uid://dwmqx0jpb8jtp"]
 
 [ext_resource type="Script" uid="uid://csu3b8rb1tx7h" path="res://scripts/player_scripts/player.gd" id="1_gx3we"]
 [ext_resource type="Resource" uid="uid://by3b4x2u2lhpd" path="res://resources/player_resources/player_stats.tres" id="2_auslv"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://dsis5qci4upi8" path="res://scripts/player_scripts/melee_state.gd" id="8_4do3f"]
 [ext_resource type="Script" uid="uid://b2recdn3a5on4" path="res://scripts/player_scripts/casting_state.gd" id="9_g4w6t"]
 [ext_resource type="Script" uid="uid://bswmb7ja21w0f" path="res://scripts/player_scripts/spell_manager.gd" id="10_ccjsy"]
+[ext_resource type="Script" uid="uid://dsvkkp58v8yxv" path="res://scripts/companion_scripts/companion_zone.gd" id="11_cabau"]
 
 [sub_resource type="Animation" id="Animation_fo8gx"]
 length = 0.001
@@ -69,12 +70,16 @@ _data = {
 &"walk_up": SubResource("Animation_c51ni")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_foac7"]
+radius = 260.277
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+scale = Vector2(0.25, 0.25)
 script = ExtResource("1_gx3we")
 stats = ExtResource("2_auslv")
 
 [node name="character" type="Sprite2D" parent="."]
-position = Vector2(52.375, 59.8)
+position = Vector2(0, 3)
 scale = Vector2(4.29, 1.03438)
 texture = ExtResource("3_foac7")
 hframes = 5
@@ -111,4 +116,13 @@ script = ExtResource("9_g4w6t")
 [node name="SpellManager" type="Node" parent="."]
 script = ExtResource("10_ccjsy")
 
+[node name="CompanionZone" type="Area2D" parent="."]
+monitorable = false
+script = ExtResource("11_cabau")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CompanionZone"]
+shape = SubResource("CircleShape2D_foac7")
+
 [connection signal="timeout" from="StateMachine/dodge/Timer" to="StateMachine/dodge" method="_on_timer_timeout"]
+[connection signal="body_entered" from="CompanionZone" to="CompanionZone" method="_on_body_entered"]
+[connection signal="body_exited" from="CompanionZone" to="CompanionZone" method="_on_body_exited"]

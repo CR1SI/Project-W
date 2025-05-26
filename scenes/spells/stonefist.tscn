@@ -1,34 +1,106 @@
-[gd_scene load_steps=5 format=3 uid="uid://b74lkqriwscuv"]
+[gd_scene load_steps=8 format=3 uid="uid://b74lkqriwscuv"]
 
 [ext_resource type="Script" uid="uid://re0d0wnleai6" path="res://scripts/spell_scripts/stonefist.gd" id="1_y2q5p"]
 [ext_resource type="Resource" uid="uid://n13xyd1b2gm5" path="res://resources/spell_resources/stonefist.tres" id="2_18p33"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x4ull"]
 particle_flag_disable_z = true
-emission_shape = 1
-emission_sphere_radius = 18.71
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 70.0
+emission_ring_radius = 50.0
+emission_ring_inner_radius = 20.0
+emission_ring_cone_angle = 90.0
 gravity = Vector3(0, 0, 0)
-radial_accel_min = -20.43
-radial_accel_max = 77.96
+radial_accel_min = 88.2
+radial_accel_max = 100.0
+tangential_accel_min = 47.82
+tangential_accel_max = 100.0
+scale_min = 5.0
+scale_max = 5.0
 color = Color(0.631373, 0.360784, 0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gu27k"]
 radius = 41.0122
 
+[sub_resource type="Animation" id="Animation_ohwut"]
+resource_name = "stonefist"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles2D:process_material:emission_ring_inner_radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [50.0, 70.0, 90.0, 110.0, 130.0, 150.0]
+}
+
+[sub_resource type="Animation" id="Animation_4nha5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles2D:process_material:emission_ring_inner_radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [20.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jbb6r"]
+_data = {
+&"RESET": SubResource("Animation_4nha5"),
+&"stonefist": SubResource("Animation_ohwut")
+}
+
 [node name="stonefist" type="Area2D"]
-position = Vector2(576, 335)
 script = ExtResource("1_y2q5p")
 resource = ExtResource("2_18p33")
 id = "stonefist"
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
 amount = 1000
-lifetime = 2.0
+lifetime = 0.5
+one_shot = true
 speed_scale = 2.0
-explosiveness = 0.59
-randomness = 1.0
 trail_enabled = true
 process_material = SubResource("ParticleProcessMaterial_x4ull")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_gu27k")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jbb6r")
+}

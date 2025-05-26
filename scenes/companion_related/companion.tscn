@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://6pscbc6sjo2e"]
+
+[ext_resource type="Script" uid="uid://c7bxkxujxed07" path="res://scripts/companion_scripts/companion.gd" id="1_y3dn1"]
+[ext_resource type="Texture2D" uid="uid://gn1yhif3bvxa" path="res://textures/companion_textures_placeholders/slime.png" id="2_2105e"]
+[ext_resource type="Resource" uid="uid://bhimp7ikt4owm" path="res://resources/companion_resources/companion_stats.tres" id="2_i6tid"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2105e"]
+radius = 7.0
+
+[node name="Companion" type="CharacterBody2D" groups=["companion"]]
+script = ExtResource("1_y3dn1")
+stats = ExtResource("2_i6tid")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_2105e")
+hframes = 7
+vframes = 13
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_2105e")

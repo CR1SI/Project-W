@@ -48,7 +48,6 @@ color_ramp = SubResource("GradientTexture1D_ci4c2")
 radius = 126.396
 
 [node name="Cyclone" type="Area2D"]
-position = Vector2(363, 231)
 script = ExtResource("1_gilg7")
 resource = ExtResource("2_cq32r")
 id = "cyclone"
