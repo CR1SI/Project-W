@@ -1,4 +1,4 @@
-class_name Cyclone
+class_name Fire_Cyclone
 extends base_script
 
 func deal_damage(_dmg: int):  #overrides the dmg func in the base script

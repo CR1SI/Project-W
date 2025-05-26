@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://b74lkqriwscuv"]
 
-[ext_resource type="Script" uid="uid://re0d0wnleai6" path="res://scripts/spell_scripts/stonefist.gd" id="1_y2q5p"]
-[ext_resource type="Resource" uid="uid://n13xyd1b2gm5" path="res://resources/spell_resources/stonefist.tres" id="2_18p33"]
+[ext_resource type="Script" uid="uid://re0d0wnleai6" path="res://scripts/spell_scripts/stonefist.gd" id="1_u4dnp"]
+[ext_resource type="Resource" uid="uid://n13xyd1b2gm5" path="res://resources/spell_resources/stonefist.tres" id="2_hudnc"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x4ull"]
 particle_flag_disable_z = true
@@ -84,8 +84,8 @@ _data = {
 }
 
 [node name="stonefist" type="Area2D"]
-script = ExtResource("1_y2q5p")
-resource = ExtResource("2_18p33")
+script = ExtResource("1_u4dnp")
+resource = ExtResource("2_hudnc")
 id = "stonefist"
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]

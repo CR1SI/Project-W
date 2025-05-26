@@ -3,7 +3,7 @@ extends Node
 
 @onready var player: Player = $".."
 
-var processed_combinations: Dictionary = {}
+
 
 var target = preload("res://textures/spell_textures_placeholders/target.png") #100x100
 var default_aim = preload("res://textures/spell_textures_placeholders/aim.png") #16x16
@@ -20,11 +20,13 @@ enum SpellType {
 }
 
 enum SpellCombo { 
-	SMOKESCREEN
+	SMOKESCREEN,
+	FIRECYCLONE
 }
 
 var combo_scenes = { 
-	SpellCombo.SMOKESCREEN : preload("res://scenes/spells/smokescreen.tscn")
+	SpellCombo.SMOKESCREEN : preload("res://scenes/spells/smokescreen.tscn"),
+	SpellCombo.FIRECYCLONE : preload("res://scenes/spells/firecyclone.tscn")
 }
 
 var spell_scenes = { 
@@ -38,11 +40,12 @@ var spell_scenes = {
 
 var spell_combinations = { 
 	"Fireball_WaterFall" : SpellCombo.SMOKESCREEN,
-	"WaterFall_Fireball" : SpellCombo.SMOKESCREEN
+	"Fireball_Cyclone" : SpellCombo.FIRECYCLONE,
 }
 
+
 var active_bar = {
-	0 : spell_scenes[SpellType.STONEFIST],
+	0 : spell_scenes[SpellType.WATERFALL],
 	1 : spell_scenes[SpellType.FIREBALL],
 	2 : spell_scenes[SpellType.CYCLONE],
 	3 : spell_scenes[SpellType.SHADOWBOLT]
@@ -124,9 +127,15 @@ func stop_targeting():
 	else: 
 		return
 
+
+var processed_combinations: Dictionary = {}
+var current_frame = 0
 func _on_collided(spell1, spell2): 
+	current_frame = Engine.get_physics_frames() #get frame on collision
+	
 	print("collided spell1:",spell1, "with: ," , spell2)
 	
+	#create key for combination
 	var combination = [spell1.get_name(), spell2.get_name()]
 	combination.sort()
 	var key = String(combination[0]) + "_" + String(combination[1])
@@ -134,13 +143,13 @@ func _on_collided(spell1, spell2):
 	if key in processed_combinations: 
 		return
 	
-	processed_combinations[key] = true
+	processed_combinations[key] = current_frame
 	if key in spell_combinations:
 		combine_spells(spell1,spell2,spell_combinations[key])
 		reset_combinations(key)
 
 func combine_spells(spell1,spell2, combo: SpellCombo):
-	# await to play combining animation!
+	#TODO await to play combining animation!
 	var position = (spell1.global_position + spell2.global_position) / 2
 	spell1.call_deferred("queue_free")
 	spell2.call_deferred("queue_free")
