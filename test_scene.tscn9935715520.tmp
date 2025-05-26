@@ -10,6 +10,13 @@
 [node name="Player" parent="." instance=ExtResource("1_ngrog")]
 position = Vector2(324, 338)
 
+[node name="UI" parent="Player" instance=ExtResource("2_coq8p")]
+offset_left = 468.0
+offset_top = -596.0
+offset_right = 468.288
+offset_bottom = -596.0
+scale = Vector2(4, 4)
+
 [node name="Companion" parent="." instance=ExtResource("3_sasra")]
 position = Vector2(261, 452)
 
@@ -18,9 +25,3 @@ offset_left = 979.0
 offset_top = 328.0
 offset_right = 979.0
 offset_bottom = 328.0
-
-[node name="UI" parent="." instance=ExtResource("2_coq8p")]
-offset_left = 1065.0
-offset_top = 113.0
-offset_right = 1065.29
-offset_bottom = 113.0

@@ -1,5 +1,4 @@
 extends Control
-
 @onready var mana: Label = %MANA
 
 #reference for spellmanager
@@ -67,5 +66,4 @@ func calc():
 	for i in get_children():
 		if i.get_index() < 4:
 			sum+=i.get_MANA()
-			print(sum)
 			mana.text = "total mana: "+str(sum)

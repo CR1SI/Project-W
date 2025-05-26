@@ -1,6 +1,6 @@
 extends Slot
 class_name Spell_slot
-
+#TODO FIX THI BUG WHERE IT SWAPS BETWEEN SPELLS
 @onready var spell_manager: SpellManager = $/root/test_scene/Player/SpellManager
 
 

@@ -61,6 +61,7 @@ func _ready():
 	SignalBus.connect("spell_selected", Callable(self, "select_spell"))
 	for spell in spell_scenes.keys(): 
 		cooldowns[spell] = false
+	
 
 func cast_spell(spell: SpellType, position: Vector2): 
 	if spell in active_bar: 
