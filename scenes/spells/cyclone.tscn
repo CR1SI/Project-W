@@ -49,8 +49,9 @@ radius = 126.396
 
 [node name="Cyclone" type="Area2D"]
 script = ExtResource("1_gilg7")
-resource = ExtResource("2_cq32r")
-id = "cyclone"
+data = ExtResource("2_cq32r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 amount = 5000

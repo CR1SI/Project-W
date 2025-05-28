@@ -5,7 +5,8 @@
 
 [resource]
 script = ExtResource("1_faqga")
-spell_cost = 50
+name = "lightbeam"
+mana_cost = 30
 cooldown = 3.0
 spell_duration = 1.0
 debuff = 3

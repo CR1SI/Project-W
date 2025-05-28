@@ -1,4 +1,0 @@
-[gd_scene format=3 uid="uid://bwu1j87ffu2th"]
-
-[node name="Spell1" type="Button"]
-button_mask = 0

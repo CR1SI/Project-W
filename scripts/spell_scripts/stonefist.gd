@@ -1,5 +1,6 @@
-extends base_script
 class_name Stonefist
+extends base_script
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:

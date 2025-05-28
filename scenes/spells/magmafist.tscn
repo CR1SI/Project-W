@@ -1,0 +1,111 @@
+[gd_scene load_steps=8 format=3 uid="uid://drdieiltog5xv"]
+
+[ext_resource type="Script" uid="uid://byv7is2tmoc1k" path="res://scripts/spell_scripts/magmafist.gd" id="1_johim"]
+[ext_resource type="Resource" uid="uid://dfln3tvux4xvx" path="res://resources/spell_resources/magma_fist.tres" id="2_ow2jg"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_johim"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 70.0
+emission_ring_radius = 75.0
+emission_ring_inner_radius = 100.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -9.39
+radial_accel_max = 2.41
+tangential_accel_min = 47.82
+tangential_accel_max = 100.0
+scale_min = 5.0
+scale_max = 5.0
+color = Color(0.631373, 0.360784, 0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ow2jg"]
+radius = 147.218
+
+[sub_resource type="Animation" id="Animation_ow2jg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:shape:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [147.218]
+}
+
+[sub_resource type="Animation" id="Animation_johim"]
+resource_name = "magmafist"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:shape:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [108.005, 108.005, 147.218]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_thdov"]
+_data = {
+&"RESET": SubResource("Animation_ow2jg"),
+&"magmafist": SubResource("Animation_johim")
+}
+
+[node name="MagmaFist" type="Area2D"]
+position = Vector2(505, 299)
+script = ExtResource("1_johim")
+data = ExtResource("2_ow2jg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 1000
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_johim")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ow2jg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_thdov")
+}

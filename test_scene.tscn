@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ch5dj2oqs6h8t"]
 
 [ext_resource type="PackedScene" uid="uid://dwmqx0jpb8jtp" path="res://scenes/player_related/player.tscn" id="1_ngrog"]
-[ext_resource type="PackedScene" uid="uid://cr8uoru3v1ro7" path="res://scenes/ui/spell_hot_bar.tscn" id="2_ia1lp"]
+[ext_resource type="PackedScene" uid="uid://dspeqh42ks1xd" path="res://scenes/ui/spells.tscn" id="3_coq8p"]
 [ext_resource type="PackedScene" uid="uid://6pscbc6sjo2e" path="res://scenes/companion_related/companion.tscn" id="3_sasra"]
 
 [node name="test_scene" type="Node2D"]
@@ -9,11 +9,16 @@
 [node name="Player" parent="." instance=ExtResource("1_ngrog")]
 position = Vector2(324, 338)
 
-[node name="spellHotBar" parent="." instance=ExtResource("2_ia1lp")]
-offset_left = 976.0
-offset_top = 330.0
-offset_right = 976.0
-offset_bottom = 330.0
-
 [node name="Companion" parent="." instance=ExtResource("3_sasra")]
 position = Vector2(261, 452)
+
+[node name="spells" parent="." instance=ExtResource("3_coq8p")]
+visible = false
+custom_minimum_size = Vector2(1920, 1080)
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 1
+grow_vertical = 1

@@ -20,8 +20,10 @@ enum Debuffs{ #once enemy enters spell, it checks for debuff, while enemy inside
 	STUN
 }
 
+@export var name: String
+@export var mana_cost: int
+@export var icon: Texture2D
 
-@export var spell_cost: int
 @export var cooldown: float
 @export var spell_duration: float
 @export var debuff: Debuffs
@@ -40,5 +42,3 @@ var is_on_cooldown: bool = false
 
 @export var deal_knockback: bool
 @export_range(0.0, 100.0, 15.0) var knockback_amount: float
-
-@export var icon: Texture2D

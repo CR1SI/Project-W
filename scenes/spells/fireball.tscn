@@ -10,8 +10,7 @@ radius = 31.3077
 [node name="Fireball" type="Area2D"]
 position = Vector2(566.727, 320.472)
 script = ExtResource("1_5bcb8")
-resource = ExtResource("2_tx7j8")
-id = "fireball"
+data = ExtResource("2_tx7j8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.273071, 3.52777)
