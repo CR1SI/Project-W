@@ -57,7 +57,7 @@ var active_bar: Dictionary = {
 	5 : spell_scenes[SpellType.LIGHTBEAM]
 }
 
-var selected_spell: SpellType = -1
+var selected_spell: SpellType
 var spell_fired: bool = false
 
 var cooldowns: Dictionary = {} #to track cooldowns!
@@ -137,7 +137,7 @@ func stop_targeting() -> void:
 
 var processed_combinations: Dictionary = {}
 var current_frame: int = 0
-func _on_collided(spell1: Area2D, spell2: Area2D):
+func _on_collided(spell1: Area2D, spell2: Area2D) -> void:
 	current_frame = Engine.get_physics_frames() #get frame on collision
 	
 	print("collided spell1:",spell1, "with: ," , spell2)
