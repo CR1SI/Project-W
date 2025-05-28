@@ -14,7 +14,7 @@ var slot_num: int #tracks which slot it is in inventory
 func _ready() -> void:
 	update_ui()
 
-func update_ui():
+func update_ui() -> void:
 	if data:
 		texture_rect.texture = data.icon
 		texture_rect.tooltip_text = data.name
@@ -27,11 +27,11 @@ func update_ui():
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
 	if data:
-		var drag_data = {
+		var drag_data: Dictionary = {
 			"spell": data,
 			"slot_index": slot_num
 		}
-		var preview = TextureRect.new()
+		var preview: TextureRect = TextureRect.new()
 		preview.texture = data.icon
 		preview.custom_minimum_size = Vector2(32,32)
 		preview.expand_mode = TextureRect.EXPAND_FIT_WIDTH
@@ -50,7 +50,7 @@ func _drop_data(_at_position: Vector2, d_data: Variant) -> void:
 	#emit signal to swap items in inventory #emit signal to swap items in active_bar
 	emit_signal("spell_dropped", dragged_slot_num, slot_num)
 
-func update_slot(new_spell: Spell):
+func update_slot(new_spell: Spell) -> void:
 	data = new_spell
 	update_ui()
 

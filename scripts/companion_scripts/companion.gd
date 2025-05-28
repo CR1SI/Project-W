@@ -16,9 +16,10 @@ enum States {
 	IDLE, 
 	FOLLOWING, 
 	ATTACKING, 
-	BUFFING}
-var current_state = States.FOLLOWING
-var previous_state
+	BUFFING
+	}
+var current_state: States = States.FOLLOWING
+var previous_state: States
 
 enum Buffs{
 	STRENGTH_BUFF,
@@ -34,7 +35,7 @@ var enemyFound: bool = false
 var playerNear: bool = false
 var shouldBuff: bool = false #could have a lot of dependencies when you consider why it should buff
 
-func buffType(companion_type):
+func buffType(companion_type: int) -> void:
 	match companion_type:
 		0:
 			buff = Buffs.HEALTH_BUFF
@@ -81,7 +82,7 @@ func _physics_process(_delta: float) -> void:
 func _process(_delta: float) -> void:
 	player_position = player.global_position
 
-func switcher(state: States, _d: float):
+func switcher(state: States, _d: float) -> void:
 	match state:
 		States.IDLE:
 			idle()
@@ -94,19 +95,19 @@ func switcher(state: States, _d: float):
 
 #region state functions
 
-func idle():
+func idle() -> void:
 	direction = Vector2.ZERO
 	velocity = velocity.lerp(Vector2.ZERO, 0.2)
 
-func following(_delta: float):
+func following(_delta: float) -> void:
 	direction = player_position - global_position
 	velocity = velocity.lerp((direction).normalized() * stats.speed, stats.acceleration * _delta)
 
-func attacking():
+func attacking() -> void:
 	#direction to target
 	pass
 
-func buffing():
+func buffing() -> void:
 	direction = Vector2.ZERO
 	velocity = velocity.lerp(Vector2.ZERO, 0.2)
 	
@@ -127,14 +128,14 @@ func buffing():
 
 #endregion
 
-func _on_companion_zone_entered():
+func _on_companion_zone_entered() -> void:
 	playerNear = true
 	switch_state(States.IDLE)
-func _on_companion_zone_exited():
+func _on_companion_zone_exited() -> void:
 	playerNear = false
 	switch_state(States.FOLLOWING)
 
-func switch_state(future_state: States):
+func switch_state(future_state: States) -> void:
 	#TODO add animation logic for each state here with a match statements
 	previous_state = current_state
 	current_state = future_state

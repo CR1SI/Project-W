@@ -2,7 +2,7 @@ extends Control
 class_name inventory
 
 @onready var spell_selector: GridContainer = $background/spell_selector
-@onready var spell_manager = get_tree().get_first_node_in_group("player").get_node("SpellManager")
+@onready var spell_manager: SpellManager = get_tree().get_first_node_in_group("player").get_node("SpellManager")
 
 
 @onready var mana: Label = %mana
@@ -19,11 +19,11 @@ func _ready() -> void:
 	bar = spell_manager.active_bar
 	slots = spell_selector.get_children()
 	
-	for i in slots:
+	for i: Panel in slots:
 		if !i.get_name().begins_with("space"):
 			i.slot_num = slots.find(i)
 			i.connect("spell_dropped", Callable(self, "_on_spell_dropped"))
-			var slot_name = i.get_name()
+			var slot_name: String = i.get_name()
 			if slot_name.begins_with("extra"):
 				extra_spells.append(i)
 			else:
@@ -37,9 +37,9 @@ func _ready() -> void:
 		manaAMOUNT += int(i.mana.text)
 	mana.text = "total mana: " + str(manaAMOUNT)
 
-func add_to_slot():
-	for spells in bar:
-		var instance = bar[spells].instantiate()
+func add_to_slot() -> void:
+	for spells: int in bar:
+		var instance: Node = bar[spells].instantiate()
 		var data: Spell = instance.data
 		instance.queue_free()
 		var assigned_to_active: bool = false
@@ -60,7 +60,7 @@ func _on_spell_dropped(from: int, to: int) -> void:
 	var to_slot: spell_slot = slots[to]
 	
 	#swap ui
-	var temp = to_slot.data
+	var temp: Spell = to_slot.data
 	to_slot.data = from_slot.data
 	from_slot.data = temp
 	
@@ -75,7 +75,7 @@ func _on_spell_dropped(from: int, to: int) -> void:
 		to_slot.name = "6"
 	
 	#swap active_bar
-	var temp_spell = spell_manager.active_bar[int(from_slot.name) - 1]
+	var temp_spell: PackedScene = spell_manager.active_bar[int(from_slot.name) - 1]
 	spell_manager.active_bar[int(from_slot.name) - 1] = spell_manager.active_bar[int(to_slot.name) - 1]
 	spell_manager.active_bar[int(to_slot.name) - 1] = temp_spell
 	
@@ -86,7 +86,7 @@ func _on_spell_dropped(from: int, to: int) -> void:
 	mana.text = "total mana: " + str(manaAMOUNT)
 
 
-func _on_open():
+func _on_open() -> void:
 	if visible:
 		visible = false
 	else:
