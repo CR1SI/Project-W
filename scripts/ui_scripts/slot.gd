@@ -34,6 +34,8 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 		var preview = TextureRect.new()
 		preview.texture = data.icon
 		preview.custom_minimum_size = Vector2(32,32)
+		preview.expand_mode = TextureRect.EXPAND_FIT_WIDTH
+		preview.stretch_mode = TextureRect.STRETCH_SCALE
 		set_drag_preview(preview)
 		return drag_data
 	return null

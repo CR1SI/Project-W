@@ -74,7 +74,6 @@ func _on_spell_dropped(from: int, to: int) -> void:
 	elif to_slot.name.begins_with("extra2"):
 		to_slot.name = "6"
 	
-	
 	#swap active_bar
 	var temp_spell = spell_manager.active_bar[int(from_slot.name) - 1]
 	spell_manager.active_bar[int(from_slot.name) - 1] = spell_manager.active_bar[int(to_slot.name) - 1]
