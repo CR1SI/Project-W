@@ -7,6 +7,7 @@
 script = ExtResource("1_p5wby")
 name = "waterfall"
 mana_cost = 25
+icon = ExtResource("1_cxqgm")
 cooldown = 7.0
 spell_duration = 4.0
 debuff = 4
@@ -19,4 +20,3 @@ requires_targeting = true
 on_player = false
 deal_knockback = false
 knockback_amount = 0.0
-icon = ExtResource("1_cxqgm")

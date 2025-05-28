@@ -7,6 +7,7 @@
 script = ExtResource("1_bblle")
 name = "shadowbolt"
 mana_cost = 25
+icon = ExtResource("1_v0qoc")
 cooldown = 4.0
 spell_duration = 2.0
 debuff = 5
@@ -19,4 +20,3 @@ requires_targeting = false
 on_player = true
 deal_knockback = false
 knockback_amount = 0.0
-icon = ExtResource("1_v0qoc")

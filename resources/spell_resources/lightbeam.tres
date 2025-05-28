@@ -7,6 +7,7 @@
 script = ExtResource("1_faqga")
 name = "lightbeam"
 mana_cost = 30
+icon = ExtResource("1_lba22")
 cooldown = 3.0
 spell_duration = 1.0
 debuff = 3
@@ -19,4 +20,3 @@ requires_targeting = false
 on_player = true
 deal_knockback = false
 knockback_amount = 0.0
-icon = ExtResource("1_lba22")

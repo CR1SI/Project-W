@@ -7,6 +7,7 @@
 script = ExtResource("1_fe5pv")
 name = "stonefist"
 mana_cost = 10
+icon = ExtResource("1_xi8t4")
 cooldown = 3.0
 spell_duration = 1.0
 debuff = 6
@@ -19,4 +20,3 @@ requires_targeting = false
 on_player = true
 deal_knockback = true
 knockback_amount = 30.0
-icon = ExtResource("1_xi8t4")
