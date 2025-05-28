@@ -8,7 +8,7 @@ var prev_state: State
 var current_state: State
 
 #called when node is first added to scene
-func _ready(): 
+func _ready() -> void: 
 	process_mode = Node.PROCESS_MODE_DISABLED
 	
 	pass

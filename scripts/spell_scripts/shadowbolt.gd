@@ -7,7 +7,7 @@ class_name Shadowbolt
 func _ready() -> void:
 	super._ready()
 	
-	var angle = get_angle_to(get_global_mouse_position())
+	var angle: float = get_angle_to(get_global_mouse_position())
 	set_global_rotation(angle)
 	animation_player.play("shadowbolt")
 	

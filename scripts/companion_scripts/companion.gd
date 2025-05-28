@@ -92,7 +92,8 @@ func switcher(state: States, _d: float):
 		States.BUFFING:
 			buffing()
 
-#state functions
+#region state functions
+
 func idle():
 	direction = Vector2.ZERO
 	velocity = velocity.lerp(Vector2.ZERO, 0.2)
@@ -123,6 +124,8 @@ func buffing():
 	
 	shouldBuff = false #resetting flag
 	switch_state(previous_state)
+
+#endregion
 
 func _on_companion_zone_entered():
 	playerNear = true

@@ -17,7 +17,7 @@ func Enter() -> void:
 	
 	if spell_manager.selected_spell > -1 and spell_manager.spell_fired == false:
 		if spell_manager.is_targeting:
-			var target_position = spell_manager.target_radius.global_position
+			var target_position: Vector2 = spell_manager.target_radius.global_position
 			spell_manager.cast_spell(spell_manager.selected_spell, target_position)
 		else:
 			spell_manager.cast_spell(spell_manager.selected_spell, player.position)

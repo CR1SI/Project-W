@@ -27,6 +27,6 @@ var speedBUFF : float
 
 #companion variables
 @export var is_companion: bool = false
-@export_enum("comp1", "comp2", "comp3", "comp4","comp5","player") var companion = 0
+@export_enum("comp1", "comp2", "comp3", "comp4","comp5","player") var companion: int = 0
 @export var attackingCompanion: bool = false
 @export var on_head: bool

@@ -6,11 +6,10 @@ extends Area2D
 var direction: Vector2 = Vector2.ZERO
 var spell_fired: bool = false
 
-func _ready():
+func _ready() -> void:
 	add_to_group("spells")
 	connect("area_entered", Callable(self, "_on_area_entered"))
 	fire_spell()
-	pass
 
 func _process(delta: float) -> void:
 	if spell_fired:
@@ -18,7 +17,7 @@ func _process(delta: float) -> void:
 		await get_tree().create_timer(data.spell_duration).timeout
 		queue_free()
 
-func fire_spell():
+func fire_spell() -> void:
 	
 	if data.requires_targeting or data.on_player:
 		direction = Vector2.ZERO
@@ -27,9 +26,9 @@ func fire_spell():
 	
 	spell_fired = true
 
-func deal_damage(_dmg: int): 	#deal dmg stuff here
+func deal_damage(_dmg: int) -> void: 	#deal dmg stuff here
 	pass
 
-func _on_area_entered(area: Area2D):
+func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("spells") and data.can_combine:
 		SignalBus.emit_signal("spell_collided", self, area)

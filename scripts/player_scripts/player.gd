@@ -3,22 +3,22 @@ extends CharacterBody2D
 
 @export var stats: Stats
 
-var mouse_position = null
+var mouse_position: Vector2 = Vector2.ZERO
 
-@onready var spell_manager = $SpellManager
+@onready var spell_manager: SpellManager = $SpellManager
 @onready var state_machine: StateMachine = $StateMachine
-@onready var idle = $StateMachine/idle
-@onready var walk = $StateMachine/walk
-@onready var dodge = $StateMachine/dodge
-@onready var melee = $StateMachine/melee
-@onready var casting = $StateMachine/casting
+@onready var idle: State = $StateMachine/idle
+@onready var walk: State = $StateMachine/walk
+@onready var dodge: State = $StateMachine/dodge
+@onready var melee: State = $StateMachine/melee
+@onready var casting: State = $StateMachine/casting
 
 
 var direction: Vector2 = Vector2.ZERO
 var last_direction: Vector2 = Vector2.ZERO
 var cardinal_direction: Vector2 = Vector2.ZERO
-@onready var character = $character
-@onready var animation_player = $AnimationPlayer
+@onready var character: Sprite2D = $character
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 
 
@@ -56,7 +56,7 @@ func setDirection() -> bool:
 		return false
 	
 	var direction_id: int = int( round( ( direction ).angle() / TAU * DIR_4.size() ) )
-	var new_dir = DIR_4 [ direction_id ]
+	var new_dir: Vector2 = DIR_4 [ direction_id ]
 	
 	if new_dir == cardinal_direction: 
 		return false

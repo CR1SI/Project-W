@@ -5,7 +5,7 @@ class_name Lightbeam
 @onready var line_2d: Line2D = $Line2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
 
-func _ready(): 
+func _ready() -> void: 
 	super._ready()
 	ray_cast_2d.target_position = ray_cast_2d.to_local(get_global_mouse_position())
 	
