@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlf8roaar4rhu"]
+[gd_scene load_steps=6 format=3 uid="uid://dlf8roaar4rhu"]
 
 [ext_resource type="Script" uid="uid://crbsplng8s074" path="res://scripts/spell_scripts/hellfire.gd" id="1_130ws"]
+[ext_resource type="Resource" uid="uid://c1egxxauo60m3" path="res://resources/spell_resources/hellfire.tres" id="2_e8na3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_130ws"]
 size = Vector2(95, 40)
@@ -15,6 +16,7 @@ _data = {
 
 [node name="Hellfire" type="Area2D"]
 script = ExtResource("1_130ws")
+data = ExtResource("2_e8na3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(79.7269, 0)
