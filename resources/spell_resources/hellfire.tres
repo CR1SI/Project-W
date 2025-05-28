@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=2 format=3 uid="uid://c1egxxauo60m3"]
+
+[ext_resource type="Script" uid="uid://cverkfrb5pg7" path="res://scripts/custom_resources/spell_base.gd" id="1_bgina"]
+
+[resource]
+script = ExtResource("1_bgina")
+mana_cost = 0
+cooldown = 0.0
+spell_duration = 2.0
+debuff = 5
+spell_type = 5
+dmg = 15
+spell_speed = 0
+can_combine = false
+is_combination = true
+requires_targeting = false
+on_player = false
+deal_knockback = false
+knockback_amount = 0.0
+metadata/_custom_type_script = "uid://cverkfrb5pg7"

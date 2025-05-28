@@ -53,21 +53,29 @@ func buffType(companion_type):
 			print("-companion5- buff")
 
 func _ready() -> void:
+	add_to_group("companion")
 	player = get_tree().get_first_node_in_group("player")
 	SignalBus.connect("companion_zone_entered", Callable(self, "_on_companion_zone_entered"))
 	SignalBus.connect("companion_zone_exited", Callable(self, "_on_companion_zone_exited"))
 	
 	buffType(stats.companion)
+	
+	if stats.on_head:
+		stats.speed = 0
+		stats.acceleration = 0
 
 
 func _physics_process(_delta: float) -> void:
-	if enemyFound and current_state != States.ATTACKING and stats.attackingCompanion:
-		switch_state(States.ATTACKING)
-	elif shouldBuff and current_state != States.BUFFING:
-		switch_state(States.BUFFING)
+	if !stats.on_head:
+		if enemyFound and current_state != States.ATTACKING and stats.attackingCompanion:
+			switch_state(States.ATTACKING)
+		elif shouldBuff and current_state != States.BUFFING:
+			switch_state(States.BUFFING)
+		else:
+			switcher(current_state, _delta)
+		move_and_slide()
 	else:
-		switcher(current_state, _delta)
-	move_and_slide()
+		global_position = player_position
 
 
 func _process(_delta: float) -> void:
@@ -103,11 +111,11 @@ func buffing():
 	
 	match buff: #TODO make these fair
 		Buffs.HEALTH_BUFF:
-			player.stats.health += 25 
+			player.stats.healthBUFF += 25 
 		Buffs.STRENGTH_BUFF:
-			player.stats.strength += 10
+			player.stats.strengthBUFF += 10
 		Buffs.DEFENSE_BUFF:
-			player.stats.defense += 15
+			player.stats.defenseBUFF += 15
 		Buffs.MANA_RESTORE:
 			player.stats.mana = player.stats.max_mana
 		Buffs.SPEED_BUFF:

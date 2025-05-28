@@ -1,8 +1,7 @@
 class_name base_script
 extends Area2D
 
-@export var resource: Spell
-@export var id: String = ""
+@export var data: Spell
 
 var direction: Vector2 = Vector2.ZERO
 var spell_fired: bool = false
@@ -15,13 +14,13 @@ func _ready():
 
 func _process(delta: float) -> void:
 	if spell_fired:
-		position += direction * resource.spell_speed * delta
-		await get_tree().create_timer(resource.spell_duration).timeout
+		position += direction * data.spell_speed * delta
+		await get_tree().create_timer(data.spell_duration).timeout
 		queue_free()
 
 func fire_spell():
 	
-	if resource.requires_targeting or resource.on_player:
+	if data.requires_targeting or data.on_player:
 		direction = Vector2.ZERO
 	else: 
 		direction = (get_global_mouse_position() - position).normalized()
@@ -32,5 +31,5 @@ func deal_damage(_dmg: int): 	#deal dmg stuff here
 	pass
 
 func _on_area_entered(area: Area2D):
-	if area.is_in_group("spells") and resource.can_combine:
+	if area.is_in_group("spells") and data.can_combine:
 		SignalBus.emit_signal("spell_collided", self, area)

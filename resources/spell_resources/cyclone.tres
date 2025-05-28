@@ -5,7 +5,9 @@
 
 [resource]
 script = ExtResource("1_v1xjq")
+name = "cyclone"
 mana_cost = 20
+icon = ExtResource("1_a8iib")
 cooldown = 4.0
 spell_duration = 5.0
 debuff = 0
@@ -18,4 +20,3 @@ requires_targeting = false
 on_player = false
 deal_knockback = true
 knockback_amount = 60.0
-icon = ExtResource("1_a8iib")

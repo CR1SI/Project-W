@@ -24,13 +24,27 @@ const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 
 func _ready() -> void:
 	state_machine.Initialize(self) #initialized statemachine, with self->(player) node
+	
 	pass
 
 func _process(_delta: float) -> void:
 	#calculating direciton x and y
 	direction.x = Input.get_action_strength("right") - Input.get_action_strength("left") 
 	direction.y = Input.get_action_strength("down") - Input.get_action_strength("up")
-	pass
+	
+	if Input.is_action_just_pressed("spell1"):
+		SignalBus.emit_signal("spell_selected", 1)
+	if Input.is_action_just_pressed("spell2"):
+		SignalBus.emit_signal("spell_selected", 2)
+	if Input.is_action_just_pressed("spell3"):
+		SignalBus.emit_signal("spell_selected", 3)
+	if Input.is_action_just_pressed("spell4"):
+		SignalBus.emit_signal("spell_selected", 4)
+	
+	if Input.is_action_just_pressed("inv"):
+		SignalBus.emit_signal("open_selector")
+	
+
 
 func _physics_process(_delta: float) -> void:
 	mouse_position = get_global_mouse_position() #keeps track of mouse position 

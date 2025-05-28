@@ -5,12 +5,13 @@
 [resource]
 script = ExtResource("1_0eppw")
 max_health = 50
-defense = 5
-strength = 10
+defense = 0
+strength = 0
 max_mana = 0
 speed = 200.0
 acceleration = 50
 is_companion = true
 companion = 0
 attackingCompanion = false
+on_head = false
 metadata/_custom_type_script = "uid://baklv785hsmfm"

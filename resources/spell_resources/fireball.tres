@@ -5,7 +5,9 @@
 
 [resource]
 script = ExtResource("1_3fqav")
+name = "fireball"
 mana_cost = 10
+icon = ExtResource("1_1ng8x")
 cooldown = 5.0
 spell_duration = 5.0
 debuff = 1
@@ -18,4 +20,3 @@ requires_targeting = false
 on_player = false
 deal_knockback = false
 knockback_amount = 0.0
-icon = ExtResource("1_1ng8x")

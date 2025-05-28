@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_bblle")
+name = "shadowbolt"
 mana_cost = 25
 cooldown = 4.0
 spell_duration = 2.0

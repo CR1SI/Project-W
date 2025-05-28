@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_p5wby")
+name = "waterfall"
 mana_cost = 25
 cooldown = 7.0
 spell_duration = 4.0

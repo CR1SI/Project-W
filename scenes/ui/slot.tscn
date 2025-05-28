@@ -1,32 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://hdpcv10kdxbh"]
+[gd_scene load_steps=2 format=3 uid="uid://grvpi2lsf4yb"]
 
-[ext_resource type="Script" uid="uid://cgg8oj315vfx0" path="res://scripts/ui_scripts/slot.gd" id="1_ma6vs"]
-[ext_resource type="Script" uid="uid://c1f1k0gfe6qdd" path="res://scripts/ui_scripts/statsItems.gd" id="2_dihd4"]
+[ext_resource type="Script" uid="uid://7fp3h5bdleur" path="res://scripts/ui_scripts/slot.gd" id="1_jkamp"]
 
-[node name="slot" type="PanelContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("1_ma6vs")
+[node name="slot" type="Panel"]
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_jkamp")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
 expand_mode = 1
-script = ExtResource("2_dihd4")
 
-[node name="debug" type="Label" parent="TextureRect"]
+[node name="mana" type="Label" parent="TextureRect"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -23.0
-offset_right = 20.0
-grow_horizontal = 2
+offset_top = -14.0
+offset_right = 6.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 10
-horizontal_alignment = 2
-vertical_alignment = 2

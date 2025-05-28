@@ -9,8 +9,9 @@ radius = 50.04
 [node name="WaterFall" type="Area2D"]
 position = Vector2(472, 288)
 script = ExtResource("1_iwlgq")
-resource = ExtResource("2_q37r3")
-id = "waterfall"
+data = ExtResource("2_q37r3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_875v8")

@@ -13,3 +13,9 @@ signal spell_selected
 signal companion_zone_entered
 @warning_ignore("unused_signal")
 signal companion_zone_exited
+
+@warning_ignore("unused_signal")
+signal spell_dropped(from_index: int, to_index: int)
+
+@warning_ignore("unused_signal")
+signal open_selector

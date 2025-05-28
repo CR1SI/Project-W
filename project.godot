@@ -22,6 +22,8 @@ Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 mouse_cursor/custom_image="res://textures/spell_textures_placeholders/aim.png"
@@ -31,6 +33,16 @@ mouse_cursor/custom_image_hotspot=Vector2(8, 8)
 
 enabled=PackedStringArray("res://addons/SignalVisualizer/plugin.cfg", "res://addons/globalize-plugins/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://resources/": "red",
+"res://scenes/": "green",
+"res://scripts/": "orange",
+"res://sounds/": "blue",
+"res://textures/": "pink"
+}
+
 [global_group]
 
 spells=""
@@ -38,6 +50,10 @@ enemy=""
 player=""
 companion=""
 npc=""
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
 
 [input]
 

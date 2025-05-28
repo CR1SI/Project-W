@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_fe5pv")
+name = "stonefist"
 mana_cost = 10
 cooldown = 3.0
 spell_duration = 1.0

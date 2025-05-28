@@ -3,8 +3,6 @@ extends Node
 
 @onready var player: Player = $".."
 
-
-
 var target = preload("res://textures/spell_textures_placeholders/target.png") #100x100
 var default_aim = preload("res://textures/spell_textures_placeholders/aim.png") #16x16
 
@@ -21,12 +19,16 @@ enum SpellType {
 
 enum SpellCombo { 
 	SMOKESCREEN,
-	FIRECYCLONE
+	FIRECYCLONE,
+	MAGMAFIST,
+	HELLFIRE
 }
 
 var combo_scenes = { 
 	SpellCombo.SMOKESCREEN : preload("res://scenes/spells/smokescreen.tscn"),
-	SpellCombo.FIRECYCLONE : preload("res://scenes/spells/firecyclone.tscn")
+	SpellCombo.FIRECYCLONE : preload("res://scenes/spells/firecyclone.tscn"),
+	SpellCombo.MAGMAFIST : preload("res://scenes/spells/magmafist.tscn"),
+	SpellCombo.HELLFIRE : preload("res://scenes/spells/hellfire.tscn")
 }
 
 var spell_scenes = { 
@@ -35,20 +37,24 @@ var spell_scenes = {
 	SpellType.CYCLONE : preload("res://scenes/spells/cyclone.tscn"),
 	SpellType.STONEFIST : preload("res://scenes/spells/stonefist.tscn"),
 	SpellType.LIGHTBEAM : preload("res://scenes/spells/lightbeam.tscn"),
-	SpellType.SHADOWBOLT : preload("res://scenes/spells/shadowbolt.tscn")
+	SpellType.SHADOWBOLT : preload("res://scenes/spells/shadowbolt.tscn"),
 }
 
 var spell_combinations = { 
 	"Fireball_WaterFall" : SpellCombo.SMOKESCREEN,
 	"Fireball_Cyclone" : SpellCombo.FIRECYCLONE,
+	"Fireball_Stonefist" : SpellCombo.MAGMAFIST,
+	"Fireball_Shadowbolt" : SpellCombo.HELLFIRE,
 }
 
 
 var active_bar = {
-	0 : spell_scenes[SpellType.WATERFALL],
+	0 : spell_scenes[SpellType.STONEFIST],
 	1 : spell_scenes[SpellType.FIREBALL],
 	2 : spell_scenes[SpellType.CYCLONE],
-	3 : spell_scenes[SpellType.SHADOWBOLT]
+	3 : spell_scenes[SpellType.SHADOWBOLT],
+	4 : spell_scenes[SpellType.WATERFALL],
+	5 : spell_scenes[SpellType.LIGHTBEAM]
 }
 
 var selected_spell: SpellType = -1
@@ -91,7 +97,7 @@ func cast_combo(combo: SpellCombo, position: Vector2):
 
 func start_cooldown(spell: SpellType): 
 	cooldowns[spell] = true
-	var spell_resource = active_bar[spell].instantiate().resource
+	var spell_resource = active_bar[spell].instantiate().data
 	SignalBus.emit_signal("spell_fired", spell_resource.cooldown, active_bar.find_key(active_bar[spell]))
 	var cool_timer = get_tree().create_timer(spell_resource.cooldown)
 	await cool_timer.timeout
@@ -109,9 +115,9 @@ func select_spell(spell_index: int):
 		4: 
 			selected_spell = active_bar.find_key(active_bar[3])
 	
-	if selected_spell > -1 and active_bar[selected_spell].instantiate().resource.requires_targeting:
+	if selected_spell > -1 and active_bar[selected_spell].instantiate().data.requires_targeting:
 		start_targeting(active_bar[selected_spell].instantiate())
-	elif selected_spell > -1 and not active_bar[selected_spell].instantiate().resource.requires_targeting:
+	elif selected_spell > -1 and not active_bar[selected_spell].instantiate().data.requires_targeting:
 		stop_targeting()
 
 #spell targeting logic
@@ -123,7 +129,7 @@ func start_targeting(_spell_instance):
 func stop_targeting(): 
 	is_targeting = false
 	Input.set_custom_mouse_cursor(default_aim, Input.CURSOR_ARROW, Vector2(8,8))
-	if active_bar[selected_spell].instantiate().resource.requires_targeting:
+	if active_bar[selected_spell].instantiate().data.requires_targeting:
 		cast_spell(selected_spell, player.mouse_position)
 	else: 
 		return

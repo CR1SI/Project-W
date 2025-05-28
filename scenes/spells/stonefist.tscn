@@ -49,6 +49,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [20.0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GPUParticles2D:process_material:emission_ring_radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [50.0]
+}
 
 [sub_resource type="Animation" id="Animation_ohwut"]
 resource_name = "stonefist"
@@ -76,6 +88,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [50.0, 70.0, 90.0, 110.0, 130.0, 150.0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GPUParticles2D:process_material:emission_ring_radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [50.0, 75.0, 90.0, 115.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jbb6r"]
 _data = {
@@ -83,10 +107,11 @@ _data = {
 &"stonefist": SubResource("Animation_ohwut")
 }
 
-[node name="stonefist" type="Area2D"]
+[node name="Stonefist" type="Area2D"]
 script = ExtResource("1_u4dnp")
-resource = ExtResource("2_hudnc")
-id = "stonefist"
+data = ExtResource("2_hudnc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
