@@ -39,19 +39,19 @@ func buffType(companion_type: int) -> void:
 	match companion_type:
 		0:
 			buff = Buffs.HEALTH_BUFF
-			print("-companion1- buff")
+			print("-companion1- buff-health")
 		1:
 			buff = Buffs.STRENGTH_BUFF
-			print("-companion2- buff")
+			print("-companion2- buff-strength")
 		2:
 			buff = Buffs.DEFENSE_BUFF
-			print("-companion3- buff")
+			print("-companion3- buff-defense")
 		3:
 			buff = Buffs.MANA_RESTORE
-			print("-companion4- buff")
+			print("-companion4- mana restore")
 		4:
 			buff = Buffs.SPEED_BUFF
-			print("-companion5- buff")
+			print("-companion5- buff-speed")
 
 func _ready() -> void:
 	add_to_group("companion")
@@ -81,6 +81,7 @@ func _physics_process(_delta: float) -> void:
 
 func _process(_delta: float) -> void:
 	player_position = player.global_position
+	pass
 
 func switcher(state: States, _d: float) -> void:
 	match state:

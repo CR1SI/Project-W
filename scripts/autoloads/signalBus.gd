@@ -19,3 +19,15 @@ signal spell_dropped(from_index: int, to_index: int)
 
 @warning_ignore("unused_signal")
 signal open_selector
+
+@warning_ignore("unused_signal")
+signal apply_dmg_debuff
+
+@warning_ignore("unused_signal")
+signal dmg_debuff_applied
+
+@warning_ignore("unused_signal")
+signal dead
+
+@warning_ignore("unused_signal")
+signal spell_casted

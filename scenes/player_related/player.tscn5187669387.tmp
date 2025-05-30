@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dwmqx0jpb8jtp"]
+[gd_scene load_steps=22 format=3 uid="uid://dwmqx0jpb8jtp"]
 
 [ext_resource type="Script" uid="uid://csu3b8rb1tx7h" path="res://scripts/player_scripts/player.gd" id="1_foac7"]
 [ext_resource type="Resource" uid="uid://by3b4x2u2lhpd" path="res://resources/player_resources/player_stats.tres" id="2_auslv"]
@@ -13,7 +13,6 @@
 [ext_resource type="Script" uid="uid://dsvkkp58v8yxv" path="res://scripts/companion_scripts/companion_zone.gd" id="11_cabau"]
 [ext_resource type="PackedScene" uid="uid://c0xqulw7pjpl0" path="res://scenes/helper_scenes/hitbox.tscn" id="12_bkiug"]
 [ext_resource type="PackedScene" uid="uid://bh5gsfm8mxgnk" path="res://scenes/helper_scenes/hurtbox.tscn" id="13_2dmwd"]
-[ext_resource type="Script" uid="uid://be7ynshqqep24" path="res://scripts/ui_scripts/debug_hp_mana.gd" id="14_xh1ps"]
 
 [sub_resource type="Animation" id="Animation_fo8gx"]
 length = 0.001
@@ -130,32 +129,7 @@ shape = SubResource("CircleShape2D_foac7")
 position = Vector2(156, 4)
 
 [node name="hurtbox" parent="." instance=ExtResource("13_2dmwd")]
-
-[node name="debug_HP_MANA" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -216.0
-offset_top = -464.0
-offset_right = -176.0
-offset_bottom = -424.0
-script = ExtResource("14_xh1ps")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="debug_HP_MANA"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="hp" type="Label" parent="debug_HP_MANA/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 70
-text = "hp: "
-
-[node name="mana" type="Label" parent="debug_HP_MANA/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 70
-text = "mana: "
+visible = false
 
 [connection signal="timeout" from="StateMachine/dodge/Timer" to="StateMachine/dodge" method="_on_timer_timeout"]
 [connection signal="body_entered" from="CompanionZone" to="CompanionZone" method="_on_body_entered"]

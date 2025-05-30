@@ -2,11 +2,24 @@ class_name Stats
 extends Resource
 
 #TODO make setter functions for health and mana, use signals, and ensure buffs and debuffs can work
-@export var max_health : int 
-var current_health : int = max_health
+@export var max_health : int:
+	set(value):
+		max_health = value
+		current_health = max_health
+var current_health : int = max_health:
+	set(value):
+		current_health = value
 @export var defense : int
 @export var strength : int
-@export var max_mana : int
+@export var max_mana : int:
+	set(value):
+		max_mana = value
+		mana = max_mana
+@export var dmg : int :
+	set(value):
+		dmg = value
+	get():
+		return dmg * strength
 var mana : int = max_mana :
 	set(value):
 		mana = value

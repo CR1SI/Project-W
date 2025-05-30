@@ -57,7 +57,7 @@ var active_bar: Dictionary = {
 	5 : spell_scenes[SpellType.LIGHTBEAM]
 }
 
-var selected_spell: SpellType
+var selected_spell: SpellType = -1
 var spell_fired: bool = false
 
 var cooldowns: Dictionary = {} #to track cooldowns!
@@ -70,7 +70,7 @@ func _ready()  -> void:
 	
 
 func cast_spell(spell: SpellType, position: Vector2) -> void: 
-	if spell in active_bar: 
+	if spell in active_bar and player.stats.mana >= active_bar[spell].instantiate().data.mana_cost: 
 		#check if on cooldown!
 		if cooldowns[spell]: 
 			print("spell on cooldown")
@@ -83,6 +83,8 @@ func cast_spell(spell: SpellType, position: Vector2) -> void:
 		add_child(spell_instance)
 		
 		start_cooldown(spell)
+		
+		SignalBus.emit_signal("spell_casted", spell_instance.data.mana_cost)
 
 func cast_combo(combo: SpellCombo, position: Vector2) -> void: 
 	if combo in combo_scenes: 
