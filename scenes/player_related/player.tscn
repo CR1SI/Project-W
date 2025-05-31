@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dwmqx0jpb8jtp"]
+[gd_scene load_steps=24 format=3 uid="uid://dwmqx0jpb8jtp"]
 
 [ext_resource type="Script" uid="uid://csu3b8rb1tx7h" path="res://scripts/player_scripts/player.gd" id="1_foac7"]
 [ext_resource type="Resource" uid="uid://by3b4x2u2lhpd" path="res://resources/player_resources/player_stats.tres" id="2_auslv"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c0xqulw7pjpl0" path="res://scenes/helper_scenes/hitbox.tscn" id="12_bkiug"]
 [ext_resource type="PackedScene" uid="uid://bh5gsfm8mxgnk" path="res://scenes/helper_scenes/hurtbox.tscn" id="13_2dmwd"]
 [ext_resource type="Script" uid="uid://be7ynshqqep24" path="res://scripts/ui_scripts/debug_hp_mana.gd" id="14_xh1ps"]
+[ext_resource type="Script" uid="uid://c1mortmdb56tj" path="res://scripts/ui_scripts/debug_spells_visual.gd" id="15_um75a"]
 
 [sub_resource type="Animation" id="Animation_fo8gx"]
 length = 0.001
@@ -156,6 +157,31 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
 text = "mana: "
+
+[node name="spell_visual" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(64, 64)
+offset_left = -228.0
+offset_top = -748.0
+offset_right = -96.0
+offset_bottom = -616.0
+columns = 2
+script = ExtResource("15_um75a")
+
+[node name="TextureRect" type="TextureRect" parent="spell_visual"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="spell_visual"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="spell_visual"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="spell_visual"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 
 [connection signal="timeout" from="StateMachine/dodge/Timer" to="StateMachine/dodge" method="_on_timer_timeout"]
 [connection signal="body_entered" from="CompanionZone" to="CompanionZone" method="_on_body_entered"]
