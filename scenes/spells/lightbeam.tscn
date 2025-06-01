@@ -5,7 +5,7 @@
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_icx04"]
 
-[node name="lightbeam" type="Area2D"]
+[node name="Lightbeam" type="Area2D"]
 script = ExtResource("1_nm7tc")
 data = ExtResource("2_3ecwm")
 

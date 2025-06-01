@@ -21,14 +21,16 @@ enum SpellCombo {
 	SMOKESCREEN,
 	FIRECYCLONE,
 	MAGMAFIST,
-	HELLFIRE
+	HELLFIRE,
+	SOLARFLARE
 }
 
 var combo_scenes: Dictionary = { 
 	SpellCombo.SMOKESCREEN : preload("res://scenes/spells/smokescreen.tscn"),
 	SpellCombo.FIRECYCLONE : preload("res://scenes/spells/firecyclone.tscn"),
 	SpellCombo.MAGMAFIST : preload("res://scenes/spells/magmafist.tscn"),
-	SpellCombo.HELLFIRE : preload("res://scenes/spells/hellfire.tscn")
+	SpellCombo.HELLFIRE : preload("res://scenes/spells/hellfire.tscn"),
+	SpellCombo.SOLARFLARE : preload("res://scenes/spells/solarflare.tscn")
 }
 
 var spell_scenes: Dictionary = { 
@@ -40,11 +42,19 @@ var spell_scenes: Dictionary = {
 	SpellType.SHADOWBOLT : preload("res://scenes/spells/shadowbolt.tscn"),
 }
 
-var spell_combinations: Dictionary = { 
-	"Fireball_WaterFall" : SpellCombo.SMOKESCREEN,
-	"Fireball_Cyclone" : SpellCombo.FIRECYCLONE,
-	"Fireball_Stonefist" : SpellCombo.MAGMAFIST,
-	"Fireball_Shadowbolt" : SpellCombo.HELLFIRE,
+var spell_combinations: Dictionary = {
+	#FIRE BASED SPELLS
+	"fireball_waterfall" : SpellCombo.SMOKESCREEN,
+	"waterfall_fireball" : SpellCombo.SMOKESCREEN,
+	"fireball_cyclone" : SpellCombo.FIRECYCLONE,
+	"cyclone_fireball" : SpellCombo.FIRECYCLONE,
+	"fireball_stonefist" : SpellCombo.MAGMAFIST,
+	"stonefist_fireball" : SpellCombo.MAGMAFIST,
+	"fireball_shadowbolt" : SpellCombo.HELLFIRE,
+	"shadowbolt_fireball" : SpellCombo.HELLFIRE,
+	"fireball_lightbeam" : SpellCombo.SOLARFLARE,
+	"lightbeam_fireball" : SpellCombo.SOLARFLARE,
+	#WATER BASED SPELLS
 }
 
 
@@ -97,7 +107,6 @@ func cast_combo(combo: SpellCombo, position: Vector2) -> void:
 		call_deferred("add_child",spell_instance)
 		
 
-
 func start_cooldown(spell: SpellType) -> void: 
 	cooldowns[spell] = true
 	var spell_resource: Spell = active_bar[spell].instantiate().data
@@ -143,10 +152,10 @@ var current_frame: int = 0
 func _on_collided(spell1: Area2D, spell2: Area2D) -> void:
 	current_frame = Engine.get_physics_frames() #get frame on collision
 	
-	print("collided spell1:",spell1, "with: ," , spell2)
+	print("collided spell1: ",spell1.data.name, " with: ," , spell2.data.name)
 	
 	#create key for combination
-	var combination: Array = [spell1.get_name(), spell2.get_name()]
+	var combination: Array = [spell1.data.name, spell2.data.name]
 	combination.sort()
 	var key: String = String(combination[0]) + "_" + String(combination[1])
 	
@@ -161,8 +170,6 @@ func _on_collided(spell1: Area2D, spell2: Area2D) -> void:
 func combine_spells(spell1: Area2D,spell2: Area2D, combo: SpellCombo) -> void:
 	#TODO await to play combining animation!
 	var position: Vector2 = (spell1.global_position + spell2.global_position) / 2
-	#spell1.call_deferred("queue_free") in case queue_free doesn't work
-	#spell2.call_deferred("queue_free") in case queue_free doesn't work
 	spell1.queue_free()
 	spell2.queue_free()
 	

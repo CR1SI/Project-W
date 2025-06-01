@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2y1ntky56t1w"]
+
+[ext_resource type="Script" uid="uid://dp5de3o7l5ec6" path="res://scripts/spell_scripts/solarflare.gd" id="1_taced"]
+[ext_resource type="Resource" uid="uid://b4e3vuy5li870" path="res://resources/spell_resources/solarflare.tres" id="2_ii8la"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_icx04"]
+
+[node name="solarflare" type="Area2D"]
+script = ExtResource("1_taced")
+data = ExtResource("2_ii8la")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+default_color = Color(0, 1, 0.619608, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_icx04")

@@ -27,7 +27,9 @@ signal apply_dmg_debuff
 signal dmg_debuff_applied
 
 @warning_ignore("unused_signal")
+##emitted when hp below or equal to 0
 signal dead
 
 @warning_ignore("unused_signal")
+##emitted when spell is casted
 signal spell_casted
