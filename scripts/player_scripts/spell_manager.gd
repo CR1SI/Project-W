@@ -62,6 +62,7 @@ var spell_fired: bool = false
 
 var cooldowns: Dictionary = {} #to track cooldowns!
 
+
 func _ready()  -> void:
 	SignalBus.connect("spell_collided", Callable(self, "_on_collided"))
 	SignalBus.connect("spell_selected", Callable(self, "select_spell"))

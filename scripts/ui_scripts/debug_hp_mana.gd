@@ -3,12 +3,17 @@ class_name debugHP_MANA
 
 @onready var player: Player = $".."
 
-@onready var hp: Label = %hp
-@onready var mana: Label = %mana
+@onready var health: TextureProgressBar = %health
+@onready var mana: TextureProgressBar = %mana
+
 
 func _ready() -> void:
-	hp.text = "HP: " + str(player.stats.current_health)
-	mana.text = "MANA: " + str(player.stats.mana)
+	health.max_value = player.stats.max_health
+	mana.max_value = player.stats.max_mana
+	
+	health.value = player.stats.current_health
+	mana.value = player.stats.mana
+	
 	
 	SignalBus.connect("apply_dmg_debuff", Callable(self, "update"))
 	SignalBus.connect("spell_casted", Callable(self, "updateMANA"))
@@ -16,8 +21,8 @@ func _ready() -> void:
 
 
 func update() -> void:
-	hp.text = "HP: " + str(player.stats.current_health)
+	health.value = player.stats.current_health
 
 func updateMANA(_mana_cost : int) -> void:
 	player.stats.mana -= _mana_cost
-	mana.text = "MANA: " + str(player.stats.mana)
+	mana.value = player.stats.mana
