@@ -28,5 +28,5 @@ func _ready() -> void:
 			line_2d.add_point(start)
 	
 	#TODO add collisions to easy beam
-	#TODO when on the left side, it creates a circle instead. 
-	#TODO doesn't always instantiate
+	#FIXME when on the left side, it creates a circle instead. 
+	#FIXME doesn't always instantiate??

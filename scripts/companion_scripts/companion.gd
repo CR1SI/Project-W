@@ -94,6 +94,7 @@ func switcher(state: States, _d: float) -> void:
 		States.BUFFING:
 			buffing()
 
+#TODO add animation logic for each state here with a match statements
 #region state functions
 
 func idle() -> void:
@@ -137,6 +138,5 @@ func _on_companion_zone_exited() -> void:
 	switch_state(States.FOLLOWING)
 
 func switch_state(future_state: States) -> void:
-	#TODO add animation logic for each state here with a match statements
 	previous_state = current_state
 	current_state = future_state

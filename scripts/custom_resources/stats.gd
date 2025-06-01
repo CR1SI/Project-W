@@ -1,7 +1,7 @@
 class_name Stats
 extends Resource
 
-#TODO make setter functions for health and mana, use signals, and ensure buffs and debuffs can work
+#TODO ensure buffs and debuffs can work
 @export var max_health : int:
 	set(value):
 		max_health = value
