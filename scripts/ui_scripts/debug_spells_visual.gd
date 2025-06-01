@@ -14,7 +14,7 @@ func _ready() -> void:
 		textures[i].stretch_mode = TextureRect.STRETCH_SCALE
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var textures: Array= get_children()
 	
 	for i in 4:
