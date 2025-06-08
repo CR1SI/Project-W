@@ -24,8 +24,6 @@ const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 
 func _ready() -> void:
 	state_machine.Initialize(self) #initialized statemachine, with self->(player) node
-	
-	pass
 
 func _process(_delta: float) -> void:
 	#calculating direciton x and y
