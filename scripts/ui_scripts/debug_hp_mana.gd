@@ -15,7 +15,7 @@ func _ready() -> void:
 	mana.value = player.stats.mana
 	
 	
-	SignalBus.connect("apply_dmg_debuff", Callable(self, "update"))
+	SignalBus.connect("updateUi", Callable(self, "update"))
 	SignalBus.connect("spell_casted", Callable(self, "updateMANA"))
 	
 

@@ -2,7 +2,7 @@ extends Control
 class_name inventory
 
 @onready var spell_selector: GridContainer = $background/spell_selector
-@onready var spell_manager: SpellManager = get_tree().get_first_node_in_group("player").get_node("SpellManager")
+@export var spell_manager: SpellManager
 
 
 @onready var mana: Label = %mana

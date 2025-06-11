@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_2105e"]
 radius = 7.0
 
-[node name="Companion" type="CharacterBody2D"]
+[node name="Companion" type="CharacterBody2D" groups=["companion"]]
 script = ExtResource("1_y3dn1")
 stats = ExtResource("2_i6tid")
 

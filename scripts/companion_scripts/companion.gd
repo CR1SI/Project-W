@@ -6,7 +6,7 @@ extends CharacterBody2D
 
 @export var stats: Stats
 
-var player: Player
+@export var player: Player
 var player_position: Vector2
 
 #moving
@@ -16,7 +16,8 @@ enum States {
 	IDLE, 
 	FOLLOWING, 
 	ATTACKING, 
-	BUFFING
+	BUFFING,
+	DEAD
 	}
 var current_state: States = States.FOLLOWING
 var previous_state: States
@@ -54,8 +55,6 @@ func buffType(companion_type: int) -> void:
 			print("-companion5- buff-speed")
 
 func _ready() -> void:
-	add_to_group("companion")
-	player = get_tree().get_first_node_in_group("player")
 	SignalBus.connect("companion_zone_entered", Callable(self, "_on_companion_zone_entered"))
 	SignalBus.connect("companion_zone_exited", Callable(self, "_on_companion_zone_exited"))
 	
@@ -80,8 +79,10 @@ func _physics_process(_delta: float) -> void:
 
 
 func _process(_delta: float) -> void:
-	player_position = player.global_position
-	pass
+	if player.stats.isDead:
+		switch_state(States.DEAD)
+	else:
+		player_position = player.global_position
 
 func switcher(state: States, _d: float) -> void:
 	match state:
@@ -93,6 +94,9 @@ func switcher(state: States, _d: float) -> void:
 			attacking()
 		States.BUFFING:
 			buffing()
+		States.DEAD:
+			dead()
+
 
 #TODO add animation logic for each state here with a match statements
 #region state functions
@@ -127,6 +131,11 @@ func buffing() -> void:
 	
 	shouldBuff = false #resetting flag
 	switch_state(previous_state)
+
+func dead() -> void:
+	#TODO play despawn animation
+	print("despawned companion")
+	queue_free()
 
 #endregion
 

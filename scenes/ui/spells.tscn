@@ -96,4 +96,5 @@ offset_left = -51.0
 offset_right = 51.0
 offset_bottom = 22.3333
 grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
 text = "total mana: 0"

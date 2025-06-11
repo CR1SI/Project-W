@@ -7,16 +7,16 @@ func _ready() -> void:
 	SignalBus.connect("apply_dmg_debuff", Callable(self, "apply_dmg_debuff"))
 
 
-func apply_dmg_debuff(dmg: int, _debuff) -> void:
-	obj_data.current_health -= dmg
+func apply_dmg_debuff(dmg: int, _debuff, dmgDealer: StringName) -> void:
 	
-	#TODO code to apply debuffs
-	#SignalBus.emit_signal("dmg_debuff_applied")
+	if !(get_parent().name == dmgDealer):
+		obj_data.current_health -= dmg
+		SignalBus.emit_signal("updateUi")
+		print(get_parent().name ," has taken " , dmg , " dmg")
 	
-	if obj_data.current_health <= 0:
-		obj_data.current_health = 0
-		dead()
-
-
-func dead() -> void:
-	SignalBus.emit_signal("dead")
+		#TODO code to apply debuffs
+		#SignalBus.emit_signal("dmg_debuff_applied")
+	
+		if obj_data.current_health <= 0:
+			obj_data.current_health = 0
+			SignalBus.emit_signal("dead", get_parent().name)

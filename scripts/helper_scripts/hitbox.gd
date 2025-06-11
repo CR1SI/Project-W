@@ -14,12 +14,12 @@ func dmg_info() -> int:
 
 
 @warning_ignore("untyped_declaration")
-func debuff_info() :
+func debuff_info():
 	if self.get_parent().is_in_group("spells"):
 		return obj_data.debuff
 
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("hurtbox") and !(area.get_parent() == self.get_parent()):
-		print("entered hurtbox of : ", area.get_parent().name)
-		SignalBus.emit_signal("apply_dmg_debuff", dmg_info(), debuff_info())
+		print(self.get_parent().name, " entered hurtbox of ", area.get_parent().name)
+		SignalBus.emit_signal("apply_dmg_debuff", dmg_info(), debuff_info(), get_parent().name)

@@ -38,6 +38,9 @@ var speedBUFF : float
 	set(value):
 		acceleration = value
 
+#dead variable
+var isDead : bool = false
+
 #companion variables
 @export var is_companion: bool = false
 @export_enum("comp1", "comp2", "comp3", "comp4","comp5","player") var companion: int = 0
