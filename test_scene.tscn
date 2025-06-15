@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ch5dj2oqs6h8t"]
+[gd_scene load_steps=4 format=3 uid="uid://ch5dj2oqs6h8t"]
 
 [ext_resource type="PackedScene" uid="uid://dwmqx0jpb8jtp" path="res://scenes/player_related/player.tscn" id="1_ngrog"]
 [ext_resource type="PackedScene" uid="uid://6pscbc6sjo2e" path="res://scenes/companion_related/companion.tscn" id="3_sasra"]
 [ext_resource type="PackedScene" uid="uid://bg0rjvhkoqnjh" path="res://scenes/test_scenes/test_dummy.tscn" id="4_2nij2"]
-[ext_resource type="Script" uid="uid://bpq40vesu1x1i" path="res://label.gd" id="4_coq8p"]
 
 [node name="test_scene" type="Node2D"]
 
@@ -13,11 +12,6 @@ position = Vector2(324, 338)
 [node name="Companion" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_sasra")]
 position = Vector2(186, 349)
 player = NodePath("../Player")
-
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 22.3333
-script = ExtResource("4_coq8p")
 
 [node name="testDummy" parent="." instance=ExtResource("4_2nij2")]
 position = Vector2(778, 329)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dwmqx0jpb8jtp"]
+[gd_scene load_steps=29 format=3 uid="uid://dwmqx0jpb8jtp"]
 
 [ext_resource type="Script" uid="uid://csu3b8rb1tx7h" path="res://scripts/player_scripts/player.gd" id="1_foac7"]
 [ext_resource type="Resource" uid="uid://by3b4x2u2lhpd" path="res://resources/player_resources/player_stats.tres" id="2_auslv"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cicj13q03j1pl" path="res://Screenshot 2025-06-01 010340.png" id="16_omic3"]
 [ext_resource type="Texture2D" uid="uid://k8p664xvscpn" path="res://Screenshot 2025-06-01 010331.png" id="17_omic3"]
 [ext_resource type="PackedScene" uid="uid://dspeqh42ks1xd" path="res://scenes/ui/spells.tscn" id="18_omic3"]
+[ext_resource type="Script" uid="uid://bpq40vesu1x1i" path="res://label.gd" id="20_3gr2r"]
 
 [sub_resource type="Animation" id="Animation_fo8gx"]
 length = 0.001
@@ -212,6 +213,19 @@ scale = Vector2(2, 2)
 size_flags_horizontal = 6
 size_flags_vertical = 6
 spell_manager = NodePath("../../SpellManager")
+
+[node name="Label" type="Label" parent="Camera2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1624.0
+offset_top = -956.0
+offset_right = -1623.0
+offset_bottom = -886.208
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+script = ExtResource("20_3gr2r")
 
 [connection signal="timeout" from="StateMachine/dodge/Timer" to="StateMachine/dodge" method="_on_timer_timeout"]
 [connection signal="body_entered" from="CompanionZone" to="CompanionZone" method="_on_body_entered"]

@@ -23,7 +23,7 @@ func Handle_Input(_event: InputEvent) -> State:
 
 #TODO make sure to set death logic for player
 func on_dead(nam: String) -> void:
-	if	get_parent().get_parent().nam == nam:
+	if get_parent().get_parent().name == nam:
 		player.velocity = Vector2.ZERO
 		player.stats.isDead = true
 		print("dead")
@@ -31,4 +31,3 @@ func on_dead(nam: String) -> void:
 		#player.queue_free()
 	else:
 		return
-
