@@ -80,8 +80,9 @@ func _ready()  -> void:
 		cooldowns[spell] = false
 	
 
-func cast_spell(spell: SpellType, position: Vector2) -> void: 
-	if spell in active_bar and player.stats.mana >= active_bar[spell].instantiate().data.mana_cost: 
+func cast_spell(spell: SpellType, position: Vector2) -> void:
+	var manaCost: int = active_bar[spell].instantiate().data.mana_cost
+	if spell in active_bar and player.stats.mana >= manaCost: 
 		#check if on cooldown!
 		if cooldowns[spell]: 
 			print("spell on cooldown")

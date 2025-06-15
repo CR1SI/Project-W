@@ -22,8 +22,8 @@ func Handle_Input(_event: InputEvent) -> State:
 	return null
 
 #TODO make sure to set death logic for player
-func on_dead(name: String) -> void:
-	if	get_parent().get_parent().name == name:
+func on_dead(nam: String) -> void:
+	if	get_parent().get_parent().nam == nam:
 		player.velocity = Vector2.ZERO
 		player.stats.isDead = true
 		print("dead")

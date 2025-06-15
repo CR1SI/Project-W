@@ -5,6 +5,7 @@ extends Area2D
 
 var direction: Vector2 = Vector2.ZERO
 var spell_fired: bool = false
+var player: Player = Nodes.player
 
 func _ready() -> void:
 	add_to_group("spells")
@@ -22,7 +23,7 @@ func fire_spell() -> void:
 	if data.requires_targeting or data.on_player:
 		direction = Vector2.ZERO
 	else: 
-		direction = (get_global_mouse_position() - position).normalized()
+		direction = player.last_direction #(get_global_mouse_position() - position).normalized()
 	
 	spell_fired = true
 
