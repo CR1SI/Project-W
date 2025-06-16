@@ -42,6 +42,11 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("inv"):
 		SignalBus.emit_signal("open_selector")
 	
+	if Input.is_action_just_pressed("stomp"):
+		animation_player.play("melee_stomp")
+		await animation_player.animation_finished
+		UpdateAnimation("idle")
+	
 
 
 func _physics_process(_delta: float) -> void:
@@ -63,11 +68,12 @@ func setDirection() -> bool:
 	return true
 
 func UpdateAnimation(state: String) -> void: 
-	if state != "idle":
+	if state != "idle_long":
 		animation_player.play( state + "_" + AnimDirection())
-	else: 
-		animation_player.play("idle")
-	pass
+	else:
+		animation_player.play( state + "_" + "start_" + AnimDirection())
+		await animation_player.animation_finished
+		animation_player.play( state + "_" + AnimDirection())
 
 func AnimDirection() -> String: 
 	if cardinal_direction == Vector2.DOWN: 

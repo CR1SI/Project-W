@@ -16,7 +16,7 @@ var timer: float = 0.0 #makeshift timer, you could use a timer node.
 
 
 func Enter() -> void:
-	player.UpdateAnimation("dodge")
+	#player.UpdateAnimation("dodge")
 	if can_dash:
 		can_dash = false
 		$Timer.start()

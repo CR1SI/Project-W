@@ -1,9 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://dwmqx0jpb8jtp"]
+[gd_scene load_steps=35 format=3 uid="uid://dwmqx0jpb8jtp"]
 
 [ext_resource type="Script" uid="uid://csu3b8rb1tx7h" path="res://scripts/player_scripts/player.gd" id="1_foac7"]
 [ext_resource type="Resource" uid="uid://by3b4x2u2lhpd" path="res://resources/player_resources/player_stats.tres" id="2_auslv"]
+[ext_resource type="Texture2D" uid="uid://bn3s7nwau12r8" path="res://textures/player_textures/FULL CHARACTER (24).png" id="3_3gr2r"]
 [ext_resource type="Script" uid="uid://51vpx1ybsg1d" path="res://scripts/player_scripts/state_machine.gd" id="3_cotpx"]
-[ext_resource type="Texture2D" uid="uid://ddgcu4p38cq11" path="res://icon.svg" id="3_foac7"]
 [ext_resource type="Script" uid="uid://bmygkmsqvh3dd" path="res://scripts/player_scripts/idle_state.gd" id="4_g61g5"]
 [ext_resource type="Script" uid="uid://bkyjehgx70sl" path="res://scripts/player_scripts/walk_state.gd" id="5_j0oda"]
 [ext_resource type="Script" uid="uid://b5ci2i5fh1mns" path="res://scripts/player_scripts/dodge_state.gd" id="6_x8ems"]
@@ -33,13 +33,191 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_46gwl"]
+resource_name = "walk_down"
+
+[sub_resource type="Animation" id="Animation_c51ni"]
+resource_name = "walk_up"
+
+[sub_resource type="Animation" id="Animation_n2p20"]
+resource_name = "walk_left"
+length = 0.66667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [19, 20, 21, 20]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_qlej1"]
+resource_name = "walk_right"
+length = 0.66667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [15, 16, 17, 16]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_3gr2r"]
+resource_name = "melee_stomp"
+length = 0.333337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [11, 12, 13]
 }
 
 [sub_resource type="Animation" id="Animation_41tof"]
-resource_name = "idle"
-length = 0.1
+resource_name = "idle_right"
+length = 0.500003
 loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_vi8wm"]
+resource_name = "idle_left"
+length = 0.500003
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_sifee"]
+resource_name = "idle_long_right"
+length = 0.500003
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.133333, 0.266667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [7, 8, 9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_xoqp2"]
+resource_name = "idle_long_start_right"
+length = 0.133337
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -50,32 +228,91 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [2]
+"values": [6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_46gwl"]
-resource_name = "walk_down"
-
-[sub_resource type="Animation" id="Animation_qlej1"]
-resource_name = "walk_left"
-length = 0.5
+[sub_resource type="Animation" id="Animation_l634r"]
+resource_name = "idle_long_left"
+length = 0.500003
 loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.133333, 0.266667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [7, 8, 9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
-[sub_resource type="Animation" id="Animation_n2p20"]
-resource_name = "walk_right"
-length = 0.5
-loop_mode = 1
-
-[sub_resource type="Animation" id="Animation_c51ni"]
-resource_name = "walk_up"
+[sub_resource type="Animation" id="Animation_cnqcx"]
+resource_name = "idle_long_start_left"
+length = 0.133337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_phel6"]
 _data = {
 &"RESET": SubResource("Animation_fo8gx"),
-&"idle": SubResource("Animation_41tof"),
+&"idle_left": SubResource("Animation_vi8wm"),
+&"idle_long_left": SubResource("Animation_l634r"),
+&"idle_long_right": SubResource("Animation_sifee"),
+&"idle_long_start_left": SubResource("Animation_cnqcx"),
+&"idle_long_start_right": SubResource("Animation_xoqp2"),
+&"idle_right": SubResource("Animation_41tof"),
+&"melee_stomp": SubResource("Animation_3gr2r"),
 &"walk_down": SubResource("Animation_46gwl"),
-&"walk_left": SubResource("Animation_qlej1"),
-&"walk_right": SubResource("Animation_n2p20"),
+&"walk_left": SubResource("Animation_n2p20"),
+&"walk_right": SubResource("Animation_qlej1"),
 &"walk_up": SubResource("Animation_c51ni")
 }
 
@@ -89,9 +326,12 @@ stats = ExtResource("2_auslv")
 
 [node name="character" type="Sprite2D" parent="."]
 position = Vector2(0, 3)
-scale = Vector2(4.29, 1.03438)
-texture = ExtResource("3_foac7")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_3gr2r")
+flip_h = true
 hframes = 5
+vframes = 5
+frame = 1
 region_rect = Rect2(0, 0, 3497, 1945)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -105,6 +345,10 @@ script = ExtResource("3_cotpx")
 
 [node name="idle" type="Node" parent="StateMachine"]
 script = ExtResource("4_g61g5")
+
+[node name="longIdle" type="Timer" parent="StateMachine/idle"]
+wait_time = 3.0
+one_shot = true
 
 [node name="walk" type="Node" parent="StateMachine"]
 script = ExtResource("5_j0oda")
@@ -133,7 +377,8 @@ script = ExtResource("11_cabau")
 shape = SubResource("CircleShape2D_foac7")
 
 [node name="hurtbox" parent="." instance=ExtResource("13_2dmwd")]
-scale = Vector2(2, 2)
+position = Vector2(0, 20)
+scale = Vector2(2.5, 4)
 
 [node name="Hitbox" parent="." instance=ExtResource("12_bkiug")]
 position = Vector2(192, 4)
@@ -228,6 +473,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 50
 script = ExtResource("20_3gr2r")
 
+[connection signal="timeout" from="StateMachine/idle/longIdle" to="StateMachine/idle" method="_on_long_idle_timeout"]
 [connection signal="timeout" from="StateMachine/dodge/Timer" to="StateMachine/dodge" method="_on_timer_timeout"]
 [connection signal="body_entered" from="CompanionZone" to="CompanionZone" method="_on_body_entered"]
 [connection signal="body_exited" from="CompanionZone" to="CompanionZone" method="_on_body_exited"]

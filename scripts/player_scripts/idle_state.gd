@@ -9,10 +9,11 @@ extends State
 @onready var spell_manager: SpellManager = $"../../SpellManager"
 @onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
 
+@onready var longIdle = $longIdle
+
 func Enter() -> void:
 	player.UpdateAnimation("idle")
-	
-	pass
+	longIdle.start()
 
 func Exit() -> void: 
 	pass
@@ -41,3 +42,7 @@ func Handle_Input(_event: InputEvent) -> State:
 			return casting
 	
 	return null
+
+
+func _on_long_idle_timeout() -> void:
+	player.UpdateAnimation("idle_long")
