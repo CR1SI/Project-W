@@ -133,6 +133,7 @@ script = ExtResource("11_cabau")
 shape = SubResource("CircleShape2D_foac7")
 
 [node name="hurtbox" parent="." instance=ExtResource("13_2dmwd")]
+scale = Vector2(2, 2)
 
 [node name="Hitbox" parent="." instance=ExtResource("12_bkiug")]
 position = Vector2(192, 4)
