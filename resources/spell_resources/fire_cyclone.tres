@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_qf8y6")
-spell_cost = 0
+name = "firecyclone"
+mana_cost = 0
 cooldown = 0.0
 spell_duration = 5.0
 debuff = 1

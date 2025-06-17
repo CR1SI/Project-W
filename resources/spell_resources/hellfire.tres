@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_bgina")
+name = "hellfire"
 mana_cost = 0
 cooldown = 0.0
 spell_duration = 2.0

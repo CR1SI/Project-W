@@ -91,7 +91,11 @@ func cast_spell(spell: SpellType, position: Vector2) -> void:
 		var spell_scene: PackedScene = active_bar[spell]
 		var spell_instance: Node  = spell_scene.instantiate()
 		
-		spell_instance.position = position
+		if spell_instance.data.on_player:
+			spell_instance.position = player.position
+		else:
+			spell_instance.position = position
+		
 		add_child(spell_instance)
 		
 		start_cooldown(spell)
@@ -132,6 +136,8 @@ func select_spell(spell_index: int) -> void:
 		start_targeting(active_bar[selected_spell].instantiate())
 	elif selected_spell > -1 and not active_bar[selected_spell].instantiate().data.requires_targeting:
 		stop_targeting()
+	
+	print("selected spell: ", selected_spell)
 
 #spell targeting logic
 func start_targeting(_spell_instance: Node) -> void: 

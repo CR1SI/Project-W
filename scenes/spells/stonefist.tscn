@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b74lkqriwscuv"]
+[gd_scene load_steps=9 format=3 uid="uid://b74lkqriwscuv"]
 
 [ext_resource type="Script" uid="uid://re0d0wnleai6" path="res://scripts/spell_scripts/stonefist.gd" id="1_u4dnp"]
 [ext_resource type="Resource" uid="uid://n13xyd1b2gm5" path="res://resources/spell_resources/stonefist.tres" id="2_hudnc"]
+[ext_resource type="PackedScene" uid="uid://c0xqulw7pjpl0" path="res://scenes/helper_scenes/hitbox.tscn" id="3_4nha5"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x4ull"]
 particle_flag_disable_z = true
@@ -129,3 +130,7 @@ shape = SubResource("CircleShape2D_gu27k")
 libraries = {
 &"": SubResource("AnimationLibrary_jbb6r")
 }
+
+[node name="Hitbox" parent="." instance=ExtResource("3_4nha5")]
+position = Vector2(0, 1)
+scale = Vector2(0.6, 0.6)

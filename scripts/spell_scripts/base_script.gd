@@ -19,7 +19,6 @@ func _process(delta: float) -> void:
 		queue_free()
 
 func fire_spell() -> void:
-	
 	if data.requires_targeting or data.on_player:
 		direction = Vector2.ZERO
 	else: 

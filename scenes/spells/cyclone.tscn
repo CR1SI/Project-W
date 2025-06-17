@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://540ylbsrlmak"]
+[gd_scene load_steps=12 format=3 uid="uid://540ylbsrlmak"]
 
 [ext_resource type="Script" uid="uid://cfbhrsi64xk5t" path="res://scripts/spell_scripts/cyclone.gd" id="1_gilg7"]
 [ext_resource type="Resource" uid="uid://by6xx0a5e4j3r" path="res://resources/spell_resources/cyclone.tres" id="2_cq32r"]
+[ext_resource type="PackedScene" uid="uid://c0xqulw7pjpl0" path="res://scenes/helper_scenes/hitbox.tscn" id="3_nv8us"]
 
 [sub_resource type="Gradient" id="Gradient_hf0ek"]
 offsets = PackedFloat32Array(0.155738, 0.532787, 1)
@@ -59,3 +60,6 @@ process_material = SubResource("ParticleProcessMaterial_ethws")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6akc0")
+
+[node name="Hitbox" parent="." instance=ExtResource("3_nv8us")]
+position = Vector2(3, 4)

@@ -9,7 +9,7 @@ extends State
 @onready var spell_manager: SpellManager = $"../../SpellManager"
 @onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
 
-@onready var longIdle = $longIdle
+@onready var longIdle: Timer = $longIdle
 
 func Enter() -> void:
 	player.UpdateAnimation("idle")

@@ -20,7 +20,7 @@ func Enter() -> void:
 			var target_position: Vector2 = spell_manager.target_radius.global_position
 			spell_manager.cast_spell(spell_manager.selected_spell, target_position)
 		else:
-			spell_manager.cast_spell(spell_manager.selected_spell, player.position)
+			spell_manager.cast_spell(spell_manager.selected_spell, Vector2(player.position.x + player.last_direction.x * 100 , player.position.y + player.last_direction.y * 100))
 		cast_done = true
 	else: 
 		cast_done = false
