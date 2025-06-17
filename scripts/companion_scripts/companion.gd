@@ -75,7 +75,7 @@ func _physics_process(_delta: float) -> void:
 			switcher(current_state, _delta)
 		move_and_slide()
 	else:
-		global_position = player_position
+		global_position = player_position + Vector2(0,-50)
 
 
 func _process(_delta: float) -> void:
