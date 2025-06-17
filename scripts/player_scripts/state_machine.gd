@@ -10,19 +10,16 @@ var current_state: State
 #called when node is first added to scene
 func _ready() -> void: 
 	process_mode = Node.PROCESS_MODE_DISABLED
-	
-	pass
+
 
 #used to handle state transition and processing
 func _process(delta: float) -> void:
 	ChangeState(current_state.Process(delta)) #these allow us to connect these functions to the ones in each state.(same functions)
-	
-	pass
+
 
 #physics process
 func _physics_process(delta: float) -> void:
 	ChangeState(current_state.Physics(delta))
-	pass
 
 #initializes the state machine with the player and gathers all state nodes with for loop.
 func Initialize(_player: Player) -> void: 
@@ -52,4 +49,3 @@ func ChangeState(new_state: State) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	ChangeState(current_state.Handle_Input(event))
-	pass

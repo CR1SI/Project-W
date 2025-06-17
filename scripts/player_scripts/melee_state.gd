@@ -5,6 +5,8 @@ extends State
 @onready var walk: walk_state = $"../walk"
 @onready var dodge: dodge_state = $"../dodge"
 @onready var melee: melee_state = $"../melee"
+@onready var spell_manager: SpellManager = $"../../SpellManager"
+@onready var casting: casting_state = $"../casting"
 
 
 func Enter() -> void:
@@ -22,5 +24,10 @@ func Process(_delta: float) -> State:
 func Physics(_delta: float) -> State: 
 	return null
 
-func Handle_Input(_event: InputEvent) -> State: 
+func Handle_Input(_event: InputEvent) -> State:
+	if Input.is_action_just_pressed("cast") and spell_manager.selected_spell > -1 and spell_manager.spell_fired == false: 
+		if spell_manager.is_targeting: 
+			spell_manager.stop_targeting()
+		else:
+			return casting
 	return null
