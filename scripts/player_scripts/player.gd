@@ -42,11 +42,6 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("inv"):
 		SignalBus.emit_signal("open_selector")
 	
-	if Input.is_action_just_pressed("stomp"):
-		animation_player.play("melee_stomp")
-		await animation_player.animation_finished
-		UpdateAnimation("idle")
-	
 
 
 func _physics_process(_delta: float) -> void:

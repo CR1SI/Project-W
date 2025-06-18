@@ -451,11 +451,13 @@ shape = SubResource("CircleShape2D_foac7")
 [node name="hurtbox" parent="." instance=ExtResource("13_2dmwd")]
 position = Vector2(0, 20)
 scale = Vector2(2.5, 4)
+input_pickable = false
 
 [node name="Hitbox" parent="." instance=ExtResource("12_bkiug")]
 process_mode = 4
 position = Vector2(0, 200)
 scale = Vector2(1, 0.5)
+input_pickable = false
 
 [node name="debug_HP_MANA" type="Control" parent="."]
 layout_mode = 3

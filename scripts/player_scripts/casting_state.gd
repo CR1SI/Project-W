@@ -44,5 +44,7 @@ func Physics(_delta: float) -> State:
 		return self
 	return null
 
-func Handle_Input(_event: InputEvent) -> State: 
+func Handle_Input(_event: InputEvent) -> State:
+	if Input.is_action_just_pressed("leftClick") and spell_manager.selected_spell == -1:
+		return melee
 	return null
