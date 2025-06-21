@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bg0rjvhkoqnjh"]
+[gd_scene load_steps=10 format=3 uid="uid://bg0rjvhkoqnjh"]
 
 [ext_resource type="Script" uid="uid://cumrkjvogm5d" path="res://scripts/test_scripts/test_dummy.gd" id="1_6qg1c"]
 [ext_resource type="Resource" uid="uid://dbktqivr313hh" path="res://resources/test_resources/testDummy.tres" id="2_aej8f"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dortgyo0q2eih" path="res://scripts/test_scripts/hpDummy.gd" id="5_xxvby"]
 [ext_resource type="Texture2D" uid="uid://5tbjfequdqy7" path="res://Screenshot 2025-06-01 010217.png" id="6_125x5"]
 [ext_resource type="Texture2D" uid="uid://cicj13q03j1pl" path="res://Screenshot 2025-06-01 010340.png" id="7_hx0nb"]
+[ext_resource type="PackedScene" uid="uid://7kotqvff3jmo" path="res://scenes/helper_scenes/debuff_manager.tscn" id="8_cn4xs"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6qg1c"]
 size = Vector2(50, 50)
@@ -40,6 +41,7 @@ script = ExtResource("5_xxvby")
 layout_mode = 0
 offset_right = 526.0
 offset_bottom = 330.0
+mouse_filter = 2
 
 [node name="health" type="TextureProgressBar" parent="debug_HP_MANA/VBoxContainer"]
 unique_name_in_owner = true
@@ -50,3 +52,7 @@ texture_under = ExtResource("6_125x5")
 texture_progress = ExtResource("7_hx0nb")
 tint_under = Color(0.720467, 0.720468, 0.720467, 1)
 tint_progress = Color(0.678944, 0.678944, 0.678944, 1)
+
+[node name="debuff_manager" parent="." node_paths=PackedStringArray("being") instance=ExtResource("8_cn4xs")]
+position = Vector2(-3, -4)
+being = NodePath("..")

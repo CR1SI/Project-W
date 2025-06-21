@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dwmqx0jpb8jtp"]
+[gd_scene load_steps=36 format=3 uid="uid://dwmqx0jpb8jtp"]
 
 [ext_resource type="Script" uid="uid://csu3b8rb1tx7h" path="res://scripts/player_scripts/player.gd" id="1_foac7"]
 [ext_resource type="Resource" uid="uid://by3b4x2u2lhpd" path="res://resources/player_resources/player_stats.tres" id="2_auslv"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://k8p664xvscpn" path="res://Screenshot 2025-06-01 010331.png" id="17_omic3"]
 [ext_resource type="PackedScene" uid="uid://dspeqh42ks1xd" path="res://scenes/ui/spells.tscn" id="18_omic3"]
 [ext_resource type="Script" uid="uid://bpq40vesu1x1i" path="res://label.gd" id="20_3gr2r"]
+[ext_resource type="PackedScene" uid="uid://7kotqvff3jmo" path="res://scenes/helper_scenes/debuff_manager.tscn" id="21_vi8wm"]
 
 [sub_resource type="Animation" id="Animation_fo8gx"]
 length = 0.001
@@ -548,6 +549,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
 script = ExtResource("20_3gr2r")
+
+[node name="debuff_manager" parent="." node_paths=PackedStringArray("being") instance=ExtResource("21_vi8wm")]
+position = Vector2(-4, 12)
+being = NodePath("..")
 
 [connection signal="timeout" from="StateMachine/idle/longIdle" to="StateMachine/idle" method="_on_long_idle_timeout"]
 [connection signal="timeout" from="StateMachine/dodge/Timer" to="StateMachine/dodge" method="_on_timer_timeout"]

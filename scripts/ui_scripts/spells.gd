@@ -15,7 +15,7 @@ var extra_spells: Array[spell_slot] = []
 var bar: Dictionary
 
 func _ready() -> void:
-	SignalBus.connect("open_selector", Callable(self, "_on_open"))
+	SignalBus.connect("open_selector", _on_open)
 	bar = spell_manager.active_bar
 	slots = spell_selector.get_children()
 	
@@ -91,3 +91,4 @@ func _on_open() -> void:
 		visible = false
 	else:
 		visible = true
+		#get_tree().paused = true maybe but find way to unpause!

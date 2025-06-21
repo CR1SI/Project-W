@@ -26,5 +26,5 @@ func _on_area_entered(area: Area2D) -> void:
 		if self.get_parent().is_in_group("spells") and area.get_parent().is_in_group("player"):
 			pass
 		else:
-			print(self.get_parent().name, " entered hurtbox of ", area.get_parent().name)
+			#print(self.get_parent().name, " entered hurtbox of ", area.get_parent().name)
 			SignalBus.emit_signal("apply_dmg_debuff", dmg_info(), debuff_info(), get_parent().name, area.get_parent().name)

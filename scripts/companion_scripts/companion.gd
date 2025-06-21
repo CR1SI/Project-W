@@ -55,8 +55,8 @@ func buffType(companion_type: int) -> void:
 			print("-companion5- buff-speed")
 
 func _ready() -> void:
-	SignalBus.connect("companion_zone_entered", Callable(self, "_on_companion_zone_entered"))
-	SignalBus.connect("companion_zone_exited", Callable(self, "_on_companion_zone_exited"))
+	SignalBus.connect("companion_zone_entered", _on_companion_zone_entered)
+	SignalBus.connect("companion_zone_exited", _on_companion_zone_exited)
 	
 	buffType(stats.companion)
 	
@@ -149,3 +149,4 @@ func _on_companion_zone_exited() -> void:
 func switch_state(future_state: States) -> void:
 	previous_state = current_state
 	current_state = future_state
+	switcher(current_state, get_process_delta_time())

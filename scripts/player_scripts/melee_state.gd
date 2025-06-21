@@ -9,7 +9,7 @@ extends State
 @onready var casting: casting_state = $"../casting"
 @onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
 
-var done = false
+var done: bool = false
 #TODO something glitched with mellee state
 func Enter() -> void:
 	animation_player.play("melee_stomp")
@@ -17,7 +17,7 @@ func Enter() -> void:
 	done = true
 
 func Exit() -> void:
-	pass
+	done = false
 
 func Process(_delta: float) -> State:
 	if done:

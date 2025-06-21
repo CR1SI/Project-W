@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://7kotqvff3jmo"]
+
+[ext_resource type="Script" uid="uid://d3gf74eg3jv0l" path="res://scripts/helper_scripts/debuff_manager.gd" id="1_sge54"]
+
+[node name="debuff_manager" type="Node2D"]
+script = ExtResource("1_sge54")

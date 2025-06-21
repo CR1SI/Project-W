@@ -4,7 +4,7 @@ extends Node
 static var player: Player
 
 func _ready() -> void:
-	SignalBus.connect("dead",Callable(self, "on_dead"))
+	SignalBus.connect("dead", on_dead)
 
 func Enter() -> void: 
 	pass
@@ -28,6 +28,6 @@ func on_dead(nam: String) -> void:
 		player.stats.isDead = true
 		print("dead")
 		#play death animation
-		#player.queue_free()
+		#queue_free()
 	else:
 		return
