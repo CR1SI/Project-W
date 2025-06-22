@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://dortgyo0q2eih" path="res://scripts/test_scripts/hpDummy.gd" id="5_xxvby"]
 [ext_resource type="Texture2D" uid="uid://5tbjfequdqy7" path="res://Screenshot 2025-06-01 010217.png" id="6_125x5"]
 [ext_resource type="Texture2D" uid="uid://cicj13q03j1pl" path="res://Screenshot 2025-06-01 010340.png" id="7_hx0nb"]
-[ext_resource type="PackedScene" uid="uid://7kotqvff3jmo" path="res://scenes/helper_scenes/debuff_manager.tscn" id="8_cn4xs"]
+[ext_resource type="Script" uid="uid://d3gf74eg3jv0l" path="res://scripts/helper_scripts/debuff_manager.gd" id="8_cn4xs"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6qg1c"]
 size = Vector2(50, 50)
@@ -53,6 +53,7 @@ texture_progress = ExtResource("7_hx0nb")
 tint_under = Color(0.720467, 0.720468, 0.720467, 1)
 tint_progress = Color(0.678944, 0.678944, 0.678944, 1)
 
-[node name="debuff_manager" parent="." node_paths=PackedStringArray("being") instance=ExtResource("8_cn4xs")]
-position = Vector2(-3, -4)
+[node name="debuff_manager" type="Node2D" parent="." node_paths=PackedStringArray("being")]
+script = ExtResource("8_cn4xs")
 being = NodePath("..")
+metadata/_custom_type_script = "uid://d3gf74eg3jv0l"
