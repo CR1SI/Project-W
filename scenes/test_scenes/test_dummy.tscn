@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bg0rjvhkoqnjh"]
+[gd_scene load_steps=12 format=3 uid="uid://bg0rjvhkoqnjh"]
 
 [ext_resource type="Script" uid="uid://cumrkjvogm5d" path="res://scripts/test_scripts/test_dummy.gd" id="1_6qg1c"]
 [ext_resource type="Resource" uid="uid://dbktqivr313hh" path="res://resources/test_resources/testDummy.tres" id="2_aej8f"]
@@ -11,6 +11,13 @@
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6qg1c"]
 size = Vector2(50, 50)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cn4xs"]
+radius = 274.263
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cn4xs"]
+radius = 28.0
+height = 100.0
 
 [node name="testDummy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_6qg1c")
@@ -58,3 +65,19 @@ script = ExtResource("8_cn4xs")
 being = NodePath("..")
 test_color = NodePath("../Sprite2D")
 metadata/_custom_type_script = "uid://d3gf74eg3jv0l"
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 1.0
+path_postprocessing = 1
+debug_enabled = true
+
+[node name="target area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="target area"]
+shape = SubResource("CircleShape2D_cn4xs")
+
+[node name="bodybox" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_cn4xs")
+
+[connection signal="body_entered" from="target area" to="." method="_on_target_area_body_entered"]
+[connection signal="body_exited" from="target area" to="." method="_on_target_area_body_exited"]

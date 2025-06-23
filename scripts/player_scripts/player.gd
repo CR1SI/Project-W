@@ -24,7 +24,6 @@ const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 
 func _ready() -> void:
 	state_machine.Initialize(self) #initialized statemachine, with self->(player) node
-	print(stats.dmg)
 
 func _process(_delta: float) -> void:
 	#calculating direciton x and y
@@ -43,11 +42,11 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("inv"):
 		SignalBus.emit_signal("open_selector")
 	
+	mouse_position = get_global_mouse_position()
 
 
 func _physics_process(_delta: float) -> void:
-	mouse_position = get_global_mouse_position()
-	move_and_slide() #check documentation
+	move_and_slide() #move
 
 
 func setDirection() -> bool:

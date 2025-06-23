@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dwmqx0jpb8jtp"]
+[gd_scene load_steps=37 format=3 uid="uid://dwmqx0jpb8jtp"]
 
 [ext_resource type="Script" uid="uid://csu3b8rb1tx7h" path="res://scripts/player_scripts/player.gd" id="1_foac7"]
 [ext_resource type="Resource" uid="uid://by3b4x2u2lhpd" path="res://resources/player_resources/player_stats.tres" id="2_auslv"]
@@ -21,6 +21,10 @@
 [ext_resource type="PackedScene" uid="uid://dspeqh42ks1xd" path="res://scenes/ui/spells.tscn" id="18_omic3"]
 [ext_resource type="Script" uid="uid://bpq40vesu1x1i" path="res://label.gd" id="20_3gr2r"]
 [ext_resource type="Script" uid="uid://d3gf74eg3jv0l" path="res://scripts/helper_scripts/debuff_manager.gd" id="21_vi8wm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vi8wm"]
+radius = 96.0
+height = 480.0
 
 [sub_resource type="Animation" id="Animation_fo8gx"]
 length = 0.001
@@ -406,6 +410,10 @@ hframes = 5
 vframes = 5
 frame = 1
 region_rect = Rect2(0, 0, 3497, 1945)
+
+[node name="bodybox" type="CollisionShape2D" parent="."]
+position = Vector2(-12, 32)
+shape = SubResource("CapsuleShape2D_vi8wm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../character")
