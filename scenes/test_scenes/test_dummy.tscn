@@ -53,7 +53,8 @@ texture_progress = ExtResource("7_hx0nb")
 tint_under = Color(0.720467, 0.720468, 0.720467, 1)
 tint_progress = Color(0.678944, 0.678944, 0.678944, 1)
 
-[node name="debuff_manager" type="Node2D" parent="." node_paths=PackedStringArray("being")]
+[node name="debuff_manager" type="Node2D" parent="." node_paths=PackedStringArray("being", "test_color")]
 script = ExtResource("8_cn4xs")
 being = NodePath("..")
+test_color = NodePath("../Sprite2D")
 metadata/_custom_type_script = "uid://d3gf74eg3jv0l"

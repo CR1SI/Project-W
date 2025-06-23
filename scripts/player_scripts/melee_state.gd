@@ -10,8 +10,9 @@ extends State
 @onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
 
 var done: bool = false
-#TODO something glitched with mellee state
+
 func Enter() -> void:
+	player.velocity = Vector2.ZERO
 	animation_player.play("melee_stomp")
 	await animation_player.animation_finished
 	done = true

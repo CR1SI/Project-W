@@ -9,11 +9,16 @@ func _ready() -> void:
 
 func apply_dmg_debuff(dmg: int, debuff: int, dmgDealer: StringName, dmgReceiver: StringName) -> void:
 	if !(get_parent().name == dmgDealer) and get_parent().name == dmgReceiver:
-		obj_data.current_health -= dmg
+		var initial_health: int = obj_data.current_health
+		# Calculate effective defense using defense * defenseBUFF
+		var effective_defense: int = obj_data.defense
+		var defense_reduction_factor: float = clamp(1.0 - (float(effective_defense) / 100.0), 0.0, 1.0)
+		var effective_dmg: int = int(dmg * defense_reduction_factor)
+		obj_data.current_health = initial_health - effective_dmg
 		SignalBus.emit_signal("updateUi")
-		#print(get_parent().name ," has taken " , dmg , " dmg")
-	
-		#TODO code to apply debuffs
+		print("%s has taken %d dmg (raw: %d, defense: %d, defenseBUFF: %.2f, reduction_factor: %.2f, new health: %d)" % [
+			get_parent().name, effective_dmg, dmg, obj_data.defense, obj_data.defenseBUFF, defense_reduction_factor, obj_data.current_health
+		])
 		#print("applied debuff: ", debuff, " to ", dmgReceiver) #1-burn,2-freeze,3-blindness,4-slowness,5-fear,6-stun
 		SignalBus.emit_signal("dmg_debuff_applied", debuff, dmgReceiver)
 	

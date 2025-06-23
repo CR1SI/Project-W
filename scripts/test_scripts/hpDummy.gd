@@ -12,5 +12,7 @@ func _ready() -> void:
 	health.value = dummy.stats.current_health
 	
 	SignalBus.connect("updateUi", Callable(self, "update"))
+
 func update() -> void:
+	print(dummy.stats.current_health)
 	health.value = dummy.stats.current_health

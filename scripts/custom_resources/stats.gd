@@ -2,37 +2,65 @@ class_name Stats
 extends Resource
 
 #TODO ensure buffs and debuffs can work
-@export var max_health : int:
+@export var max_health : float:
 	set(value):
 		max_health = value
 		current_health = max_health
-var current_health : int = max_health:
+	get():
+		return max_health * healthBUFF
+
+var current_health : float = max_health:
 	set(value):
-		current_health = value
-@export var defense : int
-@export var strength : int
+		current_health = clamp(value, 0, max_health)
+
+@export var defense : float:
+	set(value):
+		defense = value
+	get():
+		return defense * defenseBUFF
+
+@export var strength : float:
+	set(value):
+		strength = value
+	get():
+		return strength * strengthBUFF
+
 @export var max_mana : int:
 	set(value):
 		max_mana = value
 		mana = max_mana
-@export var dmg : int :
+
+@export var dmg : float :
 	set(value):
 		dmg = value
 	get():
-		return dmg * strength
+		var calculated_dmg: float = (dmg * strength)
+		calculated_dmg = clamp(calculated_dmg, 0, max_health)
+		return calculated_dmg
+
 var mana : int = max_mana :
 	set(value):
-		mana = value
+		mana = clamp(value, 0, max_mana)
 
-#BUFFS
-var healthBUFF : int
-var strengthBUFF : int
-var defenseBUFF : int
-var speedBUFF : float
+#BUFFS give buffs values greater than 1 and debuffs values less than 1
+var healthBUFF : float = 1.0:
+	set(value):
+		healthBUFF = value
+var strengthBUFF : float = 1.0:
+	set(value):
+		strengthBUFF = value
+var defenseBUFF : float = 1.0:
+	set(value):
+		defenseBUFF = value
+var speedBUFF : float = 1.0:
+	set(value):
+		speedBUFF = value
 
 @export var speed : float :
 	set(value):
 		speed = value
+	get():
+		return speed * speedBUFF
 
 @export var acceleration : int :
 	set(value):

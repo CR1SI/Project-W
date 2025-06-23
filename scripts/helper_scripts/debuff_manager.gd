@@ -2,6 +2,7 @@ extends Node2D
 class_name debuff_manager
 
 @export var being: CharacterBody2D
+@export var test_color: Sprite2D
 
 var current_debuffs: Array = []
 #1-burn,2-freeze,3-blindness,4-slowness,5-fear,6-stun
@@ -12,7 +13,7 @@ var tick_timers: Dictionary = {}
 
 const DOT = {
 	1: {"tick_interval": 0.5, "dmg_per_tick": 5.0}, #burn
-	2: {"tick_interval": 1.5, "dmg_per_tick": 2.5}, #freeze
+	2: {"tick_interval": 0.5, "dmg_per_tick": 10.0}, #freeze
 	3: {"tick_interval": 1, "dmg_per_tick": 0}, #blindness
 	4: {"tick_interval": 1, "dmg_per_tick": 0}, #slowness
 	5: {"tick_interval": 1, "dmg_per_tick": 0}, #fear
@@ -37,6 +38,7 @@ func apply(incoming: int, dmgReceiver: StringName) -> void:
 		if incoming < 1 or incoming > 6:
 			return
 		current_debuffs.append(incoming)
+		print(current_debuffs)
 		#create tick timers
 		if DOT[incoming]["dmg_per_tick"] > 0:
 			var tick_timer: Timer = Timer.new()
@@ -79,7 +81,7 @@ func call_debuff(debuff: int) -> void:
 func burn() -> void:
 	var timer := Timer.new()
 	timer.one_shot = true
-	timer.wait_time = 2.0
+	timer.wait_time = 5.0
 	timer.connect("timeout", remove_debuff.bind(1))
 	add_child(timer)
 	timer.start()
@@ -88,11 +90,12 @@ func burn() -> void:
 func freeze() -> void:
 	var timer := Timer.new()
 	timer.one_shot = true
-	timer.wait_time = 2.0
+	timer.wait_time = 3.0
 	timer.connect("timeout", remove_debuff.bind(2))
 	add_child(timer)
 	timer.start()
-	print("frozen")
+	being.stats.speedBUFF = 0.0
+	print("frozen: -100% speed")
 
 func blindness() -> void:
 	var timer := Timer.new()
@@ -110,7 +113,8 @@ func slowness() -> void:
 	timer.connect("timeout", remove_debuff.bind(4))
 	add_child(timer)
 	timer.start()
-	print("slowed")
+	being.stats.speedBUFF = .50
+	print("slowed: -50% speed")
 
 func fear() -> void:
 	var timer := Timer.new()
@@ -124,11 +128,12 @@ func fear() -> void:
 func stun() -> void:
 	var timer := Timer.new()
 	timer.one_shot = true
-	timer.wait_time = 2.0
+	timer.wait_time = 0.5
 	timer.connect("timeout", remove_debuff.bind(6))
 	add_child(timer)
 	timer.start()
-	print("stunned")
+	being.stats.speedBUFF = 0.0
+	print("stunned: -100% speed")
 
 #endregion
 
@@ -137,3 +142,18 @@ func remove_debuff(debuff: int) -> void:
 		tick_timers[debuff].stop()
 	remove_queue.append(debuff)
 	print("debuff of ",being.name, " done: ", debuff)
+	match debuff:
+		0:
+			pass
+		1:
+			pass
+		2:
+			being.stats.speedBUFF = 1.0
+		3:
+			pass #add something for blindness
+		4:
+			being.stats.speedBUFF = 1.0
+		5:
+			pass #add something for fear
+		6:
+			being.stats.speedBUFF = 1.0

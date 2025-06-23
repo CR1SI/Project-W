@@ -1,8 +1,118 @@
-[gd_scene load_steps=4 format=3 uid="uid://ch5dj2oqs6h8t"]
+[gd_scene load_steps=12 format=3 uid="uid://ch5dj2oqs6h8t"]
 
 [ext_resource type="PackedScene" uid="uid://dwmqx0jpb8jtp" path="res://scenes/player_related/player.tscn" id="1_ngrog"]
 [ext_resource type="PackedScene" uid="uid://6pscbc6sjo2e" path="res://scenes/companion_related/companion.tscn" id="3_sasra"]
 [ext_resource type="PackedScene" uid="uid://bg0rjvhkoqnjh" path="res://scenes/test_scenes/test_dummy.tscn" id="4_2nij2"]
+[ext_resource type="PackedScene" uid="uid://cuplxnejckrdd" path="res://testing_debuffs.tscn" id="4_7cbxl"]
+[ext_resource type="Script" uid="uid://cverkfrb5pg7" path="res://scripts/custom_resources/spell_base.gd" id="5_8pr8v"]
+
+[sub_resource type="Resource" id="Resource_buypi"]
+script = ExtResource("5_8pr8v")
+name = "burn"
+mana_cost = 0
+cooldown = 0.0
+spell_duration = 0.0
+debuff = 1
+spell_type = 2
+dmg = 50
+spell_speed = 0
+can_combine = false
+is_combination = false
+requires_targeting = false
+on_player = false
+deal_knockback = false
+knockback_amount = 0.0
+metadata/_custom_type_script = "uid://cverkfrb5pg7"
+
+[sub_resource type="Resource" id="Resource_2nij2"]
+script = ExtResource("5_8pr8v")
+name = "freeze"
+mana_cost = 0
+cooldown = 0.0
+spell_duration = 0.0
+debuff = 2
+spell_type = 0
+dmg = 60
+spell_speed = 0
+can_combine = false
+is_combination = false
+requires_targeting = false
+on_player = false
+deal_knockback = false
+knockback_amount = 0.0
+metadata/_custom_type_script = "uid://cverkfrb5pg7"
+
+[sub_resource type="Resource" id="Resource_7cbxl"]
+script = ExtResource("5_8pr8v")
+name = "blindness"
+mana_cost = 0
+cooldown = 0.0
+spell_duration = 0.0
+debuff = 3
+spell_type = 4
+dmg = 0
+spell_speed = 0
+can_combine = false
+is_combination = false
+requires_targeting = false
+on_player = false
+deal_knockback = false
+knockback_amount = 0.0
+metadata/_custom_type_script = "uid://cverkfrb5pg7"
+
+[sub_resource type="Resource" id="Resource_8pr8v"]
+script = ExtResource("5_8pr8v")
+name = "slowness"
+mana_cost = 0
+cooldown = 0.0
+spell_duration = 0.0
+debuff = 4
+spell_type = 0
+dmg = 0
+spell_speed = 0
+can_combine = false
+is_combination = false
+requires_targeting = false
+on_player = false
+deal_knockback = false
+knockback_amount = 0.0
+metadata/_custom_type_script = "uid://cverkfrb5pg7"
+
+[sub_resource type="Resource" id="Resource_njel3"]
+script = ExtResource("5_8pr8v")
+name = "fear"
+mana_cost = 0
+cooldown = 0.0
+spell_duration = 0.0
+debuff = 5
+spell_type = 0
+dmg = 0
+spell_speed = 0
+can_combine = false
+is_combination = false
+requires_targeting = false
+on_player = false
+deal_knockback = false
+knockback_amount = 0.0
+metadata/_custom_type_script = "uid://cverkfrb5pg7"
+
+[sub_resource type="Resource" id="Resource_vr1i5"]
+script = ExtResource("5_8pr8v")
+name = "stun"
+mana_cost = 0
+cooldown = 0.0
+spell_duration = 0.0
+debuff = 6
+spell_type = 0
+dmg = 0
+spell_speed = 0
+can_combine = false
+is_combination = false
+requires_targeting = false
+on_player = false
+deal_knockback = false
+knockback_amount = 0.0
+metadata/_custom_type_script = "uid://cverkfrb5pg7"
 
 [node name="test_scene" type="Node2D"]
 
@@ -15,3 +125,27 @@ player = NodePath("../Player")
 
 [node name="testDummy" parent="." instance=ExtResource("4_2nij2")]
 position = Vector2(778, 329)
+
+[node name="testing_debuffs" parent="." instance=ExtResource("4_7cbxl")]
+position = Vector2(1003, 669)
+data = SubResource("Resource_buypi")
+
+[node name="testing_debuffs2" parent="." instance=ExtResource("4_7cbxl")]
+position = Vector2(755, 669)
+data = SubResource("Resource_2nij2")
+
+[node name="testing_debuffs3" parent="." instance=ExtResource("4_7cbxl")]
+position = Vector2(1247, 666)
+data = SubResource("Resource_7cbxl")
+
+[node name="testing_debuffs4" parent="." instance=ExtResource("4_7cbxl")]
+position = Vector2(519, 679)
+data = SubResource("Resource_8pr8v")
+
+[node name="testing_debuffs5" parent="." instance=ExtResource("4_7cbxl")]
+position = Vector2(294, 675)
+data = SubResource("Resource_njel3")
+
+[node name="testing_debuffs6" parent="." instance=ExtResource("4_7cbxl")]
+position = Vector2(1462, 665)
+data = SubResource("Resource_vr1i5")

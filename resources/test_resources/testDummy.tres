@@ -4,11 +4,11 @@
 
 [resource]
 script = ExtResource("1_3n451")
-max_health = 1000
-defense = 50
-strength = 5
+max_health = 1000.0
+defense = 10.0
+strength = 5.0
 max_mana = 0
-dmg = 35
+dmg = 10.0
 speed = 0.0
 acceleration = 0
 is_companion = false
