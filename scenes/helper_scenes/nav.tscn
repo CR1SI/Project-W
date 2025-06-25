@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm4f0bdw3vmp"]
+
+[ext_resource type="Script" uid="uid://bjijhdmtqvy7w" path="res://scripts/helper_scripts/nav.gd" id="1_77oi1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_77oi1"]
+
+[node name="NAV" type="Node2D"]
+script = ExtResource("1_77oi1")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+debug_enabled = true
+
+[node name="target_area" type="Area2D" parent="."]
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="target_area"]
+shape = SubResource("CircleShape2D_77oi1")
+
+[connection signal="body_entered" from="target_area" to="." method="_on_target_area_body_entered"]
+[connection signal="body_exited" from="target_area" to="." method="_on_target_area_body_exited"]

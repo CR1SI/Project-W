@@ -8,24 +8,25 @@
 [ext_resource type="Texture2D" uid="uid://5tbjfequdqy7" path="res://Screenshot 2025-06-01 010217.png" id="6_125x5"]
 [ext_resource type="Texture2D" uid="uid://cicj13q03j1pl" path="res://Screenshot 2025-06-01 010340.png" id="7_hx0nb"]
 [ext_resource type="Script" uid="uid://d3gf74eg3jv0l" path="res://scripts/helper_scripts/debuff_manager.gd" id="8_cn4xs"]
+[ext_resource type="PackedScene" uid="uid://dm4f0bdw3vmp" path="res://scenes/helper_scenes/nav.tscn" id="9_125x5"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6qg1c"]
 size = Vector2(50, 50)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cn4xs"]
-radius = 274.263
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cn4xs"]
-radius = 28.0
-height = 100.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_125x5"]
+size = Vector2(50, 50)
 
 [node name="testDummy" type="CharacterBody2D" groups=["enemy"]]
+position = Vector2(965, 513)
 script = ExtResource("1_6qg1c")
 stats = ExtResource("2_aej8f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.977447, 0.442524, 0, 1)
 texture = SubResource("PlaceholderTexture2D_6qg1c")
+
+[node name="bodybox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_125x5")
 
 [node name="hurtbox" parent="." instance=ExtResource("3_aej8f")]
 position = Vector2(0, -2)
@@ -66,18 +67,6 @@ being = NodePath("..")
 test_color = NodePath("../Sprite2D")
 metadata/_custom_type_script = "uid://d3gf74eg3jv0l"
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-target_desired_distance = 1.0
-path_postprocessing = 1
-debug_enabled = true
-
-[node name="target area" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="target area"]
-shape = SubResource("CircleShape2D_cn4xs")
-
-[node name="bodybox" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_cn4xs")
-
-[connection signal="body_entered" from="target area" to="." method="_on_target_area_body_entered"]
-[connection signal="body_exited" from="target area" to="." method="_on_target_area_body_exited"]
+[node name="NAV" parent="." instance=ExtResource("9_125x5")]
+position = Vector2(0, -1)
+stopping_distance = 100.0

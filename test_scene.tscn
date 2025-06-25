@@ -137,25 +137,25 @@ player = NodePath("../Player")
 position = Vector2(778, 329)
 
 [node name="testing_debuffs" parent="." instance=ExtResource("4_7cbxl")]
-position = Vector2(1003, 669)
+position = Vector2(1362, 987)
 data = SubResource("Resource_buypi")
 
 [node name="testing_debuffs2" parent="." instance=ExtResource("4_7cbxl")]
-position = Vector2(755, 669)
+position = Vector2(1114, 987)
 data = SubResource("Resource_2nij2")
 
 [node name="testing_debuffs3" parent="." instance=ExtResource("4_7cbxl")]
-position = Vector2(1247, 666)
+position = Vector2(1606, 984)
 data = SubResource("Resource_7cbxl")
 
 [node name="testing_debuffs4" parent="." instance=ExtResource("4_7cbxl")]
-position = Vector2(519, 679)
+position = Vector2(878, 997)
 data = SubResource("Resource_8pr8v")
 
 [node name="testing_debuffs5" parent="." instance=ExtResource("4_7cbxl")]
-position = Vector2(294, 675)
+position = Vector2(653, 993)
 data = SubResource("Resource_njel3")
 
 [node name="testing_debuffs6" parent="." instance=ExtResource("4_7cbxl")]
-position = Vector2(1462, 665)
+position = Vector2(1821, 983)
 data = SubResource("Resource_vr1i5")
