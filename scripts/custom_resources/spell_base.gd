@@ -28,6 +28,7 @@ enum Debuffs{ #once enemy enters spell, it checks for debuff, while enemy inside
 @export var cooldown: float
 @export var spell_duration: float
 @export var debuff: Debuffs
+@export var destroy_on_impact: bool = false
 
 @export var spell_type: Elements
 @export var dmg: int

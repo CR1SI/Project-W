@@ -7,8 +7,8 @@
 [ext_resource type="Script" uid="uid://cverkfrb5pg7" path="res://scripts/custom_resources/spell_base.gd" id="5_8pr8v"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2nij2"]
-vertices = PackedVector2Array(1907.28, -30.5313, 1942.68, 1156.28, -175.617, 1112.7, -132.367, -37.9609)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+vertices = PackedVector2Array(1907.28, -30.5313, 1942.68, 1156.28, 771.773, 433, 761.148, 393.367, 761.148, 472.633, 732.133, 501.648, -175.617, 1112.7, 692.5, 512.273, 652.867, 501.648, -132.367, -37.9609, 623.852, 472.633, 613.227, 433, 623.852, 393.367, 652.867, 364.352, 692.5, 353.727, 732.133, 364.352)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 2, 1), PackedInt32Array(5, 4, 1), PackedInt32Array(5, 1, 6, 7), PackedInt32Array(8, 7, 6), PackedInt32Array(8, 6, 9, 10), PackedInt32Array(11, 10, 9), PackedInt32Array(12, 11, 9), PackedInt32Array(13, 12, 9), PackedInt32Array(13, 9, 0, 14), PackedInt32Array(15, 14, 0), PackedInt32Array(15, 0, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-142, -48, 1917, -40.5, 1953, 1166.5, -186, 1122.5)])
 
 [sub_resource type="Resource" id="Resource_buypi"]
@@ -18,6 +18,7 @@ mana_cost = 0
 cooldown = 0.0
 spell_duration = 0.0
 debuff = 1
+destroy_on_impact = false
 spell_type = 2
 dmg = 50
 spell_speed = 0
@@ -36,6 +37,7 @@ mana_cost = 0
 cooldown = 0.0
 spell_duration = 0.0
 debuff = 2
+destroy_on_impact = false
 spell_type = 0
 dmg = 60
 spell_speed = 0
@@ -54,6 +56,7 @@ mana_cost = 0
 cooldown = 0.0
 spell_duration = 0.0
 debuff = 3
+destroy_on_impact = false
 spell_type = 4
 dmg = 0
 spell_speed = 0
@@ -72,6 +75,7 @@ mana_cost = 0
 cooldown = 0.0
 spell_duration = 0.0
 debuff = 4
+destroy_on_impact = false
 spell_type = 0
 dmg = 0
 spell_speed = 0
@@ -90,6 +94,7 @@ mana_cost = 0
 cooldown = 0.0
 spell_duration = 0.0
 debuff = 5
+destroy_on_impact = false
 spell_type = 0
 dmg = 0
 spell_speed = 0
@@ -108,6 +113,7 @@ mana_cost = 0
 cooldown = 0.0
 spell_duration = 0.0
 debuff = 6
+destroy_on_impact = false
 spell_type = 0
 dmg = 0
 spell_speed = 0
@@ -125,6 +131,12 @@ metadata/_custom_type_script = "uid://cverkfrb5pg7"
 position = Vector2(-868, -527)
 scale = Vector2(2, 2)
 navigation_polygon = SubResource("NavigationPolygon_2nij2")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="NavigationRegion2D"]
+position = Vector2(692.5, 433)
+radius = 79.27
+affect_navigation_mesh = true
+carve_navigation_mesh = true
 
 [node name="Player" parent="." instance=ExtResource("1_ngrog")]
 position = Vector2(324, 338)

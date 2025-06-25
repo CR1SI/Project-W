@@ -28,4 +28,13 @@ func _on_area_entered(area: Area2D) -> void:
 			print("%s entered hurtbox of %s and dealt %d dmg (is_spell: %s)" % [
 				self.get_parent().name, area.get_parent().name, dmg, self.get_parent().is_in_group("spells")
 			])
-			SignalBus.emit_signal("apply_dmg_debuff", dmg, debuff_info(), get_parent().name, area.get_parent().name)
+			SignalBus.emit_signal("apply_dmg_and_debuff", dmg, debuff_info(), get_parent().name, area.get_parent().name)
+			
+			#hitstop
+			Engine.time_scale = 0
+			await get_tree().create_timer(0.15, false, false, true).timeout
+			Engine.time_scale = 1.0
+			
+			#destroy spell
+			if self.get_parent().is_in_group("spells") and obj_data.destroy_on_impact:
+				self.get_parent().queue_free()

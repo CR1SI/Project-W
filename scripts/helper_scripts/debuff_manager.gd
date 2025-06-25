@@ -54,7 +54,7 @@ func apply(incoming: int, dmgReceiver: StringName) -> void:
 func apply_tick(debuff: int) -> void:
 	if is_instance_valid(being) and debuff in current_debuffs:
 		var dmg: float = DOT[debuff]["dmg_per_tick"]
-		SignalBus.emit_signal("apply_dmg_debuff", dmg, 0, "debuff", being.name)
+		SignalBus.emit_signal("apply_dmg_and_debuff", dmg, 0, "debuff", being.name)
 		if tick_timers.has(debuff) and not tick_timers[debuff].is_stopped():
 			tick_timers[debuff].start()
 
