@@ -2,7 +2,6 @@ extends Node2D
 class_name debuff_manager
 
 @export var being: CharacterBody2D
-@export var test_color: Sprite2D
 
 var current_debuffs: Array = []
 #1-burn,2-freeze,3-blindness,4-slowness,5-fear,6-stun
@@ -104,7 +103,9 @@ func blindness() -> void:
 	timer.connect("timeout", remove_debuff.bind(3))
 	add_child(timer)
 	timer.start()
-	print("blind")
+	if being.is_in_group("enemy"):
+		get_parent().get_node("NAV").blind_active = true
+		print("blind")
 
 func slowness() -> void:
 	var timer := Timer.new()
@@ -123,7 +124,9 @@ func fear() -> void:
 	timer.connect("timeout", remove_debuff.bind(5))
 	add_child(timer)
 	timer.start()
-	print("fear")
+	if being.is_in_group("enemy"):
+		get_parent().get_node("NAV").fear_active = true
+		being.stats.speedBUFF = 2.0
 
 func stun() -> void:
 	var timer := Timer.new()
@@ -150,10 +153,13 @@ func remove_debuff(debuff: int) -> void:
 		2:
 			being.stats.speedBUFF = 1.0
 		3:
-			pass #add something for blindness
+			if being.is_in_group("enemy"):
+				get_parent().get_node("NAV").blind_active = false
 		4:
 			being.stats.speedBUFF = 1.0
 		5:
-			pass #add something for fear
+			if being.is_in_group("enemy"):
+				get_parent().get_node("NAV").fear_active = false
+				being.stats.speedBUFF = 1.0
 		6:
 			being.stats.speedBUFF = 1.0

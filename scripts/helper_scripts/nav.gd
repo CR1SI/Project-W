@@ -10,13 +10,26 @@ class_name nav
 @onready var nave: NavigationAgent2D = $NavigationAgent2D
 var target: Node2D
 
+#for fear
+var fear_active: bool = false
+var fixed_pos: Vector2
+
+#for blind
+var blind_active: bool = false
+
 func _ready() -> void:
 	area_radius.shape.radius = radius_detector
 	nave.path_desired_distance = 10.0
 	nave.target_desired_distance = stopping_distance
 
-func _process(_delta: float) -> void:
-	if target != null and is_instance_valid(target):
+func _process(delta: float) -> void:
+	if target != null and is_instance_valid(target) and fear_active == false and blind_active == false:
+		nave.set_target_position(target.global_position)
+		fixed_pos = target.global_position
+	if fear_active:
+		var pos = fixed_pos * -1
+		nave.set_target_position(pos)
+	if blind_active:
 		nave.set_target_position(target.global_position)
 
 func _physics_process(delta: float) -> void:
@@ -52,7 +65,7 @@ func _physics_process(delta: float) -> void:
 func _on_target_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		target = body
-		nave.set_target_position(body.global_position)
+		nave.set_target_position(target.global_position)
 
 func _on_target_area_body_exited(body: Node2D) -> void:
 	if body == target:
