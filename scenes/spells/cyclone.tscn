@@ -55,7 +55,7 @@ data = ExtResource("2_cq32r")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-amount = 5000
+amount = 1000
 process_material = SubResource("ParticleProcessMaterial_ethws")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -30,7 +30,7 @@ func _process(_delta: float) -> void:
 		var pos: Vector2 = fixed_pos * -1
 		nave.set_target_position(pos)
 	if blind_active:
-		nave.set_target_position(target.global_position)
+		nave.set_target_position(fixed_pos) #FIXME make it so they move in circles
 
 func _physics_process(delta: float) -> void:
 	if nave.is_navigation_finished() or get_parent().stats.isDead or target == null:

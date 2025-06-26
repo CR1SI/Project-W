@@ -100,7 +100,8 @@ func cast_spell(spell: SpellType, position: Vector2) -> void:
 		
 		start_cooldown(spell)
 		
-		SignalBus.emit_signal("spell_casted", spell_instance.data.mana_cost)
+		player.stats.mana -= spell_instance.data.mana_cost
+		SignalBus.emit_signal("updateUi")
 
 func cast_combo(combo: SpellCombo, position: Vector2) -> void: 
 	if combo in combo_scenes: 

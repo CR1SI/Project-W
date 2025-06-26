@@ -32,10 +32,6 @@ signal dead
 @warning_ignore("unused_signal")
 signal updateUi
 
-@warning_ignore("unused_signal")
-##emitted when spell is casted
-signal spell_casted
-
 
 
 #effects!
@@ -44,3 +40,9 @@ signal do_hitstop
 
 @warning_ignore("unused_signal")
 signal do_screen_shake
+
+@warning_ignore("unused_signal")
+signal knockback
+
+@warning_ignore("unused_signal")
+signal pull_inside

@@ -17,7 +17,6 @@ var mouse_position: Vector2 = Vector2.ZERO
 var direction: Vector2 = Vector2.ZERO
 var last_direction: Vector2 = Vector2.ZERO
 var cardinal_direction: Vector2 = Vector2.ZERO
-@onready var character: Sprite2D = $character
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 
@@ -65,9 +64,11 @@ func setDirection() -> bool:
 func UpdateAnimation(state: String) -> void: 
 	if state != "idle_long":
 		animation_player.play( state + "_" + AnimDirection())
-	else:
+	elif state == "idle_long":
 		animation_player.play( state + "_" + "start_" + AnimDirection())
 		await animation_player.animation_finished
+		animation_player.play( state + "_" + AnimDirection())
+	elif state == "idle_long_end":
 		animation_player.play( state + "_" + AnimDirection())
 
 func AnimDirection() -> String: 

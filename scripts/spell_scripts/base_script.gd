@@ -26,9 +26,6 @@ func fire_spell() -> void:
 	
 	spell_fired = true
 
-func deal_damage(_dmg: int) -> void: 	#deal dmg stuff here
-	pass
-
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("spells") and data.can_combine:
 		SignalBus.emit_signal("spell_collided", self, area)

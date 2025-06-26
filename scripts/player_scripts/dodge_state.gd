@@ -6,6 +6,7 @@ extends State
 @onready var melee: melee_state = $"../melee"
 @onready var casting: casting_state = $"../casting"
 @onready var spell_manager: SpellManager = $"../../SpellManager"
+@onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
 
 
 @export var dash_speed: float = 1000.0 #this has to always be higher than the player_speed otherwise it will slow down instead. 
@@ -17,6 +18,8 @@ var timer: float = 0.0 #makeshift timer, you could use a timer node.
 
 
 func Enter() -> void:
+	if animation_player.current_animation == "idle_long_end_left" or animation_player.current_animation == "idle_long_end_right":
+		await animation_player.animation_finished
 	#player.UpdateAnimation("dodge")
 	if can_dash:
 		can_dash = false
@@ -35,10 +38,9 @@ func Exit() -> void:
 	player.velocity = Vector2.ZERO #when we exit we want set velocity to zero otherwise we maintain that speed.
 	pass
 
-func Process(_delta: float) -> State:
+func Process(delta: float) -> State:
 	
-	timer -= _delta #_delta is essentially each frame. so it can work as good precise timer but not a lot of flexibility.
-	#if timer reaches 0 and we are moving go to walk otherwise go to idle. 
+	timer -= delta
 	if timer <= 0.0:
 		if player.direction != Vector2.ZERO: 
 			return walk
@@ -46,7 +48,8 @@ func Process(_delta: float) -> State:
 			return idle
 	
 	if player.setDirection():
-		player.UpdateAnimation("dodge")
+		#TODO player.UpdateAnimation("dodge")
+		pass
 	return null
 
 func Physics(_delta: float) -> State: 

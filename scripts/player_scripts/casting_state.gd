@@ -5,12 +5,15 @@ extends State
 @onready var walk: walk_state = $"../walk"
 @onready var dodge: dodge_state = $"../dodge"
 @onready var melee: melee_state = $"../melee"
+@onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
 
 @onready var spell_manager: SpellManager = $"../../SpellManager"
 
 var cast_done: bool = false
 
 func Enter() -> void:
+	if animation_player.current_animation == "idle_long_end_left" or animation_player.current_animation == "idle_long_end_right":
+		await animation_player.animation_finished
 	#player.UpdateAnimation("casting")
 	#play animation without allowing for movement. if player moves, cancel cast.
 	player.velocity = Vector2.ZERO
@@ -20,7 +23,7 @@ func Enter() -> void:
 			var target_position: Vector2 = spell_manager.target_radius.global_position
 			spell_manager.cast_spell(spell_manager.selected_spell, target_position)
 		else:
-			spell_manager.cast_spell(spell_manager.selected_spell, Vector2(player.position.x + player.last_direction.x * 100 , player.position.y + player.last_direction.y * 100))
+			spell_manager.cast_spell(spell_manager.selected_spell, Vector2(player.position.x + player.last_direction.x * 50 , player.position.y + player.last_direction.y * 50))
 		cast_done = true
 	else: 
 		cast_done = false

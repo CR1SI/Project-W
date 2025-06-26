@@ -34,3 +34,7 @@ func _on_area_entered(area: Area2D) -> void:
 			#destroy spell
 			if self.get_parent().is_in_group("spells") and obj_data.destroy_on_impact:
 				self.get_parent().queue_free()
+			
+			#pull towards center
+			if self.get_parent().is_in_group("spells") and obj_data.pull_inside:
+				SignalBus.emit_signal("pull_inside", self.get_parent(), area.get_parent())

@@ -12,6 +12,8 @@ extends State
 var done: bool = false
 
 func Enter() -> void:
+	if animation_player.current_animation == "idle_long_end_left" or animation_player.current_animation == "idle_long_end_right":
+		await animation_player.animation_finished
 	player.velocity = Vector2.ZERO
 	animation_player.play("melee_stomp")
 	await animation_player.animation_finished

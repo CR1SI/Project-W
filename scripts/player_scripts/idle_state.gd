@@ -15,17 +15,20 @@ func Enter() -> void:
 	player.UpdateAnimation("idle")
 	longIdle.start()
 
-func Exit() -> void: 
-	pass
+func Exit() -> void:
+	if animation_player.assigned_animation == "idle_long_right" or animation_player.assigned_animation == "idle_long_left":
+		player.UpdateAnimation("idle_long_end")
+	longIdle.stop()
 
 func Process(_delta: float) -> State:
 	if player.direction != Vector2.ZERO: #if the player is moving we go to walk state
-		return walk
+			return walk
 	
 	player.velocity = Vector2.ZERO #constantly set velocity to zero because we are not moving
 	
 	if player.setDirection():
 		player.UpdateAnimation("idle")
+	
 	return null
 
 func Physics(_delta: float) -> State: 

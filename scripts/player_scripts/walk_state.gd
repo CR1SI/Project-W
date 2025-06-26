@@ -10,8 +10,9 @@ extends State
 @onready var animation: AnimationPlayer = $"../../AnimationPlayer"
 
 func Enter() -> void:
+	if animation.current_animation == "idle_long_end_left" or animation.current_animation == "idle_long_end_right":
+		await animation.animation_finished
 	player.UpdateAnimation("walk")
-	pass
 
 func Exit() -> void:
 	pass
