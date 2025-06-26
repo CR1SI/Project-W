@@ -1,6 +1,9 @@
 extends Node2D
 class_name effects
 
+#IMPORTANT ALWAYS ADD IT TO ANY MAIN SCENE
+
+
 func _ready() -> void:
 	SignalBus.do_hitstop.connect(hitstop)
 	SignalBus.do_screen_shake.connect(screen_shake)
