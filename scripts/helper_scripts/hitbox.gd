@@ -20,7 +20,7 @@ func debuff_info() -> Spell.Debuffs:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("hurtbox") and !(area.get_parent() == self.get_parent()):
+	if area.is_in_group("hurtbox") and !(area.get_parent() == self.get_parent()) and !(area.get_parent().get_groups() == self.get_parent().get_groups()):
 		if self.get_parent().is_in_group("spells") and area.get_parent().is_in_group("player"):
 			pass
 		else:
@@ -29,11 +29,7 @@ func _on_area_entered(area: Area2D) -> void:
 				self.get_parent().name, area.get_parent().name, dmg, self.get_parent().is_in_group("spells")
 			])
 			SignalBus.emit_signal("apply_dmg_and_debuff", dmg, debuff_info(), get_parent().name, area.get_parent().name)
-			
-			#hitstop
-			Engine.time_scale = 0
-			await get_tree().create_timer(0.15, false, false, true).timeout
-			Engine.time_scale = 1.0
+			SignalBus.emit_signal("do_hitstop")
 			
 			#destroy spell
 			if self.get_parent().is_in_group("spells") and obj_data.destroy_on_impact:

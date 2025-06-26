@@ -75,7 +75,7 @@ func call_debuff(debuff: int) -> void:
 		6:
 			stun()
 
-#TODO finish logic for all debuffs, but first do enemy monement and ai!!!
+#TODO fine tune debuff logic
 #region DEBUFFS
 func burn() -> void:
 	var timer := Timer.new()

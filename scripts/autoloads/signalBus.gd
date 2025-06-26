@@ -35,3 +35,12 @@ signal updateUi
 @warning_ignore("unused_signal")
 ##emitted when spell is casted
 signal spell_casted
+
+
+
+#effects!
+@warning_ignore("unused_signal")
+signal do_hitstop
+
+@warning_ignore("unused_signal")
+signal do_screen_shake

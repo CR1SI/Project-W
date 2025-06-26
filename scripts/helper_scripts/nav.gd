@@ -22,12 +22,12 @@ func _ready() -> void:
 	nave.path_desired_distance = 10.0
 	nave.target_desired_distance = stopping_distance
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if target != null and is_instance_valid(target) and fear_active == false and blind_active == false:
 		nave.set_target_position(target.global_position)
 		fixed_pos = target.global_position
 	if fear_active:
-		var pos = fixed_pos * -1
+		var pos: Vector2 = fixed_pos * -1
 		nave.set_target_position(pos)
 	if blind_active:
 		nave.set_target_position(target.global_position)
