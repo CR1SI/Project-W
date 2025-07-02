@@ -9,12 +9,13 @@ var default_aim: Texture2D = preload("res://textures/spell_textures_placeholders
 var is_targeting: bool = false
 
 enum SpellType {
-	FIREBALL,
-	WATERFALL,
-	CYCLONE, 
-	STONEFIST, 
-	LIGHTBEAM,
-	SHADOWBOLT
+	NONE = -1,
+	FIREBALL = 0,
+	WATERFALL = 1,
+	CYCLONE = 2, 
+	STONEFIST = 3, 
+	LIGHTBEAM = 4,
+	SHADOWBOLT = 5
 }
 
 enum SpellCombo { 
@@ -67,7 +68,7 @@ var active_bar: Dictionary = {
 	5 : spell_scenes[SpellType.LIGHTBEAM]
 }
 
-var selected_spell: SpellType = -1
+var selected_spell: SpellType = SpellType.NONE
 var spell_fired: bool = false
 
 var cooldowns: Dictionary = {} #to track cooldowns!

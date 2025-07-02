@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bg0rjvhkoqnjh"]
+[gd_scene load_steps=11 format=3 uid="uid://bg0rjvhkoqnjh"]
 
 [ext_resource type="Script" uid="uid://cumrkjvogm5d" path="res://scripts/test_scripts/test_dummy.gd" id="1_6qg1c"]
 [ext_resource type="Resource" uid="uid://dbktqivr313hh" path="res://resources/test_resources/testDummy.tres" id="2_aej8f"]
 [ext_resource type="PackedScene" uid="uid://bh5gsfm8mxgnk" path="res://scenes/helper_scenes/hurtbox.tscn" id="3_aej8f"]
-[ext_resource type="PackedScene" uid="uid://c0xqulw7pjpl0" path="res://scenes/helper_scenes/hitbox.tscn" id="4_yryr4"]
 [ext_resource type="Script" uid="uid://dortgyo0q2eih" path="res://scripts/test_scripts/hpDummy.gd" id="5_xxvby"]
 [ext_resource type="Texture2D" uid="uid://5tbjfequdqy7" path="res://Screenshot 2025-06-01 010217.png" id="6_125x5"]
 [ext_resource type="Texture2D" uid="uid://cicj13q03j1pl" path="res://Screenshot 2025-06-01 010340.png" id="7_hx0nb"]
@@ -30,10 +29,6 @@ shape = SubResource("RectangleShape2D_125x5")
 
 [node name="hurtbox" parent="." instance=ExtResource("3_aej8f")]
 position = Vector2(0, -2)
-
-[node name="Hitbox" parent="." instance=ExtResource("4_yryr4")]
-position = Vector2(-84, 4)
-scale = Vector2(0.5, 0.5)
 
 [node name="debug_HP_MANA" type="Control" parent="."]
 layout_mode = 3

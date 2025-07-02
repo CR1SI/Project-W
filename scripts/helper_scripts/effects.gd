@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		return
 
-#FIXME fix knockback
+#FIXME fix hitstop
 func hitstop() -> void:
 	Engine.time_scale = 0
 	await get_tree().create_timer(0.15, false, false, true).timeout

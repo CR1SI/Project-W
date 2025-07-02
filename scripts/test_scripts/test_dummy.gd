@@ -10,7 +10,6 @@ func on_dead(nam: String) -> void:
 	if self.name == nam:
 		velocity = Vector2.ZERO
 		stats.isDead = true
-		print("dead: ", nam)
 		#play death animation
 		queue_free()
 	else:

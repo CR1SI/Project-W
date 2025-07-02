@@ -37,7 +37,6 @@ func apply(incoming: int, dmgReceiver: StringName) -> void:
 		if incoming < 1 or incoming > 6:
 			return
 		current_debuffs.append(incoming)
-		print(current_debuffs)
 		#create tick timers
 		if DOT[incoming]["dmg_per_tick"] > 0:
 			var tick_timer: Timer = Timer.new()
@@ -144,7 +143,6 @@ func remove_debuff(debuff: int) -> void:
 	if tick_timers.has(debuff) and is_instance_valid(tick_timers[debuff]):
 		tick_timers[debuff].stop()
 	remove_queue.append(debuff)
-	print("debuff of ",being.name, " done: ", debuff)
 	match debuff:
 		0:
 			pass

@@ -42,12 +42,12 @@ turbulence_initial_displacement_max = 1.49012e-06
 radius = 156.115
 
 [node name="smokescreen" type="Area2D"]
-position = Vector2(572, 284)
 script = ExtResource("1_vb0a6")
 data = ExtResource("2_7cdiu")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.215686)
+emitting = false
 amount = 3000
 texture = SubResource("PlaceholderTexture2D_7cdiu")
 speed_scale = 0.8
