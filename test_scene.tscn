@@ -81,6 +81,7 @@ metadata/_custom_type_script = "uid://cverkfrb5pg7"
 [node name="test_scene" type="Node2D"]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(-868, -527)
 scale = Vector2(2, 2)
 navigation_polygon = SubResource("NavigationPolygon_2nij2")
