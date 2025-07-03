@@ -2,7 +2,7 @@ extends Control
 class_name inventory
 
 @onready var spell_selector: GridContainer = $background/spell_selector
-@export var spell_manager: SpellManager
+@onready var spell_manager: SpellManager = Nodes.player.spell_manager
 
 
 @onready var mana: Label = %mana
@@ -15,7 +15,6 @@ var extra_spells: Array[spell_slot] = []
 var bar: Dictionary
 
 func _ready() -> void:
-	SignalBus.connect("open_selector", _on_open)
 	bar = spell_manager.active_bar
 	slots = spell_selector.get_children()
 	
@@ -35,7 +34,7 @@ func _ready() -> void:
 	#update manaNumber
 	for i in active_spells:
 		manaAMOUNT += int(i.mana.text)
-	mana.text = "total mana: " + str(manaAMOUNT)
+	mana.text = "total mana cost: " + str(manaAMOUNT)
 
 func add_to_slot() -> void:
 	for spells: int in bar:
@@ -83,13 +82,4 @@ func _on_spell_dropped(from: int, to: int) -> void:
 	manaAMOUNT = 0
 	for i in active_spells:
 		manaAMOUNT += int(i.mana.text)
-	mana.text = "total mana: " + str(manaAMOUNT)
-
-
-func _on_open() -> void:
-	if visible:
-		visible = false
-		get_tree().paused = false
-	else:
-		visible = true
-		get_tree().paused = true
+	mana.text = "total mana cost: " + str(manaAMOUNT)

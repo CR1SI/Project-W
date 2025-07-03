@@ -1,0 +1,92 @@
+[gd_scene load_steps=6 format=3 uid="uid://tojmldblj67a"]
+
+[ext_resource type="Script" uid="uid://qmrwk62kox3c" path="res://scripts/ui_scripts/hudScript.gd" id="1_hqnrr"]
+[ext_resource type="PackedScene" uid="uid://dspeqh42ks1xd" path="res://scenes/ui/spells.tscn" id="2_bo48s"]
+[ext_resource type="Texture2D" uid="uid://dnkaf2bfimqly" path="res://Screenshot 2025-06-01 010217 (2).png" id="3_8qguk"]
+[ext_resource type="Texture2D" uid="uid://cicj13q03j1pl" path="res://Screenshot 2025-06-01 010340.png" id="4_136eg"]
+[ext_resource type="Texture2D" uid="uid://k8p664xvscpn" path="res://Screenshot 2025-06-01 010331.png" id="5_136eg"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hqnrr")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="inventory" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="spells" parent="CanvasLayer/inventory" instance=ExtResource("2_bo48s")]
+layout_mode = 2
+
+[node name="info" type="PanelContainer" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/info"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 2
+
+[node name="infoSpells" type="GridContainer" parent="CanvasLayer/info/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+columns = 4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/info/VBoxContainer/infoSpells"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/info/VBoxContainer/infoSpells"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/info/VBoxContainer/infoSpells"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/info/VBoxContainer/infoSpells"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="H&M" type="VBoxContainer" parent="CanvasLayer/info/VBoxContainer"]
+custom_minimum_size = Vector2(650, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+alignment = 2
+
+[node name="health" type="TextureProgressBar" parent="CanvasLayer/info/VBoxContainer/H&M"]
+unique_name_in_owner = true
+layout_mode = 2
+nine_patch_stretch = true
+stretch_margin_bottom = 32
+texture_under = ExtResource("3_8qguk")
+texture_progress = ExtResource("4_136eg")
+tint_under = Color(0.728822, 0.728822, 0.728822, 1)
+tint_progress = Color(0.683077, 0.683077, 0.683077, 1)
+
+[node name="mana" type="TextureProgressBar" parent="CanvasLayer/info/VBoxContainer/H&M"]
+unique_name_in_owner = true
+layout_mode = 2
+nine_patch_stretch = true
+stretch_margin_bottom = 32
+texture_under = ExtResource("3_8qguk")
+texture_progress = ExtResource("5_136eg")
+tint_under = Color(0.728822, 0.728822, 0.728822, 1)
+tint_progress = Color(0.683077, 0.683077, 0.683077, 1)

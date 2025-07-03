@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ch5dj2oqs6h8t"]
+[gd_scene load_steps=14 format=3 uid="uid://ch5dj2oqs6h8t"]
 
 [ext_resource type="PackedScene" uid="uid://dwmqx0jpb8jtp" path="res://scenes/player_related/player.tscn" id="1_ngrog"]
 [ext_resource type="PackedScene" uid="uid://6pscbc6sjo2e" path="res://scenes/companion_related/companion.tscn" id="3_sasra"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://baklv785hsmfm" path="res://scripts/custom_resources/stats.gd" id="4_8pr8v"]
 [ext_resource type="Script" uid="uid://cverkfrb5pg7" path="res://scripts/custom_resources/spell_base.gd" id="5_8pr8v"]
 [ext_resource type="PackedScene" uid="uid://ck6lrpgdwsb7i" path="res://scenes/helper_scenes/effects.tscn" id="6_7cbxl"]
+[ext_resource type="PackedScene" uid="uid://tojmldblj67a" path="res://scenes/ui/hud.tscn" id="8_buypi"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2nij2"]
 vertices = PackedVector2Array(1907.28, -30.5313, 1942.68, 1156.28, 771.773, 433, 761.148, 393.367, 761.148, 472.633, 732.133, 501.648, -175.617, 1112.7, 692.5, 512.273, 652.867, 501.648, -132.367, -37.9609, 623.852, 472.633, 613.227, 433, 623.852, 393.367, 652.867, 364.352, 692.5, 353.727, 732.133, 364.352)
@@ -122,3 +123,9 @@ position = Vector2(662, 967)
 data = SubResource("Resource_7cbxl")
 
 [node name="effects" parent="." instance=ExtResource("6_7cbxl")]
+
+[node name="HUD" parent="." instance=ExtResource("8_buypi")]
+offset_left = -189.0
+offset_top = 322.0
+offset_right = -189.0
+offset_bottom = 322.0

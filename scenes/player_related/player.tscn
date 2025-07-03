@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://dwmqx0jpb8jtp"]
+[gd_scene load_steps=70 format=3 uid="uid://dwmqx0jpb8jtp"]
 
 [ext_resource type="Script" uid="uid://csu3b8rb1tx7h" path="res://scripts/player_scripts/player.gd" id="1_foac7"]
 [ext_resource type="Resource" uid="uid://by3b4x2u2lhpd" path="res://resources/player_resources/player_stats.tres" id="2_auslv"]
@@ -16,13 +16,6 @@
 [ext_resource type="Script" uid="uid://dsvkkp58v8yxv" path="res://scripts/companion_scripts/companion_zone.gd" id="11_cabau"]
 [ext_resource type="PackedScene" uid="uid://c0xqulw7pjpl0" path="res://scenes/helper_scenes/hitbox.tscn" id="12_bkiug"]
 [ext_resource type="PackedScene" uid="uid://bh5gsfm8mxgnk" path="res://scenes/helper_scenes/hurtbox.tscn" id="13_2dmwd"]
-[ext_resource type="Script" uid="uid://be7ynshqqep24" path="res://scripts/ui_scripts/debug_hp_mana.gd" id="14_xh1ps"]
-[ext_resource type="Texture2D" uid="uid://5tbjfequdqy7" path="res://Screenshot 2025-06-01 010217.png" id="15_36vp0"]
-[ext_resource type="Script" uid="uid://c1mortmdb56tj" path="res://scripts/ui_scripts/debug_spells_visual.gd" id="15_um75a"]
-[ext_resource type="Texture2D" uid="uid://cicj13q03j1pl" path="res://Screenshot 2025-06-01 010340.png" id="16_omic3"]
-[ext_resource type="Texture2D" uid="uid://k8p664xvscpn" path="res://Screenshot 2025-06-01 010331.png" id="17_omic3"]
-[ext_resource type="PackedScene" uid="uid://dspeqh42ks1xd" path="res://scenes/ui/spells.tscn" id="18_omic3"]
-[ext_resource type="Script" uid="uid://bpq40vesu1x1i" path="res://label.gd" id="20_3gr2r"]
 [ext_resource type="Script" uid="uid://d3gf74eg3jv0l" path="res://scripts/helper_scripts/debuff_manager.gd" id="21_vi8wm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sifee"]
@@ -829,101 +822,12 @@ process_mode = 4
 position = Vector2(0, 200)
 scale = Vector2(1, 0.5)
 
-[node name="debug_HP_MANA" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -216.0
-offset_top = -464.0
-offset_right = -176.0
-offset_bottom = -424.0
-script = ExtResource("14_xh1ps")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="debug_HP_MANA"]
-layout_mode = 0
-offset_right = 526.0
-offset_bottom = 330.0
-
-[node name="health" type="TextureProgressBar" parent="debug_HP_MANA/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-nine_patch_stretch = true
-stretch_margin_bottom = 32
-texture_under = ExtResource("15_36vp0")
-texture_progress = ExtResource("16_omic3")
-tint_under = Color(0.720467, 0.720468, 0.720467, 1)
-tint_progress = Color(0.678944, 0.678944, 0.678944, 1)
-
-[node name="mana" type="TextureProgressBar" parent="debug_HP_MANA/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-nine_patch_stretch = true
-stretch_margin_bottom = 32
-texture_under = ExtResource("15_36vp0")
-texture_progress = ExtResource("17_omic3")
-tint_under = Color(0.724643, 0.724643, 0.724643, 1)
-tint_progress = Color(0.585062, 0.585062, 0.585062, 1)
-
-[node name="spell_visual" type="GridContainer" parent="."]
-custom_minimum_size = Vector2(64, 64)
-offset_left = -228.0
-offset_top = -748.0
-offset_right = -96.0
-offset_bottom = -616.0
-columns = 2
-script = ExtResource("15_um75a")
-
-[node name="TextureRect" type="TextureRect" parent="spell_visual"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-
-[node name="TextureRect2" type="TextureRect" parent="spell_visual"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-
-[node name="TextureRect3" type="TextureRect" parent="spell_visual"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-
-[node name="TextureRect4" type="TextureRect" parent="spell_visual"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-
 [node name="debuff_manager" type="Node2D" parent="." node_paths=PackedStringArray("being")]
 script = ExtResource("21_vi8wm")
 being = NodePath("..")
 metadata/_custom_type_script = "uid://d3gf74eg3jv0l"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
-
-[node name="spells" parent="Camera2D" node_paths=PackedStringArray("spell_manager") instance=ExtResource("18_omic3")]
-process_mode = 2
-visible = false
-custom_minimum_size = Vector2(1800, 1000)
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-offset_left = -1800.0
-offset_top = -1000.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(2, 2)
-size_flags_horizontal = 6
-size_flags_vertical = 6
-spell_manager = NodePath("../../SpellManager")
-
-[node name="Label" type="Label" parent="Camera2D"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1624.0
-offset_top = -956.0
-offset_right = -1623.0
-offset_bottom = -886.208
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 50
-script = ExtResource("20_3gr2r")
 
 [connection signal="timeout" from="StateMachine/idle/longIdle" to="StateMachine/idle" method="_on_long_idle_timeout"]
 [connection signal="timeout" from="StateMachine/dodge/Timer" to="StateMachine/dodge" method="_on_timer_timeout"]
