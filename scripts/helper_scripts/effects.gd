@@ -7,7 +7,6 @@ class_name effects
 @export var radius_decay: float = 0.5
 
 var current_radius: float
-
 var puller: Node2D
 var being_pulled: Node2D
 
@@ -27,19 +26,37 @@ func _physics_process(delta: float) -> void:
 	else:
 		return
 
-#FIXME fix hitstop
-func hitstop() -> void:
-	Engine.time_scale = 0
-	await get_tree().create_timer(0.15, false, false, true).timeout
-	Engine.time_scale = 1.0
+func hitstop(duration: float = 0.1) -> void:
+	# Pause physics (but keep processing)
+	get_tree().paused = true
+	# Create a timer that ignores the pause state
+	await get_tree().create_timer(duration, true, false, true).timeout
+	# Unpause physics
+	get_tree().paused = false
 
 #TODO add screen shake
 func screen_shake() -> void:
 	pass
 
 #TODO add knockback
-func knockback() -> void:
-	pass
+func knockback(target: CharacterBody2D, strength: float, source_position: Vector2) -> void:
+	if not is_instance_valid(target):
+		return
+	
+	#calc knockback direction (away from source)
+	var direction: Vector2 = (target.global_position - source_position).normalized()
+	#apply knockback
+	var navs: Node2D = target.get_node_or_null("NAV")
+	if navs:
+		navs.apply_knockback(direction * strength)
+	else:
+		target.velocity = direction * strength
+		#knockback ease
+		get_tree().create_timer(0.5).timeout.connect(
+			func() -> void:
+				if is_instance_valid(target):
+					target.velocity = target.velocity.lerp(Vector2.ZERO, 0.5)
+		)
 
 
 #region pulling logic

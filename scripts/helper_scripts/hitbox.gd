@@ -26,7 +26,11 @@ func _on_area_entered(area: Area2D) -> void:
 		else:
 			var dmg: int = dmg_info()
 			SignalBus.emit_signal("apply_dmg_and_debuff", dmg, debuff_info(), get_parent().name, area.get_parent().name)
-			SignalBus.emit_signal("do_hitstop")
+			SignalBus.emit_signal("do_hitstop", 0.15)
+			
+			#knockback
+			if self.get_parent().is_in_group("spells") and obj_data.deal_knockback:
+				SignalBus.emit_signal("knockback", area.get_parent(), obj_data.knockback_amount * 5, self.global_position)
 			
 			#destroy spell
 			if self.get_parent().is_in_group("spells") and obj_data.destroy_on_impact:

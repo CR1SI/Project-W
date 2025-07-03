@@ -40,7 +40,7 @@ mouse_cursor/custom_image_hotspot=Vector2(8, 8)
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/SignalVisualizer/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/SignalVisualizer/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/gamedev_assistant/plugin.cfg")
 
 [file_customization]
 
