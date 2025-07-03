@@ -889,6 +889,7 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 
 [node name="spells" parent="Camera2D" node_paths=PackedStringArray("spell_manager") instance=ExtResource("18_omic3")]
 visible = false
@@ -896,8 +897,8 @@ custom_minimum_size = Vector2(1800, 1000)
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
-offset_left = -700.0
-offset_top = -500.0
+offset_left = -1800.0
+offset_top = -1000.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(2, 2)

@@ -1,6 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://grvpi2lsf4yb"]
+[gd_scene load_steps=5 format=3 uid="uid://grvpi2lsf4yb"]
 
 [ext_resource type="Script" uid="uid://7fp3h5bdleur" path="res://scripts/ui_scripts/slot.gd" id="1_jkamp"]
+[ext_resource type="Texture2D" uid="uid://b65v4h285lpdx" path="res://textures/ui_textures/slot.png" id="2_sad2q"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sad2q"]
+texture = ExtResource("2_sad2q")
 
 [sub_resource type="LabelSettings" id="LabelSettings_jkamp"]
 font_size = 10
@@ -21,6 +25,7 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_sad2q")
 script = ExtResource("1_jkamp")
 
 [node name="TextureRect" type="TextureRect" parent="."]
