@@ -888,10 +888,16 @@ layout_mode = 2
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
+[node name="debuff_manager" type="Node2D" parent="." node_paths=PackedStringArray("being")]
+script = ExtResource("21_vi8wm")
+being = NodePath("..")
+metadata/_custom_type_script = "uid://d3gf74eg3jv0l"
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
 [node name="spells" parent="Camera2D" node_paths=PackedStringArray("spell_manager") instance=ExtResource("18_omic3")]
+process_mode = 2
 visible = false
 custom_minimum_size = Vector2(1800, 1000)
 anchors_preset = 3
@@ -918,11 +924,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
 script = ExtResource("20_3gr2r")
-
-[node name="debuff_manager" type="Node2D" parent="." node_paths=PackedStringArray("being")]
-script = ExtResource("21_vi8wm")
-being = NodePath("..")
-metadata/_custom_type_script = "uid://d3gf74eg3jv0l"
 
 [connection signal="timeout" from="StateMachine/idle/longIdle" to="StateMachine/idle" method="_on_long_idle_timeout"]
 [connection signal="timeout" from="StateMachine/dodge/Timer" to="StateMachine/dodge" method="_on_timer_timeout"]

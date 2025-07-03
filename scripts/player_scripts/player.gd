@@ -29,18 +29,6 @@ func _process(_delta: float) -> void:
 	direction.x = Input.get_action_strength("right") - Input.get_action_strength("left") 
 	direction.y = Input.get_action_strength("down") - Input.get_action_strength("up")
 	
-	if Input.is_action_just_pressed("spell1"):
-		SignalBus.emit_signal("spell_selected", 1)
-	if Input.is_action_just_pressed("spell2"):
-		SignalBus.emit_signal("spell_selected", 2)
-	if Input.is_action_just_pressed("spell3"):
-		SignalBus.emit_signal("spell_selected", 3)
-	if Input.is_action_just_pressed("spell4"):
-		SignalBus.emit_signal("spell_selected", 4)
-	
-	if Input.is_action_just_pressed("inv"):
-		SignalBus.emit_signal("open_selector")
-	
 	mouse_position = get_global_mouse_position()
 
 

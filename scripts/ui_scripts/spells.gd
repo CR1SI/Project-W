@@ -89,6 +89,7 @@ func _on_spell_dropped(from: int, to: int) -> void:
 func _on_open() -> void:
 	if visible:
 		visible = false
+		get_tree().paused = false
 	else:
 		visible = true
-		#get_tree().paused = true maybe but find way to unpause!
+		get_tree().paused = true
