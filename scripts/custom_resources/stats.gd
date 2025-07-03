@@ -66,6 +66,9 @@ var speedBUFF : float = 1.0:
 	set(value):
 		acceleration = value
 
+@export var deal_knockback: bool
+@export_range(0.0, 100.0, 15.0) var knockback_amount: float
+
 #dead variable
 var isDead : bool = false
 

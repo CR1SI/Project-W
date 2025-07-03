@@ -29,7 +29,7 @@ func _on_area_entered(area: Area2D) -> void:
 			SignalBus.emit_signal("do_hitstop", 0.15)
 			
 			#knockback
-			if self.get_parent().is_in_group("spells") and obj_data.deal_knockback:
+			if obj_data.deal_knockback:
 				SignalBus.emit_signal("knockback", area.get_parent(), obj_data.knockback_amount * 5, self.global_position)
 			
 			#destroy spell

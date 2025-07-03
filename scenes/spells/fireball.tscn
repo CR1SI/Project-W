@@ -9,7 +9,6 @@
 radius = 31.3077
 
 [node name="Fireball" type="Area2D"]
-position = Vector2(566.727, 320.472)
 script = ExtResource("1_5bcb8")
 data = ExtResource("2_tx7j8")
 

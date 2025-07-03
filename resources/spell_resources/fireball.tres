@@ -21,3 +21,4 @@ requires_targeting = false
 on_player = false
 deal_knockback = false
 knockback_amount = 0.0
+pull_inside = false

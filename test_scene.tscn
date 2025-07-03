@@ -22,6 +22,8 @@ max_mana = 0
 dmg = 10.0
 speed = 250.0
 acceleration = 50
+deal_knockback = false
+knockback_amount = 0.0
 is_companion = false
 companion = 0
 attackingCompanion = false
@@ -37,6 +39,8 @@ max_mana = 0
 dmg = 10.0
 speed = 250.0
 acceleration = 50
+deal_knockback = false
+knockback_amount = 0.0
 is_companion = false
 companion = 0
 attackingCompanion = false
@@ -52,6 +56,8 @@ max_mana = 0
 dmg = 10.0
 speed = 250.0
 acceleration = 50
+deal_knockback = false
+knockback_amount = 0.0
 is_companion = false
 companion = 0
 attackingCompanion = false
@@ -100,7 +106,7 @@ position = Vector2(186, 349)
 player = NodePath("../Player")
 
 [node name="testDummy" parent="." instance=ExtResource("4_2nij2")]
-position = Vector2(961, 329)
+position = Vector2(732, 348)
 stats = SubResource("Resource_4gito")
 
 [node name="testDummy2" parent="." instance=ExtResource("4_2nij2")]

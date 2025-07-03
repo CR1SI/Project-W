@@ -57,14 +57,14 @@ func _process(_delta: float) -> void:
 		nave.set_target_position(fixed_pos) #FIXME make it so they move in circles
 
 func _physics_process(delta: float) -> void:
-	if nave.is_navigation_finished() or get_parent().stats.isDead or target == null:
-		get_parent().velocity = Vector2.ZERO
-		get_parent().move_and_slide()
-		return
-	
 	#handle knockback first
 	if is_knockback_active:
 		get_parent().velocity = knockback_velocity
+		get_parent().move_and_slide()
+		return
+	
+	if nave.is_navigation_finished() or get_parent().stats.isDead or target == null:
+		get_parent().velocity = Vector2.ZERO
 		get_parent().move_and_slide()
 		return
 	

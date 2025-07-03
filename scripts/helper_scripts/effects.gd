@@ -38,13 +38,13 @@ func hitstop(duration: float = 0.1) -> void:
 func screen_shake() -> void:
 	pass
 
-#TODO add knockback
 func knockback(target: CharacterBody2D, strength: float, source_position: Vector2) -> void:
 	if not is_instance_valid(target):
 		return
 	
 	#calc knockback direction (away from source)
 	var direction: Vector2 = (target.global_position - source_position).normalized()
+	
 	#apply knockback
 	var navs: Node2D = target.get_node_or_null("NAV")
 	if navs:
