@@ -26,7 +26,7 @@ func _on_area_entered(area: Area2D) -> void:
 		else:
 			var dmg: int = dmg_info()
 			SignalBus.emit_signal("apply_dmg_and_debuff", dmg, debuff_info(), get_parent().name, area.get_parent().name)
-			SignalBus.emit_signal("do_hitstop", 0.15)
+			SignalBus.emit_signal("do_hitstop", 0.1)
 			
 			#knockback
 			if obj_data.deal_knockback:

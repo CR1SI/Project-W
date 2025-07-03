@@ -21,6 +21,11 @@ var fixed_pos: Vector2
 
 #for blind
 var blind_active: bool = false
+var blind_timer: Timer
+var circle_center: Vector2
+var circle_radius: float = 100.0
+var circle_speed: float = 2.0
+var circle_angle: float = 0.0
 
 func _ready() -> void:
 	area_radius.shape.radius = radius_detector
@@ -31,6 +36,11 @@ func _ready() -> void:
 	knockback_timer = Timer.new()
 	knockback_timer.one_shot = true
 	add_child(knockback_timer)
+	
+	#blind timer
+	blind_timer = Timer.new()
+	blind_timer.one_shot = true
+	add_child(blind_timer)
 
 func apply_knockback(force: Vector2, duration: float = 0.2) -> void:
 	is_knockback_active = true
@@ -54,12 +64,21 @@ func _process(_delta: float) -> void:
 		nave.set_target_position(pos)
 	
 	if blind_active:
-		nave.set_target_position(fixed_pos) #FIXME make it so they move in circles
+		circle_center = get_parent().global_position
+		nave.set_target_position(circle_center)
 
 func _physics_process(delta: float) -> void:
-	#handle knockback first
+	#handle knockback
 	if is_knockback_active:
 		get_parent().velocity = knockback_velocity
+		get_parent().move_and_slide()
+		return
+	
+	#handle blind
+	if blind_active:
+		circle_angle += circle_speed * delta
+		var offset: Vector2 = Vector2(cos(circle_angle), sin(circle_angle)) * circle_radius
+		get_parent().velocity = offset.normalized() * get_parent().stats.speed * 0.5 #move at half speed
 		get_parent().move_and_slide()
 		return
 	
@@ -82,7 +101,7 @@ func _physics_process(delta: float) -> void:
 	#calc direction
 	var direction: Vector2 = (next_pos - get_parent().global_position).normalized()
 	
-	# Adjust speed based on distance to target (optional for smoother approach)
+	# Adjust speed based on distance to target
 	var speed: float = get_parent().stats.speed * speed_modifier
 	if distance_to_target < stopping_distance * 1.5:
 		speed *= (distance_to_target - stopping_distance) / (stopping_distance * 0.5)

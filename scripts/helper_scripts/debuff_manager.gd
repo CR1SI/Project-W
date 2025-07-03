@@ -96,15 +96,18 @@ func freeze() -> void:
 	print("frozen: -100% speed")
 
 func blindness() -> void:
-	var timer := Timer.new()
-	timer.one_shot = true
-	timer.wait_time = 2.0
-	timer.connect("timeout", remove_debuff.bind(3))
-	add_child(timer)
-	timer.start()
-	if being.is_in_group("enemy"):
-		get_parent().get_node("NAV").blind_active = true
-		print("blind")
+	if being.is_in_group("enemy") and get_parent().get_node("NAV").blind_active:
+		return
+	else:
+		var timer := Timer.new()
+		timer.one_shot = true
+		timer.wait_time = 7.0
+		timer.connect("timeout", remove_debuff.bind(3))
+		add_child(timer)
+		timer.start()
+		if being.is_in_group("enemy"):
+			get_parent().get_node("NAV").blind_active = true
+			print("blind")
 
 func slowness() -> void:
 	var timer := Timer.new()
@@ -119,7 +122,7 @@ func slowness() -> void:
 func fear() -> void:
 	var timer := Timer.new()
 	timer.one_shot = true
-	timer.wait_time = 2.0
+	timer.wait_time = 3.0
 	timer.connect("timeout", remove_debuff.bind(5))
 	add_child(timer)
 	timer.start()
@@ -153,6 +156,7 @@ func remove_debuff(debuff: int) -> void:
 		3:
 			if being.is_in_group("enemy"):
 				get_parent().get_node("NAV").blind_active = false
+				print("blind done")
 		4:
 			being.stats.speedBUFF = 1.0
 		5:
