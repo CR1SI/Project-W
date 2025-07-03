@@ -30,10 +30,9 @@ signal dmg_debuff_applied
 @warning_ignore("unused_signal")
 signal dead
 
+#ui
 @warning_ignore("unused_signal")
 signal updateUi
-
-
 
 #effects!
 @warning_ignore("unused_signal")
