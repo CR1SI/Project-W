@@ -33,7 +33,7 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	move_and_slide() #move
+	move_and_slide()
 
 
 func setDirection() -> bool:

@@ -285,7 +285,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2105e"]
-radius = 312.04
+radius = 190.55
 
 [node name="Companion" type="CharacterBody2D" groups=["companion"]]
 collision_layer = 2
@@ -307,6 +307,7 @@ animation = &"idle"
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_detection_area"]
+position = Vector2(0, 50)
 shape = SubResource("CircleShape2D_2105e")
 debug_color = Color(0.576181, 0.393779, 0.982944, 0.42)
 

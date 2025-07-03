@@ -110,11 +110,11 @@ position = Vector2(732, 348)
 stats = SubResource("Resource_4gito")
 
 [node name="testDummy2" parent="." instance=ExtResource("4_2nij2")]
-position = Vector2(1279, 528)
+position = Vector2(866, 603)
 stats = SubResource("Resource_rpuu0")
 
 [node name="testDummy3" parent="." instance=ExtResource("4_2nij2")]
-position = Vector2(1077, 81)
+position = Vector2(832, 114)
 stats = SubResource("Resource_oo8pe")
 
 [node name="testing_debuffs3" parent="." instance=ExtResource("4_7cbxl")]

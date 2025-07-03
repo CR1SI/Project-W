@@ -151,7 +151,6 @@ func spotted() -> void:
 
 func dead() -> void:
 	#TODO play despawn animation
-	print("despawned companion")
 	queue_free()
 
 #endregion
