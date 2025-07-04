@@ -2,9 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dqaitgmuh5c11" path="res://scripts/spell_scripts/smokescreen.gd" id="1_vb0a6"]
 [ext_resource type="Resource" uid="uid://crdp7y4f6u6c1" path="res://resources/spell_resources/smokescreen.tres" id="2_7cdiu"]
+[ext_resource type="Texture2D" uid="uid://ddgcu4p38cq11" path="res://icon.svg" id="3_rb56g"]
 [ext_resource type="PackedScene" uid="uid://c0xqulw7pjpl0" path="res://scenes/helper_scenes/hitbox.tscn" id="4_rb56g"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7cdiu"]
 
 [sub_resource type="Gradient" id="Gradient_4iib4"]
 
@@ -46,10 +45,9 @@ script = ExtResource("1_vb0a6")
 data = ExtResource("2_7cdiu")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.215686)
-emitting = false
-amount = 3000
-texture = SubResource("PlaceholderTexture2D_7cdiu")
+self_modulate = Color(0, 1, 1, 0.223529)
+amount = 500
+texture = ExtResource("3_rb56g")
 speed_scale = 0.8
 process_material = SubResource("ParticleProcessMaterial_rmotd")
 

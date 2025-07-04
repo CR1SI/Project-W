@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cqj5ilpl0xkrf" path="res://scripts/helper_scripts/hitbox.gd" id="1_52ebi"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_x6lip"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_52ebi"]
 radius = 100.0
 
 [node name="Hitbox" type="Area2D" groups=["hitbox"]]
@@ -13,7 +13,7 @@ monitorable = false
 script = ExtResource("1_52ebi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_x6lip")
+shape = SubResource("CircleShape2D_52ebi")
 debug_color = Color(0.985542, 0, 0.332726, 0.42)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

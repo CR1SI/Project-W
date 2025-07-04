@@ -22,7 +22,7 @@ func fire_spell() -> void:
 	if data.requires_targeting or data.on_player:
 		direction = Vector2.ZERO
 	else: 
-		direction = player.last_direction #(get_global_mouse_position() - position).normalized()
+		direction = (get_global_mouse_position() - position).normalized() #player.last_direction
 	
 	spell_fired = true
 

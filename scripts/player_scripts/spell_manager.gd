@@ -161,7 +161,7 @@ var current_frame: int = 0
 func _on_collided(spell1: Area2D, spell2: Area2D) -> void:
 	current_frame = Engine.get_physics_frames() #get frame on collision
 	
-	print("collided spell1: ",spell1.data.name, " with: ," , spell2.data.name)
+	#print("collided spell1: ",spell1.data.name, " with: ," , spell2.data.name)
 	
 	#create key for combination
 	var combination: Array = [spell1.data.name, spell2.data.name]
