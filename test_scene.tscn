@@ -1,11 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://ch5dj2oqs6h8t"]
+[gd_scene load_steps=11 format=3 uid="uid://ch5dj2oqs6h8t"]
 
 [ext_resource type="PackedScene" uid="uid://dwmqx0jpb8jtp" path="res://scenes/player_related/player.tscn" id="1_ngrog"]
 [ext_resource type="PackedScene" uid="uid://6pscbc6sjo2e" path="res://scenes/companion_related/companion.tscn" id="3_sasra"]
 [ext_resource type="PackedScene" uid="uid://bg0rjvhkoqnjh" path="res://scenes/test_scenes/test_dummy.tscn" id="4_2nij2"]
-[ext_resource type="PackedScene" uid="uid://cuplxnejckrdd" path="res://testing_debuffs.tscn" id="4_7cbxl"]
 [ext_resource type="Script" uid="uid://baklv785hsmfm" path="res://scripts/custom_resources/stats.gd" id="4_8pr8v"]
-[ext_resource type="Script" uid="uid://cverkfrb5pg7" path="res://scripts/custom_resources/spell_base.gd" id="5_8pr8v"]
 [ext_resource type="PackedScene" uid="uid://ck6lrpgdwsb7i" path="res://scenes/helper_scenes/effects.tscn" id="6_7cbxl"]
 [ext_resource type="PackedScene" uid="uid://tojmldblj67a" path="res://scenes/ui/hud.tscn" id="8_buypi"]
 
@@ -65,26 +63,6 @@ attackingCompanion = false
 on_head = false
 metadata/_custom_type_script = "uid://baklv785hsmfm"
 
-[sub_resource type="Resource" id="Resource_7cbxl"]
-script = ExtResource("5_8pr8v")
-name = "blindness"
-mana_cost = 0
-cooldown = 0.0
-spell_duration = 0.0
-debuff = 3
-destroy_on_impact = false
-spell_type = 4
-dmg = 0
-spell_speed = 0
-can_combine = false
-is_combination = false
-requires_targeting = false
-on_player = false
-deal_knockback = false
-knockback_amount = 0.0
-pull_inside = false
-metadata/_custom_type_script = "uid://cverkfrb5pg7"
-
 [node name="test_scene" type="Node2D"]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
@@ -117,10 +95,6 @@ stats = SubResource("Resource_rpuu0")
 [node name="testDummy3" parent="." instance=ExtResource("4_2nij2")]
 position = Vector2(832, 114)
 stats = SubResource("Resource_oo8pe")
-
-[node name="testing_debuffs3" parent="." instance=ExtResource("4_7cbxl")]
-position = Vector2(662, 967)
-data = SubResource("Resource_7cbxl")
 
 [node name="effects" parent="." instance=ExtResource("6_7cbxl")]
 
