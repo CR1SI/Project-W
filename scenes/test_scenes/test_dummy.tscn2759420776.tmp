@@ -61,10 +61,6 @@ texture_progress = ExtResource("7_hx0nb")
 tint_under = Color(0.720467, 0.720468, 0.720467, 1)
 tint_progress = Color(0.678944, 0.678944, 0.678944, 1)
 
-[node name="state" type="Label" parent="debug_HP_MANA/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-
 [node name="debuff_manager" type="Node2D" parent="." node_paths=PackedStringArray("being")]
 script = ExtResource("8_cn4xs")
 being = NodePath("..")
