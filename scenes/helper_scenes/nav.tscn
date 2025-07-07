@@ -8,7 +8,6 @@
 script = ExtResource("1_77oi1")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [node name="target_area" type="Area2D" parent="."]
 input_pickable = false
