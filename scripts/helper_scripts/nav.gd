@@ -59,10 +59,12 @@ func _process(_delta: float) -> void:
 	if fear_active:
 		var pos: Vector2 = fixed_pos * -1
 		nave.set_target_position(pos)
+		return
 	
 	if blind_active:
 		circle_center = get_parent().global_position
 		nave.set_target_position(circle_center)
+		return
 	
 	if target != null and is_instance_valid(target):
 		nave.set_target_position(target.global_position)

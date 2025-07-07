@@ -81,7 +81,6 @@ carve_navigation_mesh = true
 position = Vector2(324, 338)
 
 [node name="Companion" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_sasra")]
-position = Vector2(186, 349)
 player = NodePath("../Player")
 
 [node name="testDummy" parent="." instance=ExtResource("4_2nij2")]
