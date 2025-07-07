@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn3s7nwau12r8"
-path="res://.godot/imported/FULL CHARACTER (24).png-df0fd1e5440a7866a6248b84385225be.ctex"
+uid="uid://dmk3e8purrwkm"
+path="res://.godot/imported/IDLE_LEFT (4 FPS).png-e5503c22c5b04a44e3e4064d3342e479.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/player_textures/FULL CHARACTER (24).png"
-dest_files=["res://.godot/imported/FULL CHARACTER (24).png-df0fd1e5440a7866a6248b84385225be.ctex"]
+source_file="res://textures/player_textures/IDLE_LEFT (4 FPS).png"
+dest_files=["res://.godot/imported/IDLE_LEFT (4 FPS).png-e5503c22c5b04a44e3e4064d3342e479.ctex"]
 
 [params]
 

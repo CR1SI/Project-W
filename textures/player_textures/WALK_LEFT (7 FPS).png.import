@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cehwla0vw26ln"
-path="res://.godot/imported/IDLE_LEFT.png-ac5b7c15f265131ffd507130c7f83d2e.ctex"
+uid="uid://qqdu5meo0fk4"
+path="res://.godot/imported/WALK_LEFT (7 FPS).png-839043ada3c5b69cafb7b5ba3a0b4f5c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/player_textures/IDLE_LEFT.png"
-dest_files=["res://.godot/imported/IDLE_LEFT.png-ac5b7c15f265131ffd507130c7f83d2e.ctex"]
+source_file="res://textures/player_textures/WALK_LEFT (7 FPS).png"
+dest_files=["res://.godot/imported/WALK_LEFT (7 FPS).png-839043ada3c5b69cafb7b5ba3a0b4f5c.ctex"]
 
 [params]
 
