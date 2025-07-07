@@ -37,7 +37,7 @@ func update_hitbox() -> void:
 		if child != hitbox_collision:
 			child.queue_free()
 	
-	# Create additional hitboxes along the beam
+	# Create additional hitboxes along the beam #FIXME only first collision detecting!
 	for i: int  in range(1, hitbox_count):
 		var offset: Vector2 = direction * (i * HITBOX_SPACING)
 		var new_collision: CollisionShape2D = hitbox_collision.duplicate()
