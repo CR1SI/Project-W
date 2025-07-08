@@ -70,7 +70,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if stats.on_head:
-		global_position = player_position + Vector2(0,-50)
+		global_position = player_position + Vector2(0,-35)
 	move_and_slide()
 
 

@@ -21,6 +21,7 @@ size = Vector2(50, 50)
 size = Vector2(50, 50)
 
 [node name="testDummy" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(0.55, 0.55)
 script = ExtResource("1_6qg1c")
 stats = ExtResource("2_aej8f")
 
@@ -71,7 +72,7 @@ metadata/_custom_type_script = "uid://d3gf74eg3jv0l"
 
 [node name="NAV" parent="." instance=ExtResource("9_125x5")]
 radius_detector = 450.0
-stopping_distance = 100.0
+stopping_distance = 50.0
 
 [node name="EnemyStateMachine" type="Node" parent="."]
 script = ExtResource("9_hx0nb")
