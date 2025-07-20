@@ -8,6 +8,7 @@ func _ready() -> void:
 
 func apply_dmg_debuff(dmg: int, debuff: int, dmgDealer: StringName, dmgReceiver: StringName) -> void:
 	if !(get_parent().name == dmgDealer) and get_parent().name == dmgReceiver:
+		flash()
 		var initial_health: int = obj_data.current_health
 		# Calculate effective defense using defense * defenseBUFF
 		var effective_defense: int = obj_data.defense
@@ -24,3 +25,20 @@ func apply_dmg_debuff(dmg: int, debuff: int, dmgDealer: StringName, dmgReceiver:
 		if obj_data.current_health <= 0:
 			obj_data.current_health = 0
 			SignalBus.emit_signal("dead", get_parent().name)
+
+func flash() -> void:
+	var flash_duration: float = 0.02
+	var sprite: Sprite2D = get_parent().get_node("Sprite2D")
+	
+	sprite.material.set_shader_parameter("flash", true)
+	
+	var flashT: Timer = Timer.new()
+	flashT.one_shot = true
+	flashT.autostart = false
+	add_child(flashT)
+	flashT.start(flash_duration)
+	
+	await flashT.timeout
+	
+	sprite.material.set_shader_parameter("flash", false)
+	flashT.queue_free()

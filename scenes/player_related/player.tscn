@@ -894,7 +894,7 @@ being = NodePath("..")
 metadata/_custom_type_script = "uid://d3gf74eg3jv0l"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
+zoom = Vector2(2.5, 2.5)
 
 [connection signal="timeout" from="StateMachine/idle/longIdle" to="StateMachine/idle" method="_on_long_idle_timeout"]
 [connection signal="timeout" from="StateMachine/dodge/Timer" to="StateMachine/dodge" method="_on_timer_timeout"]

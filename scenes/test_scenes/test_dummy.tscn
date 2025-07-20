@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://bg0rjvhkoqnjh"]
+[gd_scene load_steps=18 format=3 uid="uid://bg0rjvhkoqnjh"]
 
 [ext_resource type="Script" uid="uid://cumrkjvogm5d" path="res://scripts/test_scripts/test_dummy.gd" id="1_6qg1c"]
 [ext_resource type="Resource" uid="uid://dbktqivr313hh" path="res://resources/test_resources/testDummy.tres" id="2_aej8f"]
 [ext_resource type="PackedScene" uid="uid://bh5gsfm8mxgnk" path="res://scenes/helper_scenes/hurtbox.tscn" id="3_aej8f"]
+[ext_resource type="Shader" uid="uid://bh0re1uqg6a7t" path="res://scripts/shaders/hitFlash.gdshader" id="3_mnq84"]
 [ext_resource type="Script" uid="uid://dortgyo0q2eih" path="res://scripts/test_scripts/hpDummy.gd" id="5_xxvby"]
 [ext_resource type="Texture2D" uid="uid://5tbjfequdqy7" path="res://Screenshot 2025-06-01 010217.png" id="6_125x5"]
 [ext_resource type="Texture2D" uid="uid://cicj13q03j1pl" path="res://Screenshot 2025-06-01 010340.png" id="7_hx0nb"]
@@ -13,6 +14,11 @@
 [ext_resource type="Script" uid="uid://c6enalu10kh5n" path="res://scripts/enemy_scripts/roam_state.gd" id="11_mnq84"]
 [ext_resource type="Script" uid="uid://2vua3u4h0b4y" path="res://scripts/enemy_scripts/chase_state.gd" id="12_mncug"]
 [ext_resource type="Script" uid="uid://ccrhsmdwh4jvy" path="res://scripts/enemy_scripts/attack_state.gd" id="13_mlbko"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mncug"]
+resource_local_to_scene = true
+shader = ExtResource("3_mnq84")
+shader_parameter/flash = false
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6qg1c"]
 size = Vector2(50, 50)
@@ -27,12 +33,15 @@ stats = ExtResource("2_aej8f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.977447, 0.442524, 0, 1)
+material = SubResource("ShaderMaterial_mncug")
 texture = SubResource("PlaceholderTexture2D_6qg1c")
 
 [node name="bodybox" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_125x5")
 
 [node name="hurtbox" parent="." instance=ExtResource("3_aej8f")]
+visible = false
 position = Vector2(0, -2)
 
 [node name="debug_HP_MANA" type="Control" parent="."]
@@ -71,6 +80,7 @@ being = NodePath("..")
 metadata/_custom_type_script = "uid://d3gf74eg3jv0l"
 
 [node name="NAV" parent="." instance=ExtResource("9_125x5")]
+visible = false
 radius_detector = 450.0
 stopping_distance = 50.0
 
