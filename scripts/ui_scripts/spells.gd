@@ -83,3 +83,6 @@ func _on_spell_dropped(from: int, to: int) -> void:
 	for i in active_spells:
 		manaAMOUNT += int(i.mana.text)
 	mana.text = "total mana cost: " + str(manaAMOUNT)
+	
+	#send signal to game
+	SignalBus.emit_signal("updateSpell")

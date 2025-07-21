@@ -5,6 +5,10 @@ extends CharacterBody2D
 
 var mouse_position: Vector2 = Vector2.ZERO
 
+@onready var footsteps: PackedScene = preload("res://scenes/player_related/foot_steps.tscn")
+var steps: Node
+var stepTimer: Timer
+
 @onready var spell_manager: SpellManager = $SpellManager
 @onready var state_machine: StateMachine = $StateMachine
 @onready var idle: State = $StateMachine/idle
@@ -23,6 +27,12 @@ const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 
 func _ready() -> void:
 	state_machine.Initialize(self) #initialized statemachine, with self->(player) node
+	
+	stepTimer = Timer.new()
+	stepTimer.wait_time = 0.5
+	stepTimer.autostart = true
+	stepTimer.connect("timeout", footStepMaker)
+	add_child(stepTimer)
 
 func _process(_delta: float) -> void:
 	#calculating direciton x and y
@@ -49,16 +59,17 @@ func setDirection() -> bool:
 	cardinal_direction = new_dir
 	return true
 
-#FIXME FIX DOWN ANIMATION IDLE FOR ENDING POPPING BUBBLE
-func UpdateAnimation(state: String) -> void: 
-	if state != "idle_long":
-		animation_player.play( state + "_" + AnimDirection())
+func UpdateAnimation(state: String) -> void:
+	var dir: String = AnimDirection()
+	
+	if state != "idle_long" and state != "idle_long_end":
+		animation_player.play( state + "_" + dir)
 	elif state == "idle_long":
-		animation_player.play( state + "_" + "start_" + AnimDirection())
+		animation_player.play( state + "_" + "start_" + dir)
 		await animation_player.animation_finished
-		animation_player.play( state + "_" + AnimDirection())
+		animation_player.play( state + "_" + dir)
 	elif state == "idle_long_end":
-		animation_player.play( state + "_" + AnimDirection())
+		animation_player.play( state + "_" + dir)
 
 func AnimDirection() -> String: 
 	if cardinal_direction == Vector2.DOWN: 
@@ -69,3 +80,12 @@ func AnimDirection() -> String:
 		return "right"
 	else:
 		return "left"
+
+
+#TODO Fine tune footsteps!
+func footStepMaker() -> void:
+	var new_steps: Node = footsteps.instantiate()
+	new_steps.position = global_position
+	new_steps.position.y = new_steps.position.y + 32
+	
+	get_parent().add_child(new_steps)

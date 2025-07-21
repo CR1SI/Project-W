@@ -12,11 +12,13 @@ extends State
 @onready var longIdle: Timer = $longIdle
 
 func Enter() -> void:
+	if animation_player.current_animation == "idle_long_end_left" or animation_player.current_animation == "idle_long_end_right" or animation_player.current_animation == "idle_long_end_down" or animation_player.current_animation == "idle_long_up":
+		await animation_player.animation_finished
 	player.UpdateAnimation("idle")
 	longIdle.start()
 
 func Exit() -> void:
-	if animation_player.assigned_animation == "idle_long_right" or animation_player.assigned_animation == "idle_long_left":
+	if animation_player.current_animation == "idle_long_right" or animation_player.current_animation == "idle_long_left" or animation_player.current_animation == "idle_long_down" or animation_player.current_animation == "idle_long_up":
 		player.UpdateAnimation("idle_long_end")
 	longIdle.stop()
 

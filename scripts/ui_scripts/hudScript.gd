@@ -18,6 +18,7 @@ class_name HUD
 func _ready() -> void:
 	SignalBus.connect("open_selector", _on_open)
 	SignalBus.connect("updateUi",update)
+	SignalBus.connect("updateSpell", updateBar)
 	
 	#H&M info
 	health.max_value = player.stats.max_health
@@ -25,16 +26,7 @@ func _ready() -> void:
 	health.value = player.stats.current_health
 	mana.value = player.stats.mana
 	
-	#spell info
-	
-	for i in 4:
-		textures[i].texture = player.spell_manager.active_bar[i].instantiate().data.icon
-		textures[i].custom_minimum_size = Vector2(128,128)
-		textures[i].expand_mode = TextureRect.EXPAND_FIT_WIDTH
-		textures[i].stretch_mode = TextureRect.STRETCH_SCALE
-
-func _process(_delta: float) -> void:
-	
+	#spell icons
 	for i in 4:
 		textures[i].texture = player.spell_manager.active_bar[i].instantiate().data.icon
 		textures[i].custom_minimum_size = Vector2(128,128)
@@ -52,3 +44,10 @@ func _on_open() -> void:
 func update() -> void:
 	health.value = player.stats.current_health
 	mana.value = player.stats.mana
+
+func updateBar() -> void:
+	for i in 4:
+		textures[i].texture = player.spell_manager.active_bar[i].instantiate().data.icon
+		textures[i].custom_minimum_size = Vector2(128,128)
+		textures[i].expand_mode = TextureRect.EXPAND_FIT_WIDTH
+		textures[i].stretch_mode = TextureRect.STRETCH_SCALE

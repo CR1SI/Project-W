@@ -34,6 +34,9 @@ signal dead
 @warning_ignore("unused_signal")
 signal updateUi
 
+@warning_ignore("unused_signal")
+signal updateSpell
+
 #effects!
 @warning_ignore("unused_signal")
 signal do_hitstop
@@ -46,6 +49,9 @@ signal knockback
 
 @warning_ignore("unused_signal")
 signal pull_inside
+
+
+
 
 func _ready() -> void:
 	self.process_mode = PROCESS_MODE_ALWAYS

@@ -18,9 +18,9 @@ var timer: float = 0.0 #makeshift timer, you could use a timer node.
 
 
 func Enter() -> void:
-	if animation_player.current_animation == "idle_long_end_left" or animation_player.current_animation == "idle_long_end_right":
+	if animation_player.current_animation == "idle_long_end_left" or animation_player.current_animation == "idle_long_end_right" or animation_player.current_animation == "idle_long_end_down" or animation_player.current_animation == "idle_long_end_up":
 		await animation_player.animation_finished
-	#player.UpdateAnimation("dodge")
+	#player.UpdateAnimation("dodge") #TODO add animation for a dodge/short tp
 	if can_dash:
 		can_dash = false
 		$Timer.start()

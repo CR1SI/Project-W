@@ -61,6 +61,7 @@ companion=""
 npc=""
 hurtbox=""
 hitbox=""
+footstep=""
 
 [gui]
 
