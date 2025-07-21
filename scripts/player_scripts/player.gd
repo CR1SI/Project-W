@@ -49,6 +49,7 @@ func setDirection() -> bool:
 	cardinal_direction = new_dir
 	return true
 
+#FIXME FIX DOWN ANIMATION IDLE FOR ENDING POPPING BUBBLE
 func UpdateAnimation(state: String) -> void: 
 	if state != "idle_long":
 		animation_player.play( state + "_" + AnimDirection())
