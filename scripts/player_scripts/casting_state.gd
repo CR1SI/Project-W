@@ -14,7 +14,7 @@ var cast_done: bool = false
 func Enter() -> void:
 	if animation_player.current_animation == "idle_long_end_left" or animation_player.current_animation == "idle_long_end_right" or animation_player.current_animation == "idle_long_end_down" or animation_player.current_animation == "idle_long_end_up":
 		await animation_player.animation_finished
-	#player.UpdateAnimation("casting") #TODO add casting animation
+	#player.UpdateAnimation("casting") #IMPORTANT add casting animation
 	player.velocity = Vector2.ZERO
 	
 	if spell_manager.selected_spell > -1 and spell_manager.spell_fired == false:

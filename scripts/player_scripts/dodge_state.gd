@@ -36,7 +36,6 @@ func Enter() -> void:
 
 func Exit() -> void:
 	player.velocity = Vector2.ZERO #when we exit we want set velocity to zero otherwise we maintain that speed.
-	pass
 
 func Process(delta: float) -> State:
 	
@@ -48,8 +47,7 @@ func Process(delta: float) -> State:
 			return idle
 	
 	if player.setDirection():
-		#TODO player.UpdateAnimation("dodge")
-		pass
+		Exit()
 	return null
 
 func Physics(_delta: float) -> State: 

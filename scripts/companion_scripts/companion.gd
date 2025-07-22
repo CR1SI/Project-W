@@ -123,7 +123,7 @@ func buffing() -> void:
 	direction = Vector2.ZERO
 	velocity = velocity.lerp(Vector2.ZERO, 0.2)
 	
-	match buff: #FIXME make sure buffs work properly
+	match buff:
 		Buffs.HEALTH_BUFF:
 			player.stats.healthBUFF += 250
 		Buffs.STRENGTH_BUFF:
@@ -145,7 +145,7 @@ func spotted() -> void:
 	else:
 		animation_player.play("enemy_spotted")
 		await animation_player.animation_finished
-		if randi_range(7, 9) == buffNum: #TODO CHANGE HOW SHOULD BUFF IS CALLED
+		if randi_range(7, 9) == buffNum: #IMPORTANT make a new way to activate debuffs
 			shouldBuff = true
 		switch_state(previous_state)
 

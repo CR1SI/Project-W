@@ -74,7 +74,7 @@ func call_debuff(debuff: int) -> void:
 		6:
 			stun()
 
-#TODO fine tune debuff logic
+#IMPORTANT fine tune debuff logic
 #region DEBUFFS
 func burn() -> void:
 	var timer := Timer.new()

@@ -1,7 +1,7 @@
 class_name Stats
 extends Resource
 
-#TODO ensure buffs and debuffs can work
+#IMPORTANT look over buffs and debuffs
 @export var max_health : float:
 	set(value):
 		max_health = value
@@ -68,6 +68,9 @@ var speedBUFF : float = 1.0:
 
 @export var deal_knockback: bool
 @export_range(0.0, 100.0, 15.0) var knockback_amount: float
+
+#can follow footsteps
+@export var canFollowSteps: bool = false
 
 #dead variable
 var isDead : bool = false

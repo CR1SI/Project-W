@@ -28,6 +28,10 @@ var circle_radius: float = 100.0
 var circle_speed: float = 2.0
 var circle_angle: float = 0.0
 
+#for footsteps
+var footstep_queue: Array[Node2D] = []
+var current_footstep: Node2D = null
+
 func _ready() -> void:
 	area_radius.shape.radius = radius_detector
 	nave.path_desired_distance = 10.0
@@ -137,8 +141,11 @@ func set_new_roam_target() -> void:
 	roam_target = get_parent().global_position + Vector2(distan * cos(angle), distan * sin(angle))
 	nave.set_target_position(roam_target)
 
+
+#TODO Improve footsteps system
 func _on_target_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
+		clear_steps()
 		target = body
 		roam_target = Vector2.ZERO
 		nave.set_target_position(target.global_position)
@@ -146,4 +153,57 @@ func _on_target_area_body_entered(body: Node2D) -> void:
 func _on_target_area_body_exited(body: Node2D) -> void:
 	if body == target:
 		target = null
-		nave.set_target_position(get_parent().global_position)
+		left_footsteps()
+		if target == null:
+			get_next_footstep()
+		if target == null:
+			nave.set_target_position(get_parent().global_position)
+
+func left_footsteps() -> void:
+	# Get all overlapping areas that are footsteps
+	var overlapping_areas: Array[Area2D] = $target_area.get_overlapping_areas()
+	for area: Area2D in overlapping_areas:
+		if area.get_parent().is_in_group("footstep") and get_parent().stats.canFollowSteps:
+			var footstep: Node2D = area.get_parent()
+			if is_instance_valid(footstep) and not footstep_queue.has(footstep):
+				footstep_queue.append(footstep)
+	# If we found any footsteps, get the next one
+	if footstep_queue.size() > 0:
+		get_next_footstep()
+
+func _on_target_area_area_entered(area: Area2D) -> void:
+	if target and target.is_in_group("player"):
+		return
+	
+	if area.get_parent().is_in_group("footstep") and get_parent().stats.canFollowSteps:
+		var footstep: Node2D = area.get_parent()
+		if is_instance_valid(footstep) and not footstep_queue.has(footstep):
+			footstep_queue.append(footstep)
+		
+		if target == null or target.is_in_group("footstep"):
+			get_next_footstep()
+
+func get_next_footstep() -> void:
+	_clean_footstep_queue()
+	
+	if footstep_queue.size() > 0:
+		current_footstep = footstep_queue.pop_front()
+		if is_instance_valid(current_footstep):
+			target = current_footstep
+			nave.set_target_position(target.global_position)
+		else:
+			get_next_footstep()
+
+func _clean_footstep_queue() -> void:
+	footstep_queue = clean(footstep_queue)
+
+func clean(arr: Array[Node2D]) -> Array[Node2D]:
+	var clean_arr: Array[Node2D]
+	for i in arr:
+		if is_instance_valid(i):
+			clean_arr.append(i)
+	return clean_arr
+
+func clear_steps() -> void:
+	footstep_queue.clear()
+	current_footstep = null

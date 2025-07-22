@@ -14,11 +14,15 @@ func Exit() -> void:
 
 func Process(_delta: float) -> EnemyState:
 	if NAV.target == null:
-		print("lost target")
 		return idle
 	
+	if NAV.target.is_in_group("footstep") and NAV.nave.is_navigation_finished():
+		NAV.get_next_footstep()
+		if NAV.target == null:
+			return idle
+	
 	var distance: float = enemy.global_position.distance_to(NAV.target.global_position)
-	if distance <= attack_range:
+	if distance <= attack_range and NAV.target.is_in_group("player"):
 		return attack
 	return null
 
@@ -28,6 +32,9 @@ func Physics(_delta: float) -> EnemyState:
 	
 	if NAV.nave.is_navigation_finished():
 		enemy.velocity = Vector2.ZERO
-		return idle
+		
+		if NAV.target == null and NAV.footstep_queue.size() == 0:
+			return idle
+		return null
 	
 	return null

@@ -15,5 +15,6 @@ input_pickable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="target_area"]
 shape = SubResource("CircleShape2D_77oi1")
 
+[connection signal="area_entered" from="target_area" to="." method="_on_target_area_area_entered"]
 [connection signal="body_entered" from="target_area" to="." method="_on_target_area_body_entered"]
 [connection signal="body_exited" from="target_area" to="." method="_on_target_area_body_exited"]

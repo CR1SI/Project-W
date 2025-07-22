@@ -80,7 +80,6 @@ being = NodePath("..")
 metadata/_custom_type_script = "uid://d3gf74eg3jv0l"
 
 [node name="NAV" parent="." instance=ExtResource("9_125x5")]
-visible = false
 radius_detector = 450.0
 stopping_distance = 50.0
 

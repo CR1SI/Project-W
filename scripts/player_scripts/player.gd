@@ -8,6 +8,7 @@ var mouse_position: Vector2 = Vector2.ZERO
 @onready var footsteps: PackedScene = preload("res://scenes/player_related/foot_steps.tscn")
 var steps: Node
 var stepTimer: Timer
+var footStepStack: Array[Node] = []
 
 @onready var spell_manager: SpellManager = $SpellManager
 @onready var state_machine: StateMachine = $StateMachine
@@ -28,8 +29,10 @@ const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 func _ready() -> void:
 	state_machine.Initialize(self) #initialized statemachine, with self->(player) node
 	
+	
+	#make steps
 	stepTimer = Timer.new()
-	stepTimer.wait_time = 0.5
+	stepTimer.wait_time = 0.3
 	stepTimer.autostart = true
 	stepTimer.connect("timeout", footStepMaker)
 	add_child(stepTimer)
@@ -40,6 +43,8 @@ func _process(_delta: float) -> void:
 	direction.y = Input.get_action_strength("down") - Input.get_action_strength("up")
 	
 	mouse_position = get_global_mouse_position()
+	
+	deleteStep()
 
 
 func _physics_process(_delta: float) -> void:
@@ -82,10 +87,19 @@ func AnimDirection() -> String:
 		return "left"
 
 
-#TODO Fine tune footsteps!
+var stepId: int = 0
 func footStepMaker() -> void:
+	stepId += 1
 	var new_steps: Node = footsteps.instantiate()
 	new_steps.position = global_position
 	new_steps.position.y = new_steps.position.y + 32
-	
+	new_steps.stepId = stepId
+	footStepStack.append(new_steps)
 	get_parent().add_child(new_steps)
+
+
+func deleteStep() -> void:
+	var maxTraceableSteps: int = 10
+	if footStepStack.size() >= maxTraceableSteps:
+		var delStep: Node = footStepStack.pop_front()
+		delStep.queue_free()
