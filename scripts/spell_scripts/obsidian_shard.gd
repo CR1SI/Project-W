@@ -1,0 +1,2 @@
+class_name ObsidianShard
+extends base_script

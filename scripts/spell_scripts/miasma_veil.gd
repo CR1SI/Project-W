@@ -1,0 +1,2 @@
+class_name MiasmaVeil
+extends base_script

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=2 format=3 uid="uid://c42ud41nci8s2"]
+
+[ext_resource type="Script" uid="uid://cverkfrb5pg7" path="res://scripts/custom_resources/spell_base.gd" id="1_yqupt"]
+
+[resource]
+script = ExtResource("1_yqupt")
+name = "mudslide"
+mana_cost = 0
+cooldown = 0.0
+spell_duration = 3.0
+debuff = 6
+destroy_on_impact = false
+spell_type = 3
+dmg = 15
+spell_speed = 0
+can_combine = false
+is_combination = true
+requires_targeting = false
+on_player = false
+deal_knockback = true
+knockback_amount = 60.0
+pull_inside = false
+metadata/_custom_type_script = "uid://cverkfrb5pg7"

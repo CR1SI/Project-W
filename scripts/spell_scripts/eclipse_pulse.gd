@@ -1,0 +1,2 @@
+class_name EclipsePulse
+extends base_script

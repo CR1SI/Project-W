@@ -1,0 +1,2 @@
+class_name Tsunami
+extends base_script

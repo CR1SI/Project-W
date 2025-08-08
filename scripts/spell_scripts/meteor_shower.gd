@@ -1,0 +1,2 @@
+class_name MeteorShower
+extends base_script

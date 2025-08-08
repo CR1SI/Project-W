@@ -1,0 +1,2 @@
+class_name ShadowStorm
+extends base_script

@@ -1,0 +1,2 @@
+class_name CrystalStrike
+extends base_script

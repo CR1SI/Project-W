@@ -1,0 +1,2 @@
+class_name Mudslide
+extends base_script

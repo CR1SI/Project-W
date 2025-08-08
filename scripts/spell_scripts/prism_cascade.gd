@@ -1,0 +1,2 @@
+class_name PrismCascade
+extends base_script

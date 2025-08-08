@@ -23,7 +23,17 @@ enum SpellCombo {
 	FIRECYCLONE,
 	MAGMAFIST,
 	HELLFIRE,
-	SOLARFLARE
+	SOLARFLARE,
+	MUDSLIDE,
+	MIASMAVEIL,
+	PRISMCASCADE,
+	TSUNAMI,
+	OBSIDIANSHARD,
+	CRYSTALSTRIKE,
+	METEORSHOWER,
+	ECLIPSEPULSE,
+	SHADOWSTORM,
+	RADIANTTEMPEST,
 }
 
 var combo_scenes: Dictionary = { 
@@ -31,7 +41,8 @@ var combo_scenes: Dictionary = {
 	SpellCombo.FIRECYCLONE : preload("res://scenes/spells/firecyclone.tscn"),
 	SpellCombo.MAGMAFIST : preload("res://scenes/spells/magmafist.tscn"),
 	SpellCombo.HELLFIRE : preload("res://scenes/spells/hellfire.tscn"),
-	SpellCombo.SOLARFLARE : preload("res://scenes/spells/solarflare.tscn")
+	SpellCombo.SOLARFLARE : preload("res://scenes/spells/solarflare.tscn"),
+	SpellCombo.MUDSLIDE : preload("res://scenes/spells/mudslide.tscn"),
 }
 
 var spell_scenes: Dictionary = { 
@@ -56,6 +67,9 @@ var spell_combinations: Dictionary = {
 	"fireball_lightbeam" : SpellCombo.SOLARFLARE,
 	"lightbeam_fireball" : SpellCombo.SOLARFLARE,
 	#WATER BASED SPELLS
+	"waterfall_stonefist" : SpellCombo.MUDSLIDE,
+	"stonefist_waterfall" : SpellCombo.MUDSLIDE,
+	
 }
 
 
@@ -86,7 +100,6 @@ func cast_spell(spell: SpellType, position: Vector2) -> void:
 	if spell in active_bar and player.stats.mana >= manaCost: 
 		#check if on cooldown!
 		if cooldowns[spell]: 
-			print("spell on cooldown")
 			return
 		
 		var spell_scene: PackedScene = active_bar[spell]

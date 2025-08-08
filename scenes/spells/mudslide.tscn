@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://it0tlu0c6xsr"]
+
+[ext_resource type="Script" uid="uid://dsgrvproy60" path="res://scripts/spell_scripts/mudslide.gd" id="1_vjyq8"]
+[ext_resource type="PackedScene" uid="uid://c0xqulw7pjpl0" path="res://scenes/helper_scenes/hitbox.tscn" id="2_20mxd"]
+[ext_resource type="Resource" uid="uid://c42ud41nci8s2" path="res://resources/spell_resources/mudslide.tres" id="2_rlrh1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_20mxd"]
+radius = 90.3549
+
+[node name="Mudslide" type="Area2D"]
+script = ExtResource("1_vjyq8")
+data = ExtResource("2_rlrh1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_20mxd")
+
+[node name="Hitbox" parent="." instance=ExtResource("2_20mxd")]
+position = Vector2(-2, 0)
