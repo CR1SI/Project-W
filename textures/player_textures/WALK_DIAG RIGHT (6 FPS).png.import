@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfck881p3s8lh"
-path="res://.godot/imported/WALK_DIAG LEFT (8 FPS).png-b36b23a422989bdb608ac2ca38e60c28.ctex"
+uid="uid://bb7d5ukn5mkxm"
+path="res://.godot/imported/WALK_DIAG RIGHT (6 FPS).png-6166ed0bc8434edeed355f1c23917a3e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/player_textures/WALK_DIAG LEFT (8 FPS).png"
-dest_files=["res://.godot/imported/WALK_DIAG LEFT (8 FPS).png-b36b23a422989bdb608ac2ca38e60c28.ctex"]
+source_file="res://textures/player_textures/WALK_DIAG RIGHT (6 FPS).png"
+dest_files=["res://.godot/imported/WALK_DIAG RIGHT (6 FPS).png-6166ed0bc8434edeed355f1c23917a3e.ctex"]
 
 [params]
 
