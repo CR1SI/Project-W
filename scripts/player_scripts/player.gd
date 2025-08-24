@@ -23,8 +23,16 @@ var direction: Vector2 = Vector2.ZERO
 var last_direction: Vector2 = Vector2.ZERO
 var cardinal_direction: Vector2 = Vector2.ZERO
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
-
+const DIR_4 = [
+	Vector2(1, 0),        # right
+	Vector2(1, 1),        # down-right
+	Vector2(0, 1),        # down
+	Vector2(-1, 1),       # down-left
+	Vector2(-1, 0),       # left
+	Vector2(-1, -1),      # up-left
+	Vector2(0, -1),       # up
+	Vector2(1, -1)        # up-right
+]
 
 func _ready() -> void:
 	state_machine.Initialize(self) #initialized statemachine, with self->(player) node
@@ -55,8 +63,9 @@ func setDirection() -> bool:
 	if direction == Vector2.ZERO: 
 		return false
 	
-	var direction_id: int = int( round( ( direction ).angle() / TAU * DIR_4.size() ) )
-	var new_dir: Vector2 = DIR_4 [ direction_id ]
+	var angle: float = direction.angle()
+	var dir_index: int = int(round((angle + PI) / (PI / 4))) % 8
+	var new_dir: Vector2 = DIR_4[dir_index]
 	
 	if new_dir == cardinal_direction: 
 		return false
@@ -76,15 +85,12 @@ func UpdateAnimation(state: String) -> void:
 	elif state == "idle_long_end":
 		animation_player.play( state + "_" + dir)
 
-func AnimDirection() -> String: 
-	if cardinal_direction == Vector2.DOWN: 
-		return "down"
-	elif cardinal_direction == Vector2.UP: 
-		return "up"
-	elif cardinal_direction == Vector2.RIGHT: 
-		return "right"
-	else:
-		return "left"
+func AnimDirection() -> String:
+	var angle: float = cardinal_direction.angle()
+	var dir_index: int = int(round((angle + PI) / (PI / 4))) % 8
+	
+	var directions: Array[String] = ["right", "down_right", "down", "down_left", "left", "up_left", "up", "up_right"]
+	return directions[dir_index]
 
 
 var stepId: int = 0
