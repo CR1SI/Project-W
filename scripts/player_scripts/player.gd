@@ -77,6 +77,8 @@ func UpdateAnimation(state: String) -> void:
 	var dir: String = AnimDirection()
 	if dir in ["down_right", "down_left"] and state == "idle":
 		dir = "down"
+	if dir in ["up_right", "up_left"] and state == "idle":
+		dir = "up"
 	
 	if state != "idle_long" and state != "idle_long_end":
 		animation_player.play( state + "_" + dir)
